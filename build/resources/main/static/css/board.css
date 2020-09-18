@@ -1,0 +1,84 @@
+	/*  https://bigfat.tistory.com/80*/
+#container {
+  width: 70%;
+  margin: 0 auto;     /* 媛�濡쒕줈 以묒븰�뿉 諛곗튂 */
+  padding-top: 10%;   /* �뀒�몢由ъ� �궡�슜 �궗�씠�쓽 �뙣�뵫 �뿬諛� */
+}
+ 
+#list {
+  text-align: center;
+}
+
+#write {
+  text-align: right;
+}
+ 
+/* Bootstrap */
+.table > thead {
+  background-color: #b3c6ff;
+}
+.table > thead > tr > th {
+  text-align: center;
+}
+.table-hover > tbody > tr:hover {
+  background-color: #e6ecff;
+}
+.table > tbody > tr > td {
+  text-align: center;
+}
+.table > tbody > tr > #title {
+  text-align: left;
+}
+ 
+div > #paging {
+  text-align: center;
+}
+ 
+.hit {
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  /* �쐞 �냽�꽦�뱾�쓣 �븳 以꾨줈 �몴湲고븯湲� */
+  /* -webkit-animation: blink 1.5s ease infinite; */
+}
+ 
+/* �븷�땲硫붿씠�뀡 吏��젏 �꽕�젙�븯湲� */
+/* �씡�뒪�뵆濡쒕윭 10 �씠�긽, 理쒖떊 紐⑤뜕 釉뚮씪�슦���뿉�꽌 吏��썝 */
+@keyframes blink {
+  from {color: white;}
+  30% {color: yellow;}
+  to {color: red; font-weight: bold;}
+  /* 0% {color:white;}
+  30% {color: yellow;}
+  100% {color:red; font-weight: bold;} */
+   }
+   
+   .glyphicon.glyphicon {
+   font-size: 50px;
+}
+   .glyphicon.glyphicon-home {
+   font-size: 30px;
+}
+
+.box {
+	width: 150px;
+	height: 150px;
+	background-color: #cccccc;
+	float: left;
+	margin-right: 10px;}
+	.visible {overflow: visible;}
+	.hide {overflow: hidden;}
+	.scroll {overflow: scroll;}
+	.auto {overflow: auto;}
+	
+.well {
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
