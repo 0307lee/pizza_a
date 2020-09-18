@@ -1,4 +1,4 @@
-package com.lcomputerstudy.example.domain;
+package com.pizza_a.example.domain;
 
 import java.util.Collection;
 

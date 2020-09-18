@@ -1,4 +1,4 @@
-package com.lcomputerstudy.example.config;
+package com.pizza_a.example.config;
 
 import javax.sql.DataSource;
 
@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.lcomputerstudy.example.service.UserService;
+import com.pizza_a.example.service.UserService;
 
 @Configuration
 @EnableWebSecurity

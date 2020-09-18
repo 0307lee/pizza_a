@@ -1,9 +1,9 @@
-package com.lcomputerstudy.example.service;
+package com.pizza_a.example.service;
 
 import java.util.List;
 
-import com.lcomputerstudy.example.domain.BoardVO;
-import com.lcomputerstudy.example.domain.UserVO;
+import com.pizza_a.example.domain.BoardVO;
+import com.pizza_a.example.domain.UserVO;
 
 public interface BoardService {
 	public List<BoardVO> selectBoardList();

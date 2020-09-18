@@ -23,33 +23,7 @@
 				    Manage Users
 				</sec:authorize>
 	        	<hr>
-	        	<h4>TO DO LIST</h4>
-				1 SW_basic<br>&nbsp;
-							
-							기획 (쇼핑몰 여행사 결제 랭킹 정산 ) <br>&nbsp;
-							설계 <br>&nbsp;
-							개발 <br>&nbsp;
-							 <br>
-							메뉴 추가생성: <br>	&nbsp;
-									기능1차-단순up down (ex. 내 공부 게시판 만들기(메모장 출력), 로봇데이터 , 크롤링 데이터)<br>&nbsp;
-									기능2차-통계화 (dif)<br>&nbsp;&nbsp;
-									 <br>
-				2 HW?? SW??<br>&nbsp;
-					간단한것부터하자. 내 앞에 놓인것 일단 쳐내고. 카테고리도 분류하고<br>&nbsp;
-				<br>&nbsp;
-				 <div class="row Well">
-				sample demo page menu 내가 할 것만 <br>&nbsp;<br>&nbsp;
-					영카트<br>&nbsp;<br>&nbsp;
-					고도몰<br>&nbsp;
-					
-					화면 UI를 기능 잡기<br>&nbsp;
-					
-					1. 목업<br>&nbsp;
-						화면 미리 가상<br>&nbsp;
-						ovenapp.io<br>&nbsp;
-						xd (adobe)<br>&nbsp;
-							프레젠트 위키깃<br>&nbsp;
-				</div>
+	        	<h4>PIZZA TIME</h4>
 			</div>
 	        <div class="Login col-md-3">
 	        	<sec:authorize access="isAnonymous()">

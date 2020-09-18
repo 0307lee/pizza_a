@@ -1,11 +1,11 @@
-package com.lcomputerstudy.example.mapper;
+package com.pizza_a.example.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.security.core.GrantedAuthority;
 
-import com.lcomputerstudy.example.domain.UserVO;
+import com.pizza_a.example.domain.UserVO;
 
 @Mapper
 public interface UserMapper {

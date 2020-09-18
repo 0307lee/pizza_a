@@ -1,4 +1,4 @@
-package com.lcomputerstudy.example.controller;
+package com.pizza_a.example.controller;
 
 import java.util.List;
 
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.lcomputerstudy.example.domain.BoardVO;
-import com.lcomputerstudy.example.domain.UserVO;
-import com.lcomputerstudy.example.service.BoardService;
-import com.lcomputerstudy.example.service.UserService;
+import com.pizza_a.example.domain.BoardVO;
+import com.pizza_a.example.domain.UserVO;
+import com.pizza_a.example.service.BoardService;
+import com.pizza_a.example.service.UserService;
 
 @org.springframework.stereotype.Controller
 public class Controller {

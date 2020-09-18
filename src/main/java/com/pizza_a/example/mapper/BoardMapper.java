@@ -1,10 +1,10 @@
-package com.lcomputerstudy.example.mapper;
+package com.pizza_a.example.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.lcomputerstudy.example.domain.BoardVO;
+import com.pizza_a.example.domain.BoardVO;
 
 @Mapper
 public interface BoardMapper {

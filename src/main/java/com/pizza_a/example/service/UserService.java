@@ -1,11 +1,11 @@
-package com.lcomputerstudy.example.service;
+package com.pizza_a.example.service;
 
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.lcomputerstudy.example.domain.UserVO;
+import com.pizza_a.example.domain.UserVO;
 
 public interface UserService extends UserDetailsService {
 

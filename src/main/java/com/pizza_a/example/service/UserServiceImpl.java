@@ -1,4 +1,4 @@
-package com.lcomputerstudy.example.service;
+package com.pizza_a.example.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.lcomputerstudy.example.domain.UserVO;
-import com.lcomputerstudy.example.mapper.UserMapper;
+import com.pizza_a.example.domain.UserVO;
+import com.pizza_a.example.mapper.UserMapper;
 
 @Service
 public class UserServiceImpl implements UserService{
