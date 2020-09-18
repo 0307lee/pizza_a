@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+ 
+<!-- SETTING for LOG in Console-->
+    <appender name="STDOUT"
+        class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{HH:mm:ss,SSS} %highlight(%-5level) --- [%thread] %logger{35}: %msg%n</Pattern>
+        </encoder>
+    </appender>
+<!--  SETTING for Saving LOG file-->
+    <appender name="FILE"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy
+            class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily and when the file reaches 10 MegaBytes -->
+            <fileNamePattern>C:\sts-log\logback-%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder>
+        	<Pattern>%d{HH:mm:ss,SSS}%-5level --- [%thread] %logger{35}: %msg%n</Pattern>
+       	</encoder>
+    </appender>
+<!-- Registering LOG -->
+    <!-- mapper package-->
+    <logger name="com.lcomputerstudy.example.mapper" level="TRACE" additivity="false">
+    	<appender-ref ref="FILE"/>
+    	<appender-ref ref="STDOUT"/>
+    </logger>
+    <!-- mapper package-->
+    
+    <logger name="com.lcomputerstudy.example" level="DEBUG" additivity="false">
+    	<appender-ref ref="FILE"/>
+    	<appender-ref ref="STDOUT"/>
+    </logger>
+        
+    <logger name="com.lcomputerstudy.web" level="WARN" additivity="false">
+    	<appender-ref ref="FILE"/>
+    	<appender-ref ref="STDOUT"/>
+    </logger>
+        
+    <root level="WARN">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </root>
+<!-- Registering LOG -->
+
+</configuration>
