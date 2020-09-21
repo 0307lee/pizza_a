@@ -145,8 +145,6 @@ public class Controller {
 //		logger.debug("debug");
 //		logger.info("info");
 //		logger.error("error");
-		userVO.setuName("testtest2");
-		System.out.println(userVO);
 		
 		return userVO;
 	}
