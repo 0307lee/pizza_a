@@ -24,16 +24,14 @@
 <body>
 	<div class="container">
 		<div class="row Title">
-	        <div class="TITLE col-xs-12">
-	        	<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<a class="navbar-brand" href="/">
-								<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-							</a>
-						</div>
+
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/">
+							<img alt="pizza" src="https://img.icons8.com/pastel-glyph/64/000000/pizza--v2.png" width="45" height="45"/>
+						</a>
 					</div>
-					<p class="text-warning" >Lee HTML_from 200714 to 200910</p>
-				</nav>
-	        </div>
+				</div>
+
+
 	    </div>

@@ -10,8 +10,11 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pizza_a.example.domain.BoardVO;
 import com.pizza_a.example.domain.UserVO;
@@ -33,16 +36,25 @@ public class Controller {
 		int b_cnt_id=boardservice.getBoardListCount();
 		model.addAttribute("b_cnt_id", b_cnt_id);
 		
-
-		return "/index";
+		return "/Stg1_1_MAIN";
 	}
 	
-	@RequestMapping("/beforeSignUp")
+	@RequestMapping(value= "/Stg1_MAIN_NoID")
+	public String noID(Model model) {
+		return "/Stg1_MAIN_NoID";
+	}	
+	
+	@RequestMapping(value= "/Stg1_LOGIN")
+	public String beforeLogin(Model model) {
+		return "/Stg1_LOGIN";
+	}	
+	
+	@RequestMapping("/Stg1_BEFORE_REGISTER_ID")
 	public String beforeSignUp() {
-		return "/signup";
+		return "/Stg1_REGISTER_ID";
 	}
 	
-	@RequestMapping("/signup")
+	@RequestMapping("/Stg1_REGISTER_ID")
 	public String signup(UserVO user) {
 		//encoding PW
 		String encodedPassword =new BCryptPasswordEncoder().encode(user.getPassword());
@@ -60,30 +72,21 @@ public class Controller {
 		//Creating Auth
 		userservice.createAuthorities(user);
 		
-		return "/login";
-	}
-	
-	@RequestMapping(value= "/login")
-	public String beforeLogin(Model model) {
-		return "/login";
-	}
-	
-	@Secured({"ROLE_USER"})
-	@RequestMapping(value="/user/info")
-	public String userinfo(Model model) {
-		return "/user_info";
-	}
-	
-	@RequestMapping(value= "/denied")
-	public String denied(Model model) {
-		return "/denied";
+		return "/Stg1_MAIN_NoID";
 	}
 
-	@Secured({"ROLE_USER"})
-	@RequestMapping(value= "/chart")
-	public String chart(Model model) {
-		return "/chart";
-	}
+	
+//	@Secured({"ROLE_USER"})
+//	@RequestMapping(value="/user/info")
+//	public String userinfo(Model model) {
+//		return "/user_info";
+//	}
+//	
+//	@RequestMapping(value= "/denied")
+//	public String denied(Model model) {
+//		return "/denied";
+//	}
+
 
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/post_write")
@@ -130,5 +133,21 @@ public class Controller {
 		logger.error("error");
 		
 		return "redirect:/";
+	}
+	
+	
+	@RequestMapping(value= "/Stag1_CHK_ID_AJAX")
+	@ResponseBody
+	public UserVO chk_id_ajax(@RequestBody UserVO userVO) {
+//		System.out.println(userVo);
+//		userservice.chk_id_ajax(userVo);
+//		
+//		logger.debug("debug");
+//		logger.info("info");
+//		logger.error("error");
+		userVO.setuName("testtest2");
+		System.out.println(userVO);
+		
+		return userVO;
 	}
 }

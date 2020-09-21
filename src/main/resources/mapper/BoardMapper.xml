@@ -9,17 +9,17 @@
 				b_datetime	as bDateTime,
 				b_disabled	as bDisabled,
 				b_views		as bViews
-		FROM	lc_board
+		FROM	pizza_board
 		WHERE	b_id	IS NOT NULL
 		AND		b_disabled=0;
 	</select>
 	<select id="getBoardListCount" resultType="int">
 		SELECT	count(b_id) as b_cnt_id
-		FROM	lc_board
+		FROM	pizza_board
 		WHERE	b_disabled=0;
 	</select>
 	<insert id="writePostProcess" parameterType="BoardVO">
-	INSERT INTO lc_board(
+	INSERT INTO pizza_board(
 			b_id,
 			b_title,
 			b_content,
@@ -55,18 +55,18 @@
 				b_datetime	as bDateTime,
 				u_id		as uId,
 				b_disabled	as bDisabled
-		FROM	lc_board
+		FROM	pizza_board
 		WHERE	b_id		= #{bId};
 	</select>
 
 	<insert id="deletePostProcess" parameterType="BoardVO">
-		UPDATE	lc_board
+		UPDATE	pizza_board
 		SET		b_disabled	= 1
 		WHERE	b_id		= #{bId};
 	</insert>
 	
 	<select id="addBoardViews" parameterType="int">
-		UPDATE	lc_board
+		UPDATE	pizza_board
 		SET		b_views		= b_views + 1
 		WHERE	b_id		= #{bId};
 	</select>

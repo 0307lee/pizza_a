@@ -50,4 +50,7 @@ public class UserServiceImpl implements UserService{
 		return userMapper.readUser(username);
 	}
 
+	@Override
+	public void chk_id_ajax(UserVO userVo) {
+	};
 }

@@ -3,50 +3,50 @@
 <mapper namespace="com.pizza_a.example.mapper.UserMapper">
 <!-- 권한 읽기 -->
 	<select id="readAuthorities" parameterType="String" resultType="org.springframework.security.core.authority.SimpleGrantedAuthority">
-	SELECT 	u_auth
-	FROM	lc_auth
-	WHERE	1=1
-	AND		u_id=#{username}	
+		SELECT 	u_auth
+		FROM	pizza_auth
+		WHERE	1=1
+		AND		u_id=#{username}	
 	</select>
 	
 	<!-- 회원불러오기 -->
 	<select id="readUser" parameterType="String" resultType="UserVO">
-	SELECT	u_id						as username,
-			u_password					as password,
-			u_name						as uName,
-			u_isAccountNonExpired		as isAccountNonExpired,
-			u_isAccountNonLocked		as isAccountNonLocked,
-			u_isCredentialNonExpired	as isCredentialNonExpired,
-			u_isEnabled					as isEnabled
-	FROM	lc_user
-	WHERE	1=1
-	AND		u_id = #{username}
+		SELECT	u_id						as username,
+				u_password					as password,
+				u_name						as uName,
+				u_isAccountNonExpired		as isAccountNonExpired,
+				u_isAccountNonLocked		as isAccountNonLocked,
+				u_isCredentialNonExpired	as isCredentialNonExpired,
+				u_isEnabled					as isEnabled
+		FROM	pizza_user
+		WHERE	1=1
+		AND		u_id = #{username}
 	</select>
 	
 	<!-- 회원등록 -->
 	<insert id="createUser" parameterType="UserVO">
-	INSERT INTO lc_user(
-			u_id,
-			u_password,
-			u_name,
-			u_isAccountNonExpired,
-			u_isAccountNonLocked,
-			u_isCredentialNonExpired,
-			u_isEnabled
-	) VALUES(
-		#{username},
-		#{password},
-		#{uName},
-		#{isAccountNonExpired},
-		#{isAccountNonLocked},
-		#{isCredentialNonExpired},
-		#{isEnabled}
+		INSERT INTO pizza_user(
+				u_id,
+				u_password,
+				u_name,
+				u_isAccountNonExpired,
+				u_isAccountNonLocked,
+				u_isCredentialNonExpired,
+				u_isEnabled
+		) VALUES(
+			#{username},
+			#{password},
+			#{uName},
+			#{isAccountNonExpired},
+			#{isAccountNonLocked},
+			#{isCredentialNonExpired},
+			#{isEnabled}
 		)
 	</insert>
 	
 	<!-- 유저 권한 추가 -->
 	<insert id="createAuthority" parameterType="org.springframework.security.core.GrantedAuthority">
-		INSERT INTO lc_auth(
+		INSERT INTO pizza_auth(
 			u_id,
 			u_auth
 		) VALUES
@@ -57,4 +57,11 @@
 			UPDATE
 				u_id = #{username}
 	</insert>
+	
+	<select id="chk_id_ajax" parameterType="UserVO" resultType="UserVO">
+		SELECT	*
+		FROM	pizza_user
+		WHERE	u_id=#{username}
+		
+	</select>
 </mapper>

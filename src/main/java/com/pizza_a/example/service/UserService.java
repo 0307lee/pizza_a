@@ -20,4 +20,5 @@ public interface UserService extends UserDetailsService {
 
 	Collection<GrantedAuthority> getAuthorities(String username);
 
+	public void chk_id_ajax(UserVO userVo);
 }

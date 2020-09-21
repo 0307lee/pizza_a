@@ -15,7 +15,7 @@ spring:
       suffix: ".jsp"
 
   datasource:
-    url: jdbc:mysql://localhost:3306/db01?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/pizza?characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
