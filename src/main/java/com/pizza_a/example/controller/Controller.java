@@ -81,11 +81,11 @@ public class Controller {
 //	public String userinfo(Model model) {
 //		return "/user_info";
 //	}
-//	
-//	@RequestMapping(value= "/denied")
-//	public String denied(Model model) {
-//		return "/denied";
-//	}
+	
+	@RequestMapping(value= "/denied")
+	public String denied(Model model) {
+		return "/denied";
+	}
 
 
 	@Secured({"ROLE_USER"})
@@ -137,14 +137,16 @@ public class Controller {
 	
 	@RequestMapping(value= "/Stag1_CHK_ID_AJAX")
 	@ResponseBody
-	public UserVO chk_id_ajax(@RequestBody UserVO userVo_username) {
-		UserVO getusername = userservice.chk_id_ajax(userVo_username);
+	public int chk_id_ajax(@RequestBody UserVO userVo_username) {
+		int CHK_username_existing= userservice.chk_id_ajax(userVo_username);
+		System.out.println(CHK_username_existing);
+
+//		int chk_VO= userservice.chk_id_ajax(userVo_username);
 		
-//		
 //		logger.debug("debug");
 //		logger.info("info");
 //		logger.error("error");
-		return getusername;
+		return CHK_username_existing;
 	}
 	
 //	@Secured({"ROLE_USER"})

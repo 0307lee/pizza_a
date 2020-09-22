@@ -16,13 +16,14 @@
 	        	<!-- NOT WORKING -->	        	
 		       	<sec:authorize access="hasRole('ROLE_MASTER')">
 					<h4>PIZZA TIME(Master)</h4>
+					<a href="/logout">로그아웃</a><br><br>
 		       	</sec:authorize>
 		       	<sec:authorize access="hasRole('ROLE_USER')">
 					<a href="/Stg2_1_SetPizza_basic"><h4>PIZZA TIME(ROLE_USER)</h4></a>
+					<a href="/logout">로그아웃</a><br><br>
 				</sec:authorize>
 	        	<sec:authorize access="isAnonymous()">
-	        		<a href="/Stg1_MAIN_NoID"><h4>PIZZA TIME(NO_ROLE_USER)</h4></a>
+	        		<a href="/Stg1_MAIN_NoID"><h4>PIZZA TIME(NO_USER)</h4></a>
 	        	</sec:authorize>
 	    </div>
-<a href="/logout">로그아웃</a><br><br>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

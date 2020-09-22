@@ -9,8 +9,9 @@
 			<input type ="hidden" name = "${_csrf.parameterName}" value="${_csrf.token}"><br>
 			
 			<input type ="text" name="username" placeholder="id 입력"  id ="id_in"><br><br>
-			<span id="existing_id" style="display:none;">아이디가 겹칩니다.</span>
-			<span id="only_eng" style="display:none;">특수문자는 안되요.</span><br><br>
+				<span id="existing_id_chk"	style="display:none;">	아이디가 겹칩니다.	</span><br><br>
+				<span id="id_only_eng" 		style="display:none;">	())특수문자는 안되요.</span><br><br>
+				<span id="id_able" 			style="display:none;">	아이디가 가능합니다.	</span><br><br>
 			<input type ="password" name="password" placeholder="password 입력" class="pw" id="pw_in" ><br><br>
 			<input type ="password" name="password2" placeholder="password CHECK" class="pw" id="pw_in2" ><br><br>
 			<span id="same_pw" style="display:none;">비밀번호가 일치합니다.</span><br>
@@ -19,7 +20,6 @@
 			<button type="submit">가입하기</button>
 		</form>
 	</div>
-	<a href="/logout">로그아웃</a><br><br>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 
@@ -31,13 +31,15 @@
 
 	 //id 기존재여부확인
 	 $("#id_in").focusout(function(){
-   /*  	var pattern_num = /[0-9]/;	// 숫자 
+
+		var id_in= $("#id_in").val();
+	   /*  	
+	   var pattern_num = /[0-9]/;	// 숫자 
 
     	var pattern_eng = /[a-zA-Z]/;	// 문자 
 
     	var pattern_spc = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
 
-		var id_in= $("#id_in").val();
 		//console.log(id_in);
 		if((pattern_num.test(id_in)) && !(pattern_eng.test(id_in))
 				 && !(pattern_spc.test(id_in)) && !(pattern_kor.test(id_in))){
@@ -53,18 +55,22 @@
 			//userVO의 username과 같은 이름에 변수가 자동으로 들어간다.
 			//stringify 써줘야한다.
 			success: function (response) {
-				if (response == null){
-					console.log(response);
-					$("#existing_id").css('display','none');
+				if (response == 0){ //response == null is Err, in JSON transaction
+					//alert($("#id_able").val()+"1");
+					//console.log(response);
+					$("#existing_id_chk").css('display','none');
+					$("#id_able").css('display','inline-block');
 				}else{
-					console.log(response);
-					$("#existing_id").css('display','inline-block');
-					}
+					//console.log(response);
+					$("#existing_id_chk").css('display','inline-block');
+					$("#id_able").css('display','none');
+					//alert($("#id_able").val()+"2");
+				}
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
-		        alert(xhr.status);
-		        alert(thrownError);
-		        alert(xhr.responseText);
+		        console.dir(xhr.status);
+		        console.dir(thrownError);
+		        console.dir(xhr.responseText);
 			}
 		});
 	});

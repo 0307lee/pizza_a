@@ -58,10 +58,10 @@
 			u_id = #{username}
 	</insert>
 	
-	<select id="chk_id_ajax" parameterType="UserVO" resultType="UserVO">
-		SELECT	u_id
+	<select id="chk_id_ajax" parameterType="UserVO" resultType="int">
+		SELECT	COUNT(1)
 		FROM	pizza_user
-		WHERE	u_id=#{username}
+		WHERE	u_id=		#{username}
 		
 	</select>
 </mapper>

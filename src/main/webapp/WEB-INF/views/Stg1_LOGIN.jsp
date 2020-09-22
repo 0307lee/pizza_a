@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 
 	<h1>로그인_bootstrap</h1>
-		<form action ="/loginPro" method= "post">
+		<form action ="/loginPro" method= "post"><!-- goto security -->
 			<input type ="hidden" name ="${_csrf.parameterName}" value="${_csrf.token}">
 			<input type ="text" name="username" placeholder="id 입력해주세요"><br><br>
 			<input type ="password" name="password" placeholder="password 입력해주세요"><br><br>
