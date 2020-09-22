@@ -138,14 +138,14 @@ public class Controller {
 	
 	@RequestMapping(value= "/Stag1_CHK_ID_AJAX")
 	@ResponseBody
-	public UserVO chk_id_ajax(@RequestBody UserVO userVO) {
-//		System.out.println(userVo);
+	public UserVO chk_id_ajax(@RequestBody UserVO userVo) {
+		//System.out.println(userVo);
 //		userservice.chk_id_ajax(userVo);
 //		
 //		logger.debug("debug");
 //		logger.info("info");
 //		logger.error("error");
 		
-		return userVO;
+		return userVo;
 	}
 }

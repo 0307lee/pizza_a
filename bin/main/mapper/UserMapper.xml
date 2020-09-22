@@ -59,7 +59,7 @@
 	</insert>
 	
 	<select id="chk_id_ajax" parameterType="UserVO" resultType="UserVO">
-		SELECT	*
+		SELECT	u_id
 		FROM	pizza_user
 		WHERE	u_id=#{username}
 		

@@ -31,6 +31,7 @@
 
 	 //id 기존재여부확인
 	 $("#id_in").focusout(function(){
+    	/* 
     	var pattern_num = /[0-9]/;	// 숫자 
 
     	var pattern_eng = /[a-zA-Z]/;	// 문자 
@@ -43,7 +44,7 @@
 				 && !(pattern_spc.test(id_in)) && !(pattern_kor.test(id_in))){
 			$("#only_eng").css('display','inline-block');
 			}
-		
+		 */
 		$.ajax({
 			type: "POST",
 			url: "http://localhost:8080/Stag1_CHK_ID_AJAX",
@@ -53,9 +54,11 @@
 			//userVO의 username과 같은 이름에 변수가 자동으로 들어간다.
 			//stringify 써줘야한다.
 			success: function (response) {
-				if (response == null){}
+				if (response == null){
+					console.log(response);
+					$("#existing_id").css('display','none');}
 				else{
-					//console.log(response);
+					console.log(response);
 					$("#existing_id").css('display','inline-block');
 					}
 			},
