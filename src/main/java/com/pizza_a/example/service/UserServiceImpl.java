@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void chk_id_ajax(UserVO userVo) {
+	public UserVO chk_id_ajax(UserVO userVo) {
+		return userMapper.chk_id_ajax(userVo);
 	};
 }

@@ -135,17 +135,30 @@ public class Controller {
 		return "redirect:/";
 	}
 	
-	
 	@RequestMapping(value= "/Stag1_CHK_ID_AJAX")
 	@ResponseBody
-	public UserVO chk_id_ajax(@RequestBody UserVO userVO) {
-//		System.out.println(userVo);
-//		userservice.chk_id_ajax(userVo);
+	public UserVO chk_id_ajax(@RequestBody UserVO userVo_username) {
+		UserVO getusername = userservice.chk_id_ajax(userVo_username);
+		
 //		
 //		logger.debug("debug");
 //		logger.info("info");
 //		logger.error("error");
-		
-		return userVO;
+		return getusername;
 	}
+	
+//	@Secured({"ROLE_USER"})
+//	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic")
+//	public String Stg2_1_SetPizza_basic(BoardVO post) {
+//		List<BoardVO> list =boardservice.selectBoardList();
+//		post.addAttribute("list_BoardVO", list);
+//		
+//		int b_cnt_id=boardservice.getBoardListCount();
+//		post.addAttribute("b_cnt_id", b_cnt_id);
+//		
+//		boardservice.writePostProcess(post);
+//		return "redirect:/";
+//	}
+	
+	
 }

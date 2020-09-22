@@ -18,10 +18,10 @@
 					<h4>PIZZA TIME(Master)</h4>
 		       	</sec:authorize>
 		       	<sec:authorize access="hasRole('ROLE_USER')">
-					<h4>PIZZA TIME(User)</h4>
+					<a href="/Stg2_1_SetPizza_basic"><h4>PIZZA TIME(ROLE_USER)</h4></a>
 				</sec:authorize>
 	        	<sec:authorize access="isAnonymous()">
-	        		<a href="/Stg1_MAIN_NoID"><h4>PIZZA TIME(NoRULE)</h4></a>
+	        		<a href="/Stg1_MAIN_NoID"><h4>PIZZA TIME(NO_ROLE_USER)</h4></a>
 	        	</sec:authorize>
 	    </div>
 <a href="/logout">로그아웃</a><br><br>

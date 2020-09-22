@@ -17,4 +17,6 @@ public interface UserMapper {
 	public List<GrantedAuthority> readAuthorities(String username);
 
 	public void createAuthority(UserVO user);
+	
+	public UserVO chk_id_ajax(UserVO userVo);
 }

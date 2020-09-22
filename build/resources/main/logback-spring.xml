@@ -23,18 +23,18 @@
     </appender>
 <!-- Registering LOG -->
     <!-- mapper package-->
-    <logger name="com.lcomputerstudy.example.mapper" level="TRACE" additivity="false">
+    <logger name="com.pizza_a.example.mapper" level="TRACE" additivity="false">
     	<appender-ref ref="FILE"/>
     	<appender-ref ref="STDOUT"/>
     </logger>
     <!-- mapper package-->
     
-    <logger name="com.lcomputerstudy.example" level="DEBUG" additivity="false">
+    <logger name="com.pizza_a.example" level="DEBUG" additivity="false">
     	<appender-ref ref="FILE"/>
     	<appender-ref ref="STDOUT"/>
     </logger>
         
-    <logger name="com.lcomputerstudy.web" level="WARN" additivity="false">
+    <logger name="com.pizza_a.web" level="WARN" additivity="false">
     	<appender-ref ref="FILE"/>
     	<appender-ref ref="STDOUT"/>
     </logger>
