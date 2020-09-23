@@ -18,14 +18,63 @@
 				<button type="button" class="btn btn-default">L</button>
 				<button type="button" class="btn btn-default">XL</button>
 			</div><br>
+			
 			<div class="group" role="group" aria-label="...">
 				<button type="button" class="btn btn-default">-</button>
 				<input type="text" class="form-control" placeholder="1">
 				<button type="button" class="btn btn-default">+</button>
-			</div>		
+			</div><br>
+			
+			<div class="group" role="group" aria-label="...">
+				<input type="text" class="form-control" placeholder="1">
+			</div>	
 		</div>
+		<form action="/user/SetPizza" method="post" id="frm_SetPizza">
+			<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
+			<div class="btn-group" role="group" aria-label="...">
+				<button id="btn_stg3" type="button" class="btn btn-default">치즈피자주문</button>
+				<button id="btn_stg2_topping" type="button" class="btn btn-default">토핑추가</button>
+			</div>
+		</form>
+		<br>
 	</sec:authorize>
-	
+
+	<form action="/user/SetPizza" method="post" id="frm_SetPizza">
+		<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
+		<table>
+			<tr>
+				<th>Company</th>
+				<th>Contact</th>
+				<th>Country</th>
+			</tr>
+			<tr>
+				<td>Company</td>
+				<td>Contact</td>
+				<td>Country</td>
+			</tr>
+		</table>
+	</form>
+
+
 
     <a href="/logout">로그아웃</a><br><br>
+
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
+
+
+<script>
+	$(document).on
+	('click', '#btn_stg3', function () {
+		alert("ORDER");
+		$('#frm_SetPizza').submit();
+		}
+	);
+	
+	$(document).on
+	('click', '#btn_stg2_topping', function () {
+		alert("PUT TOPPING");
+		$('#frm_SetPizza').submit();
+		}
+	);
+	
+</script>

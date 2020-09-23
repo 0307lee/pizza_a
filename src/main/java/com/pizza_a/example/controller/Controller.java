@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pizza_a.example.domain.BoardVO;
+import com.pizza_a.example.domain.PizzaVO;
 import com.pizza_a.example.domain.UserVO;
 import com.pizza_a.example.service.BoardService;
 import com.pizza_a.example.service.UserService;
@@ -140,22 +141,26 @@ public class Controller {
 		return CHK_username_existing;
 	}
 	
-//	@Secured({"ROLE_USER"})
+	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic")
 	public String Stg2_1_SetPizza_basic(Model model) {
-//		List<BoardVO> list =boardservice.selectBoardList();
-//		model.addAttribute("list_BoardVO", list);
-//		
-//		int b_cnt_id=boardservice.getBoardListCount();
-//		model.addAttribute("b_cnt_id", b_cnt_id);
 
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");
 		
-		
 		return "/Stg2_1_SetPizza_basic";
 	}
 	
-	
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value= "/user/SetPizza")
+	public String SetPizza(PizzaVO post) {
+
+		
+		logger.debug("debug");
+		logger.info("info");
+		logger.error("error");
+		
+		return "/Stg2_1_SetPizza_basic";
+	}
 }
