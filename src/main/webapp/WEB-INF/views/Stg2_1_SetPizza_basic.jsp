@@ -11,23 +11,21 @@
 	//soln2. No korean? (bcz of, UTF etc..)	
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
-
-	<sec:authorize access="isAuthenticated()">
+	<sec:authorize access="hasRole('ROLE_USER')">
 		<div>
 			<div class="btn-group" role="group" aria-label="...">
 				<button type="button" class="btn btn-default">M</button>
 				<button type="button" class="btn btn-default">L</button>
 				<button type="button" class="btn btn-default">XL</button>
-			</div>
-			<div class="btn-group" role="group" aria-label="...">
-				<button type="button" class="btn btn-default">M</button>
-				<button type="button" class="btn btn-default">L</button>
-				<button type="button" class="btn btn-default">XL</button>
+			</div><br>
+			<div class="group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default">-</button>
+				<input type="text" class="form-control" placeholder="1">
+				<button type="button" class="btn btn-default">+</button>
 			</div>		
 		</div>
-	
-	
 	</sec:authorize>
+	
 
     <a href="/logout">로그아웃</a><br><br>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

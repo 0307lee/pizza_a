@@ -15,15 +15,16 @@
 	    <div class="row Well">
 	        	<!-- NOT WORKING -->	        	
 		       	<sec:authorize access="hasRole('ROLE_MASTER')">
-					<h4>PIZZA TIME(Master)</h4>
+					<a href="/Master/M"><h4>PIZZA TIME(Master)</h4></a>
 					<a href="/logout">로그아웃</a><br><br>
 		       	</sec:authorize>
 		       	<sec:authorize access="hasRole('ROLE_USER')">
-					<a href="/Stg2_1_SetPizza_basic"><h4>PIZZA TIME(ROLE_USER)</h4></a>
+					<a href="/user/Stg2_1_SetPizza_basic"><h4>PIZZA TIME(ROLE_USER)</h4></a>
 					<a href="/logout">로그아웃</a><br><br>
 				</sec:authorize>
 	        	<sec:authorize access="isAnonymous()">
 	        		<a href="/Stg1_MAIN_NoID"><h4>PIZZA TIME(NO_USER)</h4></a>
 	        	</sec:authorize>
 	    </div>
+	    <div > <span style="display: inline-block;">Master면 마스터화면을, 유저면 주문화면을, 아무나는 회원가입또는로그인창을 호출</span></div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

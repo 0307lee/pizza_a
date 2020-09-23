@@ -1,0 +1,21 @@
+
+
+3
+querry로 존재 여부만 체크하고 싶다.
+userVO중에 username만 넘기고 싶다.
+
+
+
+1
+문제 언제 검색? / 언제 코드 탐색? 기준
+
+2
+무엇인가를 할때 				( ex AJAX)
+
+주고 받는 것이 명확하다. 			(username > 검색_username 유무 > username 돌려줌)
+
+Controller Service ServiceImpl Mapper간에는
+어디까지 주고 어디까지 받아야하는지?		(username은 Mapper.xml까지 준다.
+					(username은 쭉 돌려주나?)
+
+

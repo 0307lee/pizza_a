@@ -61,11 +61,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	 	.invalidateHttpSession(true)
 	 	.deleteCookies("JSESSIONID","remember-me")
 	 	.and()
-//remember or not
+//rememberornot100day
 	 .rememberMe()
 	 	.key("myWeb")
 	 	.rememberMeParameter("remeber-me")
-	 	.tokenValiditySeconds(8640000)//100day   (86400=1day)
+	 	.tokenValiditySeconds(86400)//1day
 	 	.and()
 //exceptionhanding
 	 .exceptionHandling()

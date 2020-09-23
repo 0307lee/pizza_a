@@ -30,11 +30,6 @@ public class Controller {
 
 	@RequestMapping("/")
 	public String home(Model model) {
-		List<BoardVO> list =boardservice.selectBoardList();
-		model.addAttribute("list_BoardVO", list);
-		
-		int b_cnt_id=boardservice.getBoardListCount();
-		model.addAttribute("b_cnt_id", b_cnt_id);
 		
 		return "/Stg1_1_MAIN";
 	}
@@ -128,10 +123,6 @@ public class Controller {
 	public String deletePostProcess(BoardVO post) {
 		boardservice.deletePostProcess(post);
 
-		logger.debug("debug");
-		logger.info("info");
-		logger.error("error");
-		
 		return "redirect:/";
 	}
 	
@@ -150,17 +141,21 @@ public class Controller {
 	}
 	
 //	@Secured({"ROLE_USER"})
-//	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic")
-//	public String Stg2_1_SetPizza_basic(BoardVO post) {
+	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic")
+	public String Stg2_1_SetPizza_basic(Model model) {
 //		List<BoardVO> list =boardservice.selectBoardList();
-//		post.addAttribute("list_BoardVO", list);
+//		model.addAttribute("list_BoardVO", list);
 //		
 //		int b_cnt_id=boardservice.getBoardListCount();
-//		post.addAttribute("b_cnt_id", b_cnt_id);
-//		
-//		boardservice.writePostProcess(post);
-//		return "redirect:/";
-//	}
+//		model.addAttribute("b_cnt_id", b_cnt_id);
+
+		logger.debug("debug");
+		logger.info("info");
+		logger.error("error");
+		
+		
+		return "/Stg2_1_SetPizza_basic";
+	}
 	
 	
 }
