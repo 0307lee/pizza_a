@@ -13,15 +13,15 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<div>
-			<div class="btn-group" role="group" aria-label="...">
-				<button type="button" class="btn btn-default">M</button>
-				<button type="button" class="btn btn-default">L</button>
-				<button type="button" class="btn btn-default">XL</button>
+			<div class="size-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default" value="M">M</button>
+				<button type="button" class="btn btn-default" value="L">L</button>
+				<button type="button" class="btn btn-default" value="XL">XL</button>
 			</div><br>
 			
-			<div class="group" role="group" aria-label="...">
+			<div class="quantity-group" role="group" aria-label="...">
 				<button type="button" class="btn btn-default">-</button>
-				<input type="text" class="form-control" placeholder="1">
+				<input type="text" class="form-control" placeholder="1판">
 				<button type="button" class="btn btn-default">+</button>
 			</div><br>
 			
@@ -76,5 +76,4 @@
 		$('#frm_SetPizza').submit();
 		}
 	);
-	
 </script>
