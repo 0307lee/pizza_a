@@ -17,7 +17,9 @@
 				u_isAccountNonExpired		as isAccountNonExpired,
 				u_isAccountNonLocked		as isAccountNonLocked,
 				u_isCredentialNonExpired	as isCredentialNonExpired,
-				u_isEnabled					as isEnabled
+				u_isEnabled					as isEnabled,
+				u_Address					as uAddress,
+				u_Zipcode					as uZipcode
 		FROM	pizza_user
 		WHERE	1=1
 		AND		u_id = #{username}

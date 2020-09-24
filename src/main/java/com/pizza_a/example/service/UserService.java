@@ -25,4 +25,9 @@ public interface UserService extends UserDetailsService {
 
 
 	public List<UserVO> list_Address(int u_address);
+
+
+	public List<UserVO> selectUserList();
+
+
 }

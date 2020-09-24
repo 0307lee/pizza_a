@@ -56,6 +56,9 @@ public class UserServiceImpl implements UserService{
 	};
 	
 
+	public List<UserVO> selectUserList(){
+		return userMapper.selectUserList();
+}
 	public List<UserVO> list_Address(int u_address){
 		return userMapper.list_address_ajax(u_address);
 	};

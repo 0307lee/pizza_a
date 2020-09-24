@@ -13,17 +13,20 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<div>
-			<div class="size-group" role="group" aria-label="...">
-				<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_1_SetAddress" role="button" id="btn_stg3_1_1">배송지</a>
+	
+			<c:forEach var="user" items="${list_userVO}">
+				<div class="size-group" role="group" aria-label="...">
+					<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_1_SetAddress/${user.username}" role="button" id="btn_stg3_1_1">배송지 (임시표기: ${user.username})</a>
+						
+					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_request">요청사항</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_payment">결재수단</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_receipt">현금영수증</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_required_time">예상시간</button>
+					<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">최종금액</button>
+					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_commend">주문하기</button>
 					
-				<button type="button" class="btn btn-primary btn-lg btn-block" value="order_request">요청사항</button>
-				<button type="button" class="btn btn-primary btn-lg btn-block" value="order_payment">결재수단</button>
-				<button type="button" class="btn btn-primary btn-lg btn-block" value="order_receipt">현금영수증</button>
-				<button type="button" class="btn btn-primary btn-lg btn-block" value="order_required_time">예상시간</button>
-				<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">최종금액</button>
-				<button type="button" class="btn btn-primary btn-lg btn-block" value="order_commend">주문하기</button>
-				
-			</div>
+				</div>
+			</c:forEach>
 		</div>
 		<br>
 	</sec:authorize>

@@ -154,8 +154,9 @@ public class Controller {
 	
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg3_1_SetOrder")
-	public String SetPizza(PizzaVO post) {
-
+	public String SetPizza(Model model, String username) {
+		UserVO list =userservice.readUser(username);
+		model.addAttribute("list_UserVO", list);
 		
 		logger.debug("debug");
 		logger.info("info");
@@ -166,9 +167,9 @@ public class Controller {
 	
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg3_1_1_SetAddress/{u_address_fromView}", method = RequestMethod.GET)
-	public String SetAddress(Model model, @PathVariable("u_address_fromView") int u_address) {
-//	int u_address=0;
-	List<UserVO> list =userservice.list_Address(u_address);
+	public String SetAddress(Model model, @PathVariable("u_address_fromView") String username) {
+//	String username=0;
+	UserVO list =userservice.readUser(username);
 	model.addAttribute("list_UserVO", list);
 	
 		logger.debug("debug");

@@ -32,33 +32,32 @@
 		<div class="col-md-1">
 			<a class="btn btn-default" href="/user/Stg3_1_SetOrder" role="button" id="btn_stg3">치즈피자주문</a>
 		</div>
-		<br>
+		<br><br>
 		<div class="col-md-1">
 			<form action="/user/SetPizza" method="post" id="frm_SetPizza">
-				<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
+				<input type="hidden" name="bId"	value="(미구현)${SetPizza.StgNo}">
 				<button id="btn_stg2_topping" type="button" class="btn btn-default">토핑추가</button>
 			</form>
 		</div>
-		<br>
+		<br><br>
 	</sec:authorize>
+	<br>
+	<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7">
+		<tr>
+			<th>(미구현)</th>
+			<th>임시table출력확인용</th>
+			<th>Ajax사용 추천</th>
+			<th>내용은 설정하는 것들 다 받을 수 있도록</th>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td>b</td>
+			<td>c</td>
+			<td>d</td>
+		</tr>
+	</table>
 
-	<form action="/user/SetPizza" method="post" id="frm_SetPizza">
-		<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
-		<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7">
-			<tr>
-				<th>임시table출력확인용</th>
-				<th>Ajax사용 추천</th>
-				<th>내용은 설정하는 것들 다 받을 수 있도록</th>
-			</tr>
-			<tr>
-				<td>Company</td>
-				<td>Contact</td>
-				<td>Country</td>
-			</tr>
-		</table>
-	</form>
-
-
+<br>
 
     <a href="/logout">로그아웃</a><br><br>
 
