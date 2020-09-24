@@ -165,17 +165,17 @@ public class Controller {
 		return "/Stg3_1_SetOrder";
 	}
 	
-	@Secured({"ROLE_USER"})
-	@RequestMapping(value= "/user/Stg3_1_1_SetAddress/{u_address_fromView}", method = RequestMethod.GET)
-	public String SetAddress(Model model, @PathVariable("u_address_fromView") String username) {
-//	String username=0;
-	UserVO list =userservice.readUser(username);
-	model.addAttribute("list_UserVO", list);
-	
-		logger.debug("debug");
-		logger.info("info");
-		logger.error("error");
-		
-		return "/Stg3_1_1_SetAddress";
-	}
+//	@Secured({"ROLE_USER"})
+//	@RequestMapping(value= "/user/Stg3_1_1_SetAddress/{u_address_fromView}", method = RequestMethod.GET)
+//	public String SetAddress(Model model, @PathVariable("u_address_fromView") String username) {
+////	String username=0;
+//	UserVO list =userservice.readUser(username);
+//	model.addAttribute("list_UserVO", list);
+//	
+//		logger.debug("debug");
+//		logger.info("info");
+//		logger.error("error");
+//		
+//		return "/Stg3_1_1_SetAddress";
+//	}
 }
