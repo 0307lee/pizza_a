@@ -29,23 +29,26 @@
 				<input type="text" class="form-control" placeholder="1">
 			</div>	
 		</div>
-		<form action="/user/SetPizza" method="post" id="frm_SetPizza">
-			<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
-			<div class="btn-group" role="group" aria-label="...">
-				<button id="btn_stg3" type="button" class="btn btn-default">치즈피자주문</button>
+		<div class="col-md-1">
+			<a class="btn btn-default" href="/user/Stg3_1_SetOrder" role="button" id="btn_stg3">치즈피자주문</a>
+		</div>
+		<br>
+		<div class="col-md-1">
+			<form action="/user/SetPizza" method="post" id="frm_SetPizza">
+				<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
 				<button id="btn_stg2_topping" type="button" class="btn btn-default">토핑추가</button>
-			</div>
-		</form>
+			</form>
+		</div>
 		<br>
 	</sec:authorize>
 
 	<form action="/user/SetPizza" method="post" id="frm_SetPizza">
 		<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
-		<table>
+		<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7">
 			<tr>
-				<th>Company</th>
-				<th>Contact</th>
-				<th>Country</th>
+				<th>임시table출력확인용</th>
+				<th>Ajax사용 추천</th>
+				<th>내용은 설정하는 것들 다 받을 수 있도록</th>
 			</tr>
 			<tr>
 				<td>Company</td>

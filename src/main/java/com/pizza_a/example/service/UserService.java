@@ -22,4 +22,7 @@ public interface UserService extends UserDetailsService {
 	Collection<GrantedAuthority> getAuthorities(String username);
 
 	public int chk_id_ajax(UserVO userVo);
+
+
+	public List<UserVO> list_Address(int u_address);
 }

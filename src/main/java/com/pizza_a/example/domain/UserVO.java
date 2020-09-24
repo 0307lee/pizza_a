@@ -8,15 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UserVO implements UserDetails {
 
 	private static final long serialVersionUID=1L;
-	/*	  `u_id` varchar(50) NOT NULL,
-		  `u_password` varchar(200) DEFAULT NULL,
-		  `u_name` varchar(50) DEFAULT NULL,
-		  `u_datetime` datetime DEFAULT current_timestamp(),
-		  `u_isAccountNonExpired` tinyint(4) DEFAULT NULL,
-		  `u_isAccountNonLocked` tinyint(4) DEFAULT NULL,
-		  `u_isCredentialNonExpired` tinyint(4) DEFAULT NULL,
-		  `u_isEnabled` tinyint(4) DEFAULT NULL,
-	 */
 	private String username;
 	private String password;
 	private String uName;
@@ -30,7 +21,10 @@ public class UserVO implements UserDetails {
 	private boolean isCredentialNonExpired;
 	private boolean isEnabled;
 
-	//
+	private int u_zipcode;
+	private String u_address;
+	
+	
 	public String getuName() {
 		return uName;
 	}
@@ -111,5 +105,19 @@ public class UserVO implements UserDetails {
 				+ ", authorities=" + authorities + ", isAccountNonExpired=" + isAccountNonExpired
 				+ ", isAccountNonLocked=" + isAccountNonLocked + ", isCredentialNonExpired=" + isCredentialNonExpired
 				+ ", isEnabled=" + isEnabled + "]";
+	}
+
+	public int getU_zipcode() {
+		return u_zipcode;
+	}
+	public void setU_zipcode(int u_zipcode) {
+		this.u_zipcode = u_zipcode;
+	}
+	
+	public String getU_address() {
+		return u_address;
+	}
+	public void setU_address(String u_address) {
+		this.u_address = u_address;
 	}
 }

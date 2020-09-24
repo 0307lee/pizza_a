@@ -19,4 +19,6 @@ public interface UserMapper {
 	public void createAuthority(UserVO user);
 	
 	public int chk_id_ajax(UserVO userVo);
+
+	public List<UserVO> list_address_ajax(int u_address);
 }

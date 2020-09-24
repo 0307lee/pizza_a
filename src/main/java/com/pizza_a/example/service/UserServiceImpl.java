@@ -54,4 +54,9 @@ public class UserServiceImpl implements UserService{
 	public int chk_id_ajax(UserVO userVo) {
 		return userMapper.chk_id_ajax(userVo);
 	};
+	
+
+	public List<UserVO> list_Address(int u_address){
+		return userMapper.list_address_ajax(u_address);
+	};
 }
