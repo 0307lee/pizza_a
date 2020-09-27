@@ -13,11 +13,10 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<div>
-	
-			<c:forEach var="user" items="${list_userVO}">
 				<div class="size-group" role="group" aria-label="...">
-					<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_1_SetAddress/${user.username}" role="button" id="btn_stg3_1_1">배송지 (임시표기: ${user.username})</a>
-						
+					<button type="button" class="btn btn-primary btn-lg btn-block"
+					   href="/user/Stg3_1_1_SetAddress/${user.username}" role="button" id="btn_stg3_1_1">배송지 (임시표기: ${user.username})</button>
+
 					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_request">요청사항</button>
 					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_payment">결재수단</button>
 					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_receipt">현금영수증</button>
@@ -26,7 +25,6 @@
 					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_commend">주문하기</button>
 					
 				</div>
-			</c:forEach>
 		</div>
 		<br>
 	</sec:authorize>

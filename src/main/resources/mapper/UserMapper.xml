@@ -69,7 +69,6 @@
 	<select id="list_address_ajax" parameterType="UserVO" resultType="UserVO">
 		SELECT	*
 		FROM	pizza_user
-		WHERE	u_id=		#{username}
-		
+		WHERE	u_id=		#{username}		
 	</select>
 </mapper>

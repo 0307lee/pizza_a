@@ -154,9 +154,9 @@ public class Controller {
 	
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg3_1_SetOrder")
-	public String SetPizza(Model model, String username) {
-		UserVO list =userservice.readUser(username);
-		model.addAttribute("list_UserVO", list);
+	public String SetPizza(Model model) {
+//		UserVO list =userservice.readUserInfo();
+//		model.addAttribute("list_UserVO", list);
 		
 		logger.debug("debug");
 		logger.info("info");
