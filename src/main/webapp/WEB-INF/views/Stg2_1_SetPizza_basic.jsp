@@ -65,6 +65,35 @@
 
 
 <script>
+
+	/* AJAX From JSPLook, Try10_SignUp.jsp
+	NEED to adjust!
+	
+		$("#id_in").focusout(function(){
+		var id1= $("#id_in").val();
+		if (id1.length < 5 || id1.length > 10){
+			$("#id_length").css('display','inline-block');
+		}else{
+			$("#id_length").css('display','none');
+		}
+		
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:8080/JSPLook/Try12_AJAX_CHK_ID.jsp",
+			dataType: "json", ///type에 여러가지 갸눙 html 또는 json xml 등
+			data: {L_ID: id1}, ///{키:값} 형식으로  값을 url에는 키로 던질것이다.
+			success: function (response) {
+				//var data = $.trim(data);
+				if (response == 'alredy_exist'){alert(data);}
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+		        alert(xhr.status);
+		        alert(thrownError);
+		        alert(xhr.responseText);
+			}
+		});
+	}); */
+
 	$(document).on
 	('click', '#btn_stg3', function () {
 		alert("ORDER");
