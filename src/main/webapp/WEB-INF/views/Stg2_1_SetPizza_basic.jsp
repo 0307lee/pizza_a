@@ -13,20 +13,20 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<div>
-			<div class="size-group" role="group" aria-label="...">
-				<button type="button" class="btn btn-default" value="M">M</button>
-				<button type="button" class="btn btn-default" value="L">L</button>
-				<button type="button" class="btn btn-default" value="XL">XL</button>
+			<div class="size-group" role="group" aria-label="..." id=btn_size>
+				<button onclick="show_pizza_size_M()">M</button>
+				<button onclick="show_pizza_size_L()">L</button>
+				<button onclick="show_pizza_size_XL()">XL</button>>								
 			</div><br>
 			
 			<div class="quantity-group" role="group" aria-label="...">
-				<button type="button" class="btn btn-default">-</button>
-				<input type="text" class="form-control" placeholder="1판">
-				<button type="button" class="btn btn-default">+</button>
+				<button type="button" class="btn btn-default" id="minus1">-</button>
+				<input type="text" class="form-control" placeholder="1판" id="EA" value="${EA}">
+				<button type="button" class="btn btn-default"  id="plus1">+</button>
 			</div><br>
 			
 			<div class="group" role="group" aria-label="...">
-				<input type="text" class="form-control" placeholder="1">
+				<input type="text" class="form-control" placeholder="가격: 2.3만 원 (배송비 0.3만원 포함)">
 			</div>	
 		</div>
 		<div class="col-md-1">
@@ -45,13 +45,13 @@
 	<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7">
 		<tr>
 			<th>(미구현)</th>
-			<th>임시table출력확인용</th>
+			<th>피자 SIZE</th>
 			<th>Ajax사용 추천</th>
 			<th>내용은 설정하는 것들 다 받을 수 있도록</th>
 		</tr>
 		<tr>
 			<td>a</td>
-			<td>b</td>
+			<td id="show_pizza_size">"(이전주문기록남아있게)${pizzaSize}"</td>
 			<td>c</td>
 			<td>d</td>
 		</tr>
@@ -65,35 +65,20 @@
 
 
 <script>
-
-	/* AJAX From JSPLook, Try10_SignUp.jsp
-	NEED to adjust!
-	
-		$("#id_in").focusout(function(){
-		var id1= $("#id_in").val();
-		if (id1.length < 5 || id1.length > 10){
-			$("#id_length").css('display','inline-block');
-		}else{
-			$("#id_length").css('display','none');
+	function show_pizza_size_M() {
+		document.getElementById("show_pizza_size").innerHTML="M";}
+	function show_pizza_size_L() {
+		document.getElementById("show_pizza_size").innerHTML="L";}		
+	function show_pizza_size_XL() {
+		document.getElementById("show_pizza_size").innerHTML="XL";}
+/* 
+	$(document).on
+	('click', '#minus1', function () {
+		alert("minus1");
+		$('#EA')-1=$('#EA');
 		}
-		
-		$.ajax({
-			type: "POST",
-			url: "http://localhost:8080/JSPLook/Try12_AJAX_CHK_ID.jsp",
-			dataType: "json", ///type에 여러가지 갸눙 html 또는 json xml 등
-			data: {L_ID: id1}, ///{키:값} 형식으로  값을 url에는 키로 던질것이다.
-			success: function (response) {
-				//var data = $.trim(data);
-				if (response == 'alredy_exist'){alert(data);}
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-		        alert(xhr.status);
-		        alert(thrownError);
-		        alert(xhr.responseText);
-			}
-		});
-	}); */
-
+	);
+	 */
 	$(document).on
 	('click', '#btn_stg3', function () {
 		alert("ORDER");
