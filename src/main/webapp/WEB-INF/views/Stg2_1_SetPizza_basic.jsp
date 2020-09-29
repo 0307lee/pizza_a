@@ -12,46 +12,51 @@
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	<sec:authorize access="hasRole('ROLE_USER')">
-		<div>
-			<div class="size-group" role="group" aria-label="..." id=btn_size>
-				<button onclick="show_pizza_size_M()">M</button>
-				<button onclick="show_pizza_size_L()">L</button>
-				<button onclick="show_pizza_size_XL()">XL</button>>								
-			</div><br>
-			
-			<div class="quantity-group" role="group" aria-label="...">
-				<button type="button" class="btn btn-default" id="minus1">-</button>
-				<input type="text" class="form-control" placeholder="1판" id="EA" value="${EA}">
-				<button type="button" class="btn btn-default"  id="plus1">+</button>
-			</div><br>
-			
-			<div class="group" role="group" aria-label="...">
-				<input type="text" class="form-control" placeholder="가격: 2.3만 원 (배송비 0.3만원 포함)">
-			</div>	
-		</div>
-		<div class="col-md-1">
-			<a class="btn btn-default" href="/user/Stg3_1_SetOrder" role="button" id="btn_stg3">치즈피자주문</a>
-		</div>
-		<br><br>
-		<div class="col-md-1">
-			<form action="/user/SetPizza" method="post" id="frm_SetPizza">
-				<input type="hidden" name="bId"	value="(미구현)${SetPizza.StgNo}">
-				<button id="btn_stg2_topping" type="button" class="btn btn-default">토핑추가</button>
-			</form>
-		</div>
-		<br><br>
+	
+		<c:forEach var="board" items="${list_BoardVO}">
+			<div>
+				<div class="size-group" role="group" aria-label="..." id=btn_size>
+					<button onclick="show_pizza_size_M()">M</button>
+					<button onclick="show_pizza_size_L()">L</button>
+					<button onclick="show_pizza_size_XL()">XL</button>					
+				</div><br>
+				
+				<div class="quantity-group" role="group" aria-label="...">
+					<button type="button" class="btn btn-default" id="minus1">-</button>
+					<input type="text" class="form-control" placeholder="1판" id="EA" value="${EA}">
+					<button type="button" class="btn btn-default"  id="plus1">+</button>
+				</div><br>
+				
+				<div class="slidecontainer">
+					<p>1판당 가격 (배송비 포함): <span id="price_output"></span></p>
+					<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange">
+					
+				</div>
+			</div>
+			<div class="col-md-1">
+				<a class="btn btn-default"  role="button" id="btn_stg3">치즈피자주문</a>
+			</div>
+			<br><br>
+			<div class="col-md-1">
+				<form action="/user/SetPizza" method="post" id="frm_SetPizza">
+					<input type="hidden" name="bId"	value="(미구현)${SetPizza.StgNo}">
+					<button id="btn_stg2_topping" type="button" class="btn btn-default">토핑추가</button>
+				</form>
+			</div>
+			<br><br>
+		</c:forEach>
 	</sec:authorize>
 	<br>
 	<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7">
 		<tr>
 			<th>(미구현)</th>
 			<th>피자 SIZE</th>
-			<th>Ajax사용 추천</th>
-			<th>내용은 설정하는 것들 다 받을 수 있도록</th>
+			<th>피자갯수</th>
+			<th>피자가격</th>
 		</tr>
 		<tr>
 			<td>a</td>
-			<td id="show_pizza_size">"(이전주문기록남아있게)${pizzaSize}"</td>
+			<td id="show_pizza_size">"${order_items.size}"</td>
 			<td>c</td>
 			<td>d</td>
 		</tr>
@@ -71,6 +76,7 @@
 		document.getElementById("show_pizza_size").innerHTML="L";}		
 	function show_pizza_size_XL() {
 		document.getElementById("show_pizza_size").innerHTML="XL";}
+	
 /* 
 	$(document).on
 	('click', '#minus1', function () {
@@ -78,10 +84,19 @@
 		$('#EA')-1=$('#EA');
 		}
 	);
-	 */
+*/
+	var price_slider = document.getElementById("priceRange");
+	var price_output = document.getElementById("price_output");
+	price_output.innerHTML = price_slider.value;
+	
+	price_slider.oninput = function() {
+		price_output.innerHTML = this.value;
+	}
+
 	$(document).on
 	('click', '#btn_stg3', function () {
-		alert("ORDER");
+		var size=$('#show_pizza_size').text();
+		alert("ORDER size: " + size);
 		$('#frm_SetPizza').submit();
 		}
 	);

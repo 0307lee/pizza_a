@@ -144,7 +144,7 @@ public class Controller {
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic")
 	public String Stg2_1_SetPizza_basic(Model model) {
-
+//		List<BoardVO> list =boardservice.selectPost(bId);
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");
