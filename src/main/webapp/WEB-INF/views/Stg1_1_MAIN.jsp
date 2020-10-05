@@ -14,12 +14,14 @@
 <sec:authentication property="principal" var="principal"/>
 	    <div class="row Well">
 	        	<!-- NOT WORKING -->	        	
-		       	<sec:authorize access="hasRole('MASTER')">
+		       	<sec:authorize access="hasRole('ROLE_MASTER')">
 					<a href="/Master/M"><h4>PIZZA TIME(Master)</h4></a>
 					<a href="/logout">로그아웃</a><br><br>
 		       	</sec:authorize>
-		       	<sec:authorize access="hasRole('USER')">
+		       	<sec:authorize access="hasRole('ROLE_USER')">
 					<a href="/user/Stg2_1_SetPizza_basic"><h4>PIZZA TIME(ROLE_USER)</h4></a>
+					<a href="/user/info">${username} 님</a><div> 재방문을 환영합니다.</div>
+					<br>
 					<a href="/logout">로그아웃</a><br><br>
 				</sec:authorize>
 	        	<sec:authorize access="isAnonymous()">

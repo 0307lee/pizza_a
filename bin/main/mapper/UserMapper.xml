@@ -18,8 +18,12 @@
 				u_isAccountNonLocked		as isAccountNonLocked,
 				u_isCredentialNonExpired	as isCredentialNonExpired,
 				u_isEnabled					as isEnabled,
-				u_Address					as uAddress,
-				u_Zipcode					as uZipcode
+				u_Address1					as uAddress1,
+				u_Zipcode1					as uZipcode1,
+				u_Address2					as uAddress2,
+				u_Zipcode2					as uZipcode2,
+				u_Address3					as uAddress3,
+				u_Zipcode3					as uZipcode3
 		FROM	pizza_user
 		WHERE	1=1
 		AND		u_id = #{username}

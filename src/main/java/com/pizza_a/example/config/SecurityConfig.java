@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	 .rememberMe()
 	 	.key("myWeb")
 	 	.rememberMeParameter("remeber-me")
-	 	.tokenValiditySeconds(86400)//1day
+	 	.tokenValiditySeconds(8640000)//1day
 	 	.and()
 //exceptionhanding
 	 .exceptionHandling()

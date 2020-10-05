@@ -1,5 +1,6 @@
 package com.pizza_a.example.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,21 +18,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pizza_a.example.domain.BoardVO;
-import com.pizza_a.example.domain.PizzaVO;
+import com.pizza_a.example.domain.OrderVO;
 import com.pizza_a.example.domain.UserVO;
 import com.pizza_a.example.service.BoardService;
 import com.pizza_a.example.service.UserService;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-
 	private final Logger logger =LoggerFactory.getLogger(this.getClass());
 	@Autowired BoardService boardservice;
 	@Autowired UserService userservice;
 
 	@RequestMapping("/")
-	public String home(Model model) {
-		
+	public String home(Model model,Principal principal) {
+		if( principal !=null) {
+		String username=principal.getName(); 
+		model.addAttribute("username", username);
+		}
 		return "/Stg1_1_MAIN";
 	}
 	
@@ -72,11 +75,11 @@ public class Controller {
 	}
 
 	
-//	@Secured({"ROLE_USER"})
-//	@RequestMapping(value="/user/info")
-//	public String userinfo(Model model) {
-//		return "/user_info";
-//	}
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value="/user/info")
+	public String userinfo(Model model) {
+		return "/user_info";
+	}
 	
 	@RequestMapping(value= "/denied")
 	public String denied(Model model) {
@@ -145,6 +148,9 @@ public class Controller {
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic")
 	public String Stg2_1_SetPizza_basic(Model model) {
 
+//		UserVO list =userservice.readUser(username);
+//		model.addAttribute("list_UserVO", list);
+		
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");
