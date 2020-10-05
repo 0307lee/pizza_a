@@ -21,6 +21,7 @@ import com.pizza_a.example.domain.BoardVO;
 import com.pizza_a.example.domain.OrderVO;
 import com.pizza_a.example.domain.UserVO;
 import com.pizza_a.example.service.BoardService;
+import com.pizza_a.example.service.OrderService;
 import com.pizza_a.example.service.UserService;
 
 @org.springframework.stereotype.Controller
@@ -28,6 +29,7 @@ public class Controller {
 	private final Logger logger =LoggerFactory.getLogger(this.getClass());
 	@Autowired BoardService boardservice;
 	@Autowired UserService userservice;
+	@Autowired OrderService orderservice;
 
 	@RequestMapping("/")
 	public String home(Model model,Principal principal) {
@@ -145,10 +147,10 @@ public class Controller {
 	}
 	
 	@Secured({"ROLE_USER"})
-	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic")
-	public String Stg2_1_SetPizza_basic(Model model) {
+	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}")
+	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("username") String username) {
 
-//		UserVO list =userservice.readUser(username);
+//		UserVO list =userservice.read_LastUserInfo(username);
 //		model.addAttribute("list_UserVO", list);
 		
 		logger.debug("debug");

@@ -21,7 +21,7 @@
 			
 			<div class="quantity-group" role="group" aria-label="...">
 				<button type="button" class="btn btn-default">-</button>
-				<input type="text" class="form-control" placeholder="1판">
+				<input type="text" class="form-control" placeholder="1" value="1">
 				<button type="button" class="btn btn-default">+</button>
 			</div><br>
 			
@@ -46,23 +46,6 @@
 		<br><br>
 	</sec:authorize>
 	<br>
-	<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on">
-		<tr>
-			<th>(구현중)임시table출력확인용</th>
-			<th>피자 SIZE</th>
-			<th>피자 갯수</th>
-			<th>피자 가격</th>
-		</tr>
-		<tr>
-			<td>a</td>
-			<td id = "show_pizza_size"> "${order_items.size}"</td>
-			<td>c</td>
-			<td>d</td>
-		</tr>
-	</table>
-
-<br>
-
     <a href="/logout">로그아웃</a><br><br>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
@@ -87,7 +70,6 @@
 	var price_slider = document.getElementById("priceRange");
 	var price_output = document.getElementById("price_output");
 	price_output.innerHTML = price_slider.value;
-	
 	price_slider.oninput = function() {
 		price_output.innerHTML = this.value;
 	}
