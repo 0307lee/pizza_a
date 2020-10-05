@@ -23,7 +23,8 @@
 				u_Address2					as uAddress2,
 				u_Zipcode2					as uZipcode2,
 				u_Address3					as uAddress3,
-				u_Zipcode3					as uZipcode3
+				u_Zipcode3					as uZipcode3,
+				u_no						as uNo
 		FROM	pizza_user
 		WHERE	1=1
 		AND		u_id = #{username}

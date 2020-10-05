@@ -1,55 +1,78 @@
 package com.pizza_a.example.domain;
 
-import java.util.Collection;
-
-import org.springframework.security.core.GrantedAuthority;
-
 public class OrderVO {
-	private int		P_Id;
-	private int		P_cheese;
-	private String	U_Id;
-	private String	P_DateTime;
-	private	int		P_Cnt_TOTAL_Pizza;
-
-//	private String	bTitle;
-//	private String	bContent;
-//	private String 	uId;
-//	private int		bDisabled;
-//	private int		bViews;
+//	vo need small letter
+	private int		orderId;
+	private String	uId;
+	private String	orderStatus;
+	private String	orderTime;
+	private String	requiredTime;
 	
-	public int getP_Id() {
-		return P_Id;
-	}
-	public void setP_Id(int p_Id) {
-		P_Id = p_Id;
-	}
-	public int getP_cheese() {
-		return P_cheese;
-	}
-	public void setP_cheese(int p_cheese) {
-		P_cheese = p_cheese;
-	}
-	public String getU_Id() {
-		return U_Id;
-	}
-	public void setU_Id(String u_Id) {
-		U_Id = u_Id;
-	}
-	public String getP_DateTime() {
-		return P_DateTime;
-	}
-	public void setP_DateTime(String p_DateTime) {
-		P_DateTime = p_DateTime;
-	}
-	public int getP_Cnt_TOTAL_Pizza() {
-		return P_Cnt_TOTAL_Pizza;
-	}
-	public void setP_Cnt_TOTAL_Pizza(int p_Cnt_TOTAL_Pizza) {
-		P_Cnt_TOTAL_Pizza = p_Cnt_TOTAL_Pizza;
-	}
-
+//	private int		item_id;
+	private int		productId;
+	private int		orderitemsSize;
+	private int		orderitemsQuantity;
+	private int		orderitemsDiscount;
+	private int		orderitemsListprice;
 	
-
-	
-	
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public int getOrderitemsSize() {
+		return orderitemsSize;
+	}
+	public void setOrderitemsSize(int orderitemsSize) {
+		this.orderitemsSize = orderitemsSize;
+	}
+	public int getOrderitemsQuantity() {
+		return orderitemsQuantity;
+	}
+	public void setOrderitemsQuantity(int orderitemsQuantity) {
+		this.orderitemsQuantity = orderitemsQuantity;
+	}
+	public int getOrderitemsDiscount() {
+		return orderitemsDiscount;
+	}
+	public void setOrderitemsDiscount(int orderitemsDiscount) {
+		this.orderitemsDiscount = orderitemsDiscount;
+	}
+	public int getOrderitemsListprice() {
+		return orderitemsListprice;
+	}
+	public void setOrderitemsListprice(int orderitemsListprice) {
+		this.orderitemsListprice = orderitemsListprice;
+	}
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+	public String getuId() {
+		return uId;
+	}
+	public void setuId(String uId) {
+		this.uId = uId;
+	}
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+	public String getOrderTime() {
+		return orderTime;
+	}
+	public void setOrderTime(String orderTime) {
+		this.orderTime = orderTime;
+	}
+	public String getRequiredTime() {
+		return requiredTime;
+	}
+	public void setRequiredTime(String requiredTime) {
+		this.requiredTime = requiredTime;
+	}
 }

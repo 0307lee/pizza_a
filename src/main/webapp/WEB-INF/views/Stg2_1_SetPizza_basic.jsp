@@ -20,9 +20,9 @@
 			</div><br>
 			
 			<div class="quantity-group" role="group" aria-label="...">
-				<button type="button" class="btn btn-default">-</button>
-				<input type="text" class="form-control" placeholder="1" value="1">
-				<button type="button" class="btn btn-default">+</button>
+				<button type="button" class="btn btn-default" id="minus1">-</button>
+				<input type="text" class="form-control" placeholder="1" value="1" id="EA">
+				<button type="button" class="btn btn-default" id="plus1">+</button>
 			</div><br>
 			
 			<div class="group" role="group" aria-label="...">
@@ -30,7 +30,7 @@
 			</div>	
 		</div>
 			<div class="slidecontainer">
-					<p>1판당 가격 (배송비 포함): <span id="price_output"></span></p>
+					<p>1판당 가격 (배송비 포함): <span id="price"></span></p>
 					<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange">
 			</div>
 			<div class="col-md-1">
@@ -39,15 +39,28 @@
 		<br><br>
 		<div class="col-md-1">
 			<form action="/user/SetPizza" method="post" id="frm_SetPizza">
-				<input type="hidden" name="bId"	value="(미구현)${SetPizza.StgNo}">
-				<button id="btn_stg2_topping" type="button" class="btn btn-default">토핑추가</button>
+				<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
+				<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
 			</form>
 		</div>
 		<br><br>
 	</sec:authorize>
 	<br>
     <a href="/logout">로그아웃</a><br><br>
-
+	<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on">
+		<tr>
+			<th>(구현중)임시table출력확인용</th>
+			<th>피자 SIZE</th>
+			<th>피자 갯수</th>
+			<th>피자 가격</th>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td id = "show_pizza_size"> "${order_items.size}"</td>
+			<td id = "price"></td>
+			<td id = "EA"></td>
+		</tr>
+	</table>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 
@@ -59,19 +72,26 @@
 	function show_pizza_size_XL() {
 		document.getElementById("show_pizza_size").innerHTML="XL";}
 	
-/* 
 	$(document).on
 	('click', '#minus1', function () {
-		alert("minus1");
-		$('#EA')-1=$('#EA');
+		//alert("minus1");
+		$('#EA').val($('#EA').val()-1);
+	    //console.log($('#EA').val());
 		}
 	);
-*/
+
+	$(document).on
+	('click', '#plus1', function () {
+		$('#EA').val($('#EA').val()+1);
+		//it is funny
+		}
+	);
+	
 	var price_slider = document.getElementById("priceRange");
-	var price_output = document.getElementById("price_output");
-	price_output.innerHTML = price_slider.value;
+	var price = document.getElementById("price");
+	price.innerHTML = price_slider.value;
 	price_slider.oninput = function() {
-		price_output.innerHTML = this.value;
+		price.innerHTML = this.value;
 	}
 
 	$(document).on

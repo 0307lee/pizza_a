@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 
 public class BoardVO {
+//	vo need small letter
 	private int		bId;
 	private String	bTitle;
 	private String	bContent;

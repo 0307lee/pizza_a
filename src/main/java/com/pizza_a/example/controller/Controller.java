@@ -150,9 +150,12 @@ public class Controller {
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}")
 	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("username") String username) {
 
-//		UserVO list =userservice.read_LastUserInfo(username);
-//		model.addAttribute("list_UserVO", list);
+		///NEED TO DO.////
+		//NEED TO DO./////NEED TO DO.////
+		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
+		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 		
+//						
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");
@@ -163,8 +166,7 @@ public class Controller {
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg3_1_SetOrder")
 	public String SetPizza(Model model, String username) {
-		UserVO list =userservice.readUser(username);
-		model.addAttribute("list_UserVO", list);
+		
 		
 		logger.debug("debug");
 		logger.info("info");

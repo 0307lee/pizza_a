@@ -5,41 +5,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pizza_a.example.domain.BoardVO;
 import com.pizza_a.example.domain.OrderVO;
-import com.pizza_a.example.mapper.BoardMapper;
+import com.pizza_a.example.mapper.OrderMapper;
 
-@Service("PizzaServicelmpl")
+@Service("OrderServicelmpl")
 public class OrderServiceImpl implements OrderService{
 
-	@Autowired BoardMapper boardmapper;
+	@Autowired OrderMapper ordermapper;
+//	@Override
+//	public List<OrderVO> PizzaInfo() {
+//		return null;
+//	}
+//	@Override
+//	public void writePostProcess(BoardVO post) {
+//		boardmapper.writePostProcess(post);
+//	}
+	 
 	@Override
-	public List<OrderVO> PizzaInfo() {
-		return null;
+	public List<OrderVO> read_LastOrderItems_byusername(String username) {
+		return ordermapper.read_LastOrderItems_byusername();
 	}
-	@Override
-	public int getBoardListCount() {
-		return boardmapper.getBoardListCount();
-		//TODO pagination
-		//pagination Need Another CLASS
-	}
-
-	@Override
-	public void writePostProcess(BoardVO post) {
-		boardmapper.writePostProcess(post);
-	}
-
-	@Override
-	public List<BoardVO> selectPost(int bId) {
-		boardmapper.addBoardViews(bId);
-		return boardmapper.selectPost(bId);
-	}
-
-	@Override
-	public void deletePostProcess(BoardVO post) {
-		boardmapper.deletePostProcess(post);
-	}
-
-
 
 }
