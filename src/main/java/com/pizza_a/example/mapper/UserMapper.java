@@ -22,5 +22,5 @@ public interface UserMapper {
 
 	public List<UserVO> list_address_ajax(int u_address);
 
-	public List<UserVO> selectUserList();
+	public List<UserVO> selectUserInfo();
 }

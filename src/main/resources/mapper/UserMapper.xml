@@ -71,4 +71,12 @@
 		FROM	pizza_user
 		WHERE	u_id=		#{username}		
 	</select>
+	<select id="selectUserInfo"  parameterType="String" resultType="UserVO">
+		SELECT	u_id						as username,
+				u_isEnabled					as isEnabled,
+				u_address1					as uAddress1,
+				u_zipcode1					as uZipcode1
+		FROM	pizza_user
+		WHERE	u_id=		#{username}	
+	</select>
 </mapper>

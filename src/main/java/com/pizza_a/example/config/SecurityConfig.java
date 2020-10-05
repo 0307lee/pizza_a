@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	 	
 //login
 	 .formLogin()
-	 	.loginPage("/login")
+	 	.loginPage("/Stg1_LOGIN")
 	 	.loginProcessingUrl("/loginPro")
 	 	.defaultSuccessUrl("/",true)
 	 	.permitAll()
@@ -74,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //sesion
 	 .sessionManagement()	
 	 	.sessionCreationPolicy(SessionCreationPolicy.NEVER)
-	 	.invalidSessionUrl("/login")
+	 	.invalidSessionUrl("/Stg1_LOGIN")
 	 	.and()
 //csrf
  	 .csrf().disable() //for test 

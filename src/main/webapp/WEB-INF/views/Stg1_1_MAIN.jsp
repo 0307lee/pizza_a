@@ -14,17 +14,23 @@
 <sec:authentication property="principal" var="principal"/>
 	    <div class="row Well">
 	        	<!-- NOT WORKING -->	        	
-		       	<sec:authorize access="hasRole('MASTER')">
-					<a href="/Master/M"><h4>PIZZA TIME(Master)</h4></a>
-					<a href="/logout">로그아웃</a><br><br>
-		       	</sec:authorize>
-		       	<sec:authorize access="hasRole('USER')">
-					<a href="/user/Stg2_1_SetPizza_basic"><h4>PIZZA TIME(ROLE_USER)</h4></a>
-					<a href="/logout">로그아웃</a><br><br>
-				</sec:authorize>
-	        	<sec:authorize access="isAnonymous()">
-	        		<a href="/Stg1_MAIN_NoID"><h4>PIZZA TIME(NO_USER)</h4></a>
-	        	</sec:authorize>
+	       	<sec:authorize access="hasRole('MASTER')">
+				<a href="/Master/M"><h4>PIZZA TIME(Master)</h4></a>
+	       	</sec:authorize>
+	       	<sec:authorize access="hasRole('USER')">
+	       		<c:forEach var="list_user" items="${list_UserVO}">
+	       			
+					<a href="/user/Stg2_1_SetPizza_basic/${user.uId}"><h4>PIZZA TIME(ROLE_USER)</h4></a>
+			
+				</c:forEach>
+			</sec:authorize>
+        	<sec:authorize access="isAnonymous()">
+        		<a href="/Stg1_MAIN_NoID"><h4>PIZZA TIME(NO_USER)</h4></a>
+        	</sec:authorize>
 	    </div>
-	    <div > <span style="display: inline-block;">Master면 마스터화면을, 유저면 주문화면을, 아무나는 회원가입또는로그인창을 호출</span></div>
+	    <div >
+	    	<span style="display: inline-block;">Master면 마스터화면을, 유저면 주문화면을, 아무나는 회원가입또는로그인창을 호출</span>
+	    	<br>
+			<a href="/logout">로그아웃</a><br><br>
+	    </div>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

@@ -18,8 +18,8 @@
 				u_isAccountNonLocked		as isAccountNonLocked,
 				u_isCredentialNonExpired	as isCredentialNonExpired,
 				u_isEnabled					as isEnabled,
-				u_Address					as uAddress,
-				u_Zipcode					as uZipcode
+				u_address1					as uAddress1,
+				u_zipcode1					as uZipcode1
 		FROM	pizza_user
 		WHERE	1=1
 		AND		u_id = #{username}
@@ -69,7 +69,6 @@
 	<select id="list_address_ajax" parameterType="UserVO" resultType="UserVO">
 		SELECT	*
 		FROM	pizza_user
-		WHERE	u_id=		#{username}
-		
+		WHERE	u_id=		#{username}		
 	</select>
 </mapper>

@@ -11,9 +11,10 @@
 	//soln2. No korean? (bcz of, UTF etc..)	
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
-	<sec:authorize access="hasRole('ROLE_USER')">
 	
-		<c:forEach var="board" items="${list_BoardVO}">
+		<sec:authorize access="hasRole('ROLE_USER')">
+			<sec:authentication property="principal" var="principal"/>
+			<h2>${principal}</h2>
 			<div>
 				<div class="size-group" role="group" aria-label="..." id=btn_size>
 					<button onclick="show_pizza_size_M()">M</button>
@@ -44,7 +45,7 @@
 				</form>
 			</div>
 			<br><br>
-		</c:forEach>
+
 	</sec:authorize>
 	<br>
 	<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7">
@@ -61,11 +62,10 @@
 			<td>d</td>
 		</tr>
 	</table>
-
-<br>
+	<br>
 
     <a href="/logout">로그아웃</a><br><br>
-
+	
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 

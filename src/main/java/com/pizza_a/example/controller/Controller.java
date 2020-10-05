@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pizza_a.example.domain.BoardVO;
-import com.pizza_a.example.domain.PizzaVO;
+import com.pizza_a.example.domain.OrderVO;
 import com.pizza_a.example.domain.UserVO;
 import com.pizza_a.example.service.BoardService;
+import com.pizza_a.example.service.OrderService;
 import com.pizza_a.example.service.UserService;
 
 @org.springframework.stereotype.Controller
@@ -28,10 +29,15 @@ public class Controller {
 	private final Logger logger =LoggerFactory.getLogger(this.getClass());
 	@Autowired BoardService boardservice;
 	@Autowired UserService userservice;
-
+	@Autowired OrderService orderservice;
+//	@Autowired UserService userservice;
+//	@Autowired UserService userservice;
+//	@Autowired UserService userservice;
+	
 	@RequestMapping("/")
 	public String home(Model model) {
-		
+		List<UserVO> list_user =userservice.selectUserInfo();
+		model.addAttribute("list_UserVO", list_user);	
 		return "/Stg1_1_MAIN";
 	}
 	
@@ -142,9 +148,10 @@ public class Controller {
 	}
 	
 	@Secured({"ROLE_USER"})
-	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic")
-	public String Stg2_1_SetPizza_basic(Model model) {
-//		List<BoardVO> list =boardservice.selectPost(bId);
+	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{uId}", method = RequestMethod.GET)
+	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("uId") int uId) {
+//		List<UserVO> list =userservice.selectUserInfo(bId); is right?
+		
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");
@@ -155,7 +162,7 @@ public class Controller {
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg3_1_SetOrder")
 	public String SetPizza(Model model) {
-//		UserVO list =userservice.readUserInfo();
+		OrderVO list =orderservice.readLastOrderInfo();
 //		model.addAttribute("list_UserVO", list);
 		
 		logger.debug("debug");
