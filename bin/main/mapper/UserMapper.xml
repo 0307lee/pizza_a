@@ -13,6 +13,7 @@
 	<select id="readUser" parameterType="String" resultType="UserVO">
 		SELECT	u_id						as username,
 				u_password					as password,
+				u_no						as uNo,
 				u_name						as uName,
 				u_isAccountNonExpired		as isAccountNonExpired,
 				u_isAccountNonLocked		as isAccountNonLocked,
@@ -23,8 +24,7 @@
 				u_Address2					as uAddress2,
 				u_Zipcode2					as uZipcode2,
 				u_Address3					as uAddress3,
-				u_Zipcode3					as uZipcode3,
-				u_no						as uNo
+				u_Zipcode3					as uZipcode3
 		FROM	pizza_user
 		WHERE	1=1
 		AND		u_id = #{username}

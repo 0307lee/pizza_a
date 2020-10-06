@@ -11,56 +11,58 @@
 	//soln2. No korean? (bcz of, UTF etc..)	
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
-	<sec:authorize access="hasRole('ROLE_USER')">
-		<div>
-			<div class="size-group" role="group" aria-label="..." id=btn_size>
-				<button onclick="show_pizza_size_M()">M</button>
-				<button onclick="show_pizza_size_L()">L</button>
-				<button onclick="show_pizza_size_XL()">XL</button>
-			</div><br>
-			
-			<div class="quantity-group" role="group" aria-label="...">
-				<button type="button" class="btn btn-default" id="minus1">-</button>
-				<input type="text" class="form-control" placeholder="1" value="1" id="EA">
-				<button type="button" class="btn btn-default" id="plus1">+</button>
-			</div><br>
-			
-			<div class="group" role="group" aria-label="...">
-				<input type="text" class="form-control" placeholder="1">
-			</div>	
-		</div>
-			<div class="slidecontainer">
-					<p>1판당 가격 (배송비 포함): <span id="price"></span></p>
-					<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange">
+	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
+		<sec:authorize access="hasRole('ROLE_USER')">
+			<div>
+				<div class="size-group" role="group" aria-label="..." id=btn_size>
+					<button onclick="show_pizza_size_M()">M</button>
+					<button onclick="show_pizza_size_L()">L</button>
+					<button onclick="show_pizza_size_XL()">XL</button>
+				</div><br>
+				
+				<div class="quantity-group" role="group" aria-label="...">
+					<button type="button" class="btn btn-default" id="minus1">-</button>
+					<input type="text" class="form-control" placeholder="1" value="1" id="EA">
+					<button type="button" class="btn btn-default" id="plus1">+</button>
+				</div><br>
+				
+				<div class="group" role="group" aria-label="...">
+					<input type="text" class="form-control" placeholder="1">
+				</div>	
 			</div>
+				<div class="slidecontainer">
+						<p>1판당 가격 (배송비 포함): <span id="price"></span></p>
+						<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange">
+				</div>
+				<div class="col-md-1">
+					<a class="btn btn-default"  role="button" id="btn_stg3">치즈피자주문</a>
+				</div>
+			<br><br>
 			<div class="col-md-1">
-				<a class="btn btn-default"  role="button" id="btn_stg3">치즈피자주문</a>
+				<form action="/user/SetPizza" method="post" id="frm_SetPizza">
+					<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
+					<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
+				</form>
 			</div>
-		<br><br>
-		<div class="col-md-1">
-			<form action="/user/SetPizza" method="post" id="frm_SetPizza">
-				<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
-				<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
-			</form>
-		</div>
-		<br><br>
-	</sec:authorize>
-	<br>
-    <a href="/logout">로그아웃</a><br><br>
-	<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on">
-		<tr>
-			<th>(구현중)임시table출력확인용</th>
-			<th>피자 SIZE</th>
-			<th>피자 갯수</th>
-			<th>피자 가격</th>
-		</tr>
-		<tr>
-			<td>a</td>
-			<td id = "show_pizza_size"> "${order_items.size}"</td>
-			<td id = "price"></td>
-			<td id = "EA"></td>
-		</tr>
-	</table>
+			<br><br>
+		</sec:authorize>
+		<br>
+	    <a href="/logout">로그아웃</a><br><br>
+		<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on">
+			<tr>
+				<th>(구현중)임시table출력확인용</th>
+				<th>피자 SIZE</th>
+				<th>피자 갯수</th>
+				<th>피자 가격</th>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td id = "show_pizza_size"> "${LastOrderInfo.orderitemsSize}"</td>
+				<td id = "price">"${LastOrderInfo.orderitemsListprice}"</td>
+				<td id = "EA">"${LastOrderInfo.orderitemsQuantity}"</td>
+			</tr>
+		</table>
+	</c:forEach>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 

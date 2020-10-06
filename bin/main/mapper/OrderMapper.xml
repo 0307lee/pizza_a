@@ -2,79 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pizza_a.example.mapper.OrderMapper">
 <!-- 권한 읽기 -->
-	<select id="readAuthorities" parameterType="String" resultType="org.springframework.security.core.authority.SimpleGrantedAuthority">
-		SELECT 	u_auth
-		FROM	pizza_auth
-		WHERE	1=1
-		AND		u_id=#{username}	
+	<select id="read_LastOrderItems_byusername" parameterType="String" resultType="OrderVO">
+			SELECT			*
+			FROM			pizza_order ta
+			LEFT JOIN		pizza_order_items tb ON ta.order_id = tb.order_id
+			WHERE			ta.u_id = #{username}
+			order by		order_item_id DESC
+			LIMIT			0, 1
 	</select>
 	
-	<!-- 회원불러오기 -->
-	<select id="readUser" parameterType="String" resultType="UserVO">
-		SELECT	u_id						as username,
-				u_password					as password,
-				u_name						as uName,
-				u_isAccountNonExpired		as isAccountNonExpired,
-				u_isAccountNonLocked		as isAccountNonLocked,
-				u_isCredentialNonExpired	as isCredentialNonExpired,
-				u_isEnabled					as isEnabled,
-				u_Address1					as uAddress1,
-				u_Zipcode1					as uZipcode1,
-				u_Address2					as uAddress2,
-				u_Zipcode2					as uZipcode2,
-				u_Address3					as uAddress3,
-				u_Zipcode3					as uZipcode3,
-				u_no						as uNo
-		FROM	pizza_user
-		WHERE	1=1
-		AND		u_id = #{username}
-	</select>
-	
-	<!-- 회원등록 -->
-	<insert id="createUser" parameterType="UserVO">
-		INSERT INTO pizza_user(
-				u_id,
-				u_password,
-				u_name,
-				u_isAccountNonExpired,
-				u_isAccountNonLocked,
-				u_isCredentialNonExpired,
-				u_isEnabled
-		) VALUES(
-			#{username},
-			#{password},
-			#{uName},
-			#{isAccountNonExpired},
-			#{isAccountNonLocked},
-			#{isCredentialNonExpired},
-			#{isEnabled}
-		)
-	</insert>
-	
-	<!-- 유저 권한 추가 -->
-	<insert id="createAuthority" parameterType="org.springframework.security.core.GrantedAuthority">
-		INSERT INTO pizza_auth(
-			u_id,
-			u_auth
-		) VALUES
-			<foreach item="authority" index="index" collection="authorities" separator=",">
-				(#{username}, #{authority.role})
-			</foreach>
-			ON DUPLICATE KEY
-			UPDATE
-			u_id = #{username}
-	</insert>
-	
-	<select id="chk_id_ajax" parameterType="UserVO" resultType="int">
-		SELECT	COUNT(1)
-		FROM	pizza_user
-		WHERE	u_id=		#{username}
-		
-	</select>
-	<select id="list_address_ajax" parameterType="UserVO" resultType="UserVO">
-		SELECT	*
-		FROM	pizza_user
-		WHERE	u_id=		#{username}
-		
-	</select>
 </mapper>

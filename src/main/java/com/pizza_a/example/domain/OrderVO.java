@@ -2,19 +2,28 @@ package com.pizza_a.example.domain;
 
 public class OrderVO {
 //	vo need small letter
+	
+	//pizza_order
 	private int		orderId;
 	private String	uId;
 	private String	orderStatus;
 	private String	orderTime;
 	private String	requiredTime;
 	
-//	private int		item_id;
+	//pizza_order_items
+	private int		item_id;
 	private int		productId;
 	private int		orderitemsSize;
 	private int		orderitemsQuantity;
 	private int		orderitemsDiscount;
 	private int		orderitemsListprice;
 	
+	public int getItem_id() {
+		return item_id;
+	}
+	public void setItem_id(int item_id) {
+		this.item_id = item_id;
+	}
 	public int getProductId() {
 		return productId;
 	}

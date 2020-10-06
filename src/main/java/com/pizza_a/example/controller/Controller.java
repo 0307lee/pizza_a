@@ -149,13 +149,9 @@ public class Controller {
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}")
 	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("username") String username) {
-
-		///NEED TO DO.////
-		//NEED TO DO./////NEED TO DO.////
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 		
-//						
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");

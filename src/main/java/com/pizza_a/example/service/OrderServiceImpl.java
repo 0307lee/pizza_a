@@ -12,15 +12,7 @@ import com.pizza_a.example.mapper.OrderMapper;
 public class OrderServiceImpl implements OrderService{
 
 	@Autowired OrderMapper ordermapper;
-//	@Override
-//	public List<OrderVO> PizzaInfo() {
-//		return null;
-//	}
-//	@Override
-//	public void writePostProcess(BoardVO post) {
-//		boardmapper.writePostProcess(post);
-//	}
-	 
+
 	@Override
 	public List<OrderVO> read_LastOrderItems_byusername(String username) {
 		return ordermapper.read_LastOrderItems_byusername();
