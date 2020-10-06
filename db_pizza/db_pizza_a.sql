@@ -58,8 +58,7 @@ CREATE TABLE IF NOT EXISTS `pizza_board` (
   `b_disabled` tinyint(1) unsigned zerofill DEFAULT NULL,
   `b_views` tinyint(3) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`b_id`),
-  KEY `user_id` (`u_id`),
-  CONSTRAINT `user_id` FOREIGN KEY (`u_id`) REFERENCES `pizza_user` (`u_id`)
+  KEY `user_id` (`u_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 pizza_a.pizza_board:~11 rows (대략적) 내보내기
@@ -86,8 +85,7 @@ CREATE TABLE IF NOT EXISTS `pizza_order` (
   `order_time` datetime DEFAULT current_timestamp(),
   `required_time` time DEFAULT NULL,
   PRIMARY KEY (`order_id`),
-  KEY `FK1_u_id` (`u_id`),
-  CONSTRAINT `FK1_u_id` FOREIGN KEY (`u_id`) REFERENCES `pizza_user` (`u_id`)
+  KEY `FK1_u_id` (`u_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- 테이블 데이터 pizza_a.pizza_order:~3 rows (대략적) 내보내기
@@ -109,12 +107,10 @@ CREATE TABLE IF NOT EXISTS `pizza_order_items` (
   `product_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_item_id`) USING BTREE,
   KEY `FK1_order_id` (`order_id`),
-  KEY `FK2_product_id` (`product_id`),
-  CONSTRAINT `FK1_order_id` FOREIGN KEY (`order_id`) REFERENCES `pizza_order` (`order_id`),
-  CONSTRAINT `FK2_product_id` FOREIGN KEY (`product_id`) REFERENCES `pizza_products` (`product_id`)
+  KEY `FK2_product_id` (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- 테이블 데이터 pizza_a.pizza_order_items:~3 rows (대략적) 내보내기
+-- 테이블 데이터 pizza_a.pizza_order_items:~2 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `pizza_order_items` DISABLE KEYS */;
 REPLACE INTO `pizza_order_items` (`order_id`, `order_item_id`, `order_item_size`, `order_item_quantity_EA`, `order_item_discount_perEA`, `order_item_price_wonEA`, `product_id`) VALUES
 	(1, 00000000001, 2, 1, 0, 20000, 1),
