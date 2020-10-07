@@ -3,7 +3,9 @@
 <mapper namespace="com.pizza_a.example.mapper.OrderMapper">
 <!-- 권한 읽기 -->
 	<select id="read_LastOrderItems_byusername" parameterType="String" resultType="OrderVO">
-			SELECT			*
+			SELECT			order_item_size			as orderitemsSize,
+							order_item_quantity_EA	as orderitemsQuantity,
+							order_item_price_wonEA	as orderitemsPrice
 			FROM			pizza_order ta
 			LEFT JOIN		pizza_order_items tb ON ta.order_id = tb.order_id
 			WHERE			ta.u_id = #{username}
@@ -12,3 +14,18 @@
 	</select>
 	
 </mapper>
+<!-- 
+	private int		orderId;
+	private String	username;
+	private String	orderStatus;
+	private String	orderTime;
+	private String	requiredTime;
+	
+	//pizza_order_items
+	private int		item_id;
+	private int		productId;
+	private int		orderitemsSize;
+	private int		orderitemsQuantity;
+	private int		orderitemsDiscount;
+	private int		orderitemsListprice;
+	 -->

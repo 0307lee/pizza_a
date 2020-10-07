@@ -6,5 +6,5 @@ import com.pizza_a.example.domain.OrderVO;
 
 public interface OrderService {
 
-	List<OrderVO> read_LastOrderItems_byusername(String username);
+	public List<OrderVO> read_LastOrderItems_byusername(String username);
 }

@@ -15,7 +15,7 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public List<OrderVO> read_LastOrderItems_byusername(String username) {
-		return ordermapper.read_LastOrderItems_byusername();
+		return ordermapper.read_LastOrderItems_byusername(username);
 	}
 
 }

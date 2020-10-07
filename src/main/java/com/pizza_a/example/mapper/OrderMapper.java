@@ -8,6 +8,6 @@ import com.pizza_a.example.domain.OrderVO;
 
 @Mapper
 public interface OrderMapper {
-	List<OrderVO> read_LastOrderItems_byusername();
+	List<OrderVO> read_LastOrderItems_byusername(String username);
 
 }
