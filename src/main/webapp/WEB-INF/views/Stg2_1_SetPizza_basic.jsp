@@ -95,7 +95,7 @@
 	$(document).on('click', '.mp-btn', function(){
 		$('#show_pizza_EA').text($('#ea').val());
 	});
-
+/* 
 	//피자갯수 0방지 
 	$("#ea").on("propertychange change keyup paste input",, function() {
 	    var currentVal = $(this).val();
@@ -106,7 +106,8 @@
 	    oldVal = currentVal;
 	    alert("changed!");
 	});
-	
+*/
+	 
 	//price슬라이더
 	var price_slider = document.getElementById("priceRange");
 	var price = document.getElementById("price");
@@ -115,8 +116,6 @@
 		price.innerHTML = this.value;
 		$("#show_pizza_price").text(this.val());
 	}
-
-
 
 	//////////////////////////
 	//호출1
