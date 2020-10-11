@@ -11,6 +11,7 @@
 	//soln2. No korean? (bcz of, UTF etc..)	
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
+<h1>ORDER Cheese</h1><hr>
 	<form action="/user/process_Stg2_1_SetPizza_basic" method="post" id="frm_SetPizza">
 		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 			<sec:authorize access="hasRole('ROLE_USER')">
@@ -38,11 +39,44 @@
 				</div>
 				<br><br>
 			</sec:authorize>
-			
+			   <SELECT name='area2'>
+       <OPTION value='일본'>일본</OPTION>
+       <OPTION value='중국'>중국</OPTION>
+       <OPTION value='베트남'>베트남</OPTION>
+       <OPTION value='태국'>태국</OPTION>
+       <OPTION value='캐나다'>캐나다</OPTION>
+     </SELECT>
+     <button type="button"><label for="r01" visivility="hidden"><input id="r01" type='radio' name='area' value='서울' checked="checked">서울 지역</label></button>
+     <label><input type='radio' name='area' value='인천'>인천 지역</label>
+     <br>  취미 선택 1<br> 
+
+  <input type="checkbox" name='hobby1' value='독서'> 독서 
+
+  <input type="checkbox" name='hobby2' value='등산'> 등산 
+
+  <input type="checkbox" name='hobby3' value='영화'> 영화 
+
+  <HR> 
+
+  취미 선택 2<br> 
+
+  <input type='checkbox' name='hobby' value='자전거'> 자전거 
+
+  <input type="checkbox" name='hobby' value='캠핑'> 캠핑 
+
+  <input type="checkbox" name='hobby' value='승마'> 승마 
+
+  <input type="checkbox" name='hobby' value='스노우보드'> 스노우 보드 
+
+  <input type="checkbox" name='hobby' value='바다낚시'> 바다낚시 
+
+  <input type="checkbox" name='hobby' value='주말농장'> 주말농장   
+
+  <br><br> 
 			<br>
 		    <a href="/logout">로그아웃</a><br><br>
 		    <h6>(구현중)임시table출력확인용</h6>
-			<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on">
+			<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on"><!-- style="visibility:hidden;"  -->
 				<tr>
 					<th>피자 SIZE</th>
 					<th>피자 가격</th>
@@ -50,7 +84,7 @@
 				</tr>
 				
 				<tr>
-					<td id = "show_pizza_size"> ${LastOrderInfo.orderitemsSize}</td>
+					<td id = "show_pizza_size"> <input type="text" name="bWriter" size="60" value="${LastOrderInfo.orderitemsSize}"></td>
 					<td id = "show_pizza_price">${LastOrderInfo.orderitemsPrice}</td>
 					<td id = "show_pizza_EA">${LastOrderInfo.orderitemsQuantity}</td>
 				</tr>
@@ -58,9 +92,9 @@
 			</table>
 			
 			<div class="col-md-1">
-				<a class="btn btn-default"  role="button" id="btn_stg3">치즈피자주문</a>
+				<a class="btn btn-default"  role="button" id="btn_Order_Cheese">치즈피자로 주문</a>
 			</div>
-			
+			<br><br>
 			<div class="col-md-1">
 				<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
 			</div>
@@ -120,7 +154,7 @@
 	//////////////////////////
 	//호출1
 	$(document).on
-	('click', '#btn_stg3', function () {
+	('click', '#btn_Order_Cheese', function () {
 		var size=$('#show_pizza_size').text();
 		alert("ORDER size: " + size);
 		$('#frm_SetPizza').submit();

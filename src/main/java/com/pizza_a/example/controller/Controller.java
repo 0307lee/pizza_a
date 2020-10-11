@@ -162,13 +162,14 @@ public class Controller {
 		
 		return "/Stg2_1_SetPizza_basic";
 	}
-	
-	@Secured({ "ROLE_USER" })
-	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
-	public String preparingOrder(BoardVO post) {
-		
-		return "redirect:/";
-	}
+//	
+//	@Secured({ "ROLE_USER" })
+//	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
+//	public String preparingOrder(OrderdVO post) {
+//
+//		orderservice.Stg2_1_setPizza_basic(post);
+//		return "redirect:/";
+//	}
 	
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg3_1_SetOrder")
