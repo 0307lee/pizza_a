@@ -20,9 +20,10 @@
 						<!-- <button type="button" onclick="show_pizza_size_M()">M</button>
 						<button type="button" onclick="show_pizza_size_L()">L</button>
 						<button type="button" onclick="show_pizza_size_XL()">XL</button> -->
-						<button type="button" class="show-pizza-size">M</button>
-						<button type="button" class="show-pizza-size">L</button>
-						<button type="button" class="show-pizza-size">XL</button>
+						
+						<input type = "button" class="show-pizza-size" value="M" />
+						<input type = "button" class="show-pizza-size" value="L" />
+						<input type = "button" class="show-pizza-size" value="XL" />
 					</div><br>
 					
 					<div class="quantity-group" role="group" aria-label="...">
@@ -110,7 +111,7 @@
 
 	//피자크기전송
 	$(document).on('click', '.show-pizza-size', function () {
-		$('#show_pizza_size').text($(this).text());
+		$('#show_pizza_size').text($(this).val());
 	});
 
 	//피자갯수-1
