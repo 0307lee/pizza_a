@@ -19,14 +19,24 @@
 				<input type="hidden" name="username" value="${LastOrderInfo.username}">
 				<div>
 					<div class="size-group" role="group" aria-label="..." id=btn_size>
+<!-- 
 						<input type = "button" class="show-pizza-size" value="M" />
 						<input type = "button" class="show-pizza-size" value="L" />
 						<input type = "button" class="show-pizza-size" value="XL" />
-<!-- 
+
 						<button type="button" class="show-pizza-size" value="M">M</button>
 						<button type="button" class="show-pizza-size" value="L">L</button>
 						<button type="button" class="show-pizza-size" value="XL">XL</button>
  -->
+						<button type="button">
+							<input class="show-pizza-size" type='radio' name='orderItemSize' value='M'>M
+						</button>
+						<button type="button">
+							<input class="show-pizza-size" type='radio' name='orderItemSize' value='L'>L
+						</button>
+						<button type="button">
+							<input class="show-pizza-size" type='radio' name='orderItemSize' value='XL'>XL
+						</button>
 					</div><br>
 					
 					<div class="quantity-group" role="group" aria-label="...">
@@ -48,7 +58,8 @@
        <OPTION value='일본'>일본</OPTION>
        <OPTION value='캐나다'>캐나다</OPTION>
     </SELECT>
-     <button type="button"><label for="r01"><input id="r01" type='radio' name='area' value='서울' checked="checked">서울 지역</label></button>
+     <button type="button"><label for="r01">
+     <input id="r01" type='radio' name='area' value='서울' checked="checked">서울 지역</label></button>
      <label><input type='radio' name='area' value='인천'>인천 지역</label>
      <br>  취미 선택 1<br> 
 
@@ -63,9 +74,9 @@
   <input type='checkbox' name='hobby' value='자전거'> 자전거 
 
   <input type="checkbox" name='hobby' value='캠핑'> 캠핑 
-
+ -->
   <br><br>
--->
+
 			<br>
 		    <a href="/logout">로그아웃</a><br><br>
 		    <h6>(구현중)임시table출력확인용</h6>
@@ -77,7 +88,7 @@
 				</tr>
 				
 				<tr>
-					<td id = "show_pizza_size" name="orderItemSize" value=""> ${LastOrderInfo.orderItemSize}</td>
+					<td id = "show_pizza_size"> ${LastOrderInfo.orderItemSize}</td>
 					<td id = "show_pizza_price">${LastOrderInfo.orderItemPrice}</td>
 					<td id = "show_pizza_EA">${LastOrderInfo.orderItemQuantity}</td>
 				</tr>

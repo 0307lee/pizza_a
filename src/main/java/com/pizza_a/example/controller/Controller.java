@@ -169,7 +169,7 @@ public class Controller {
 	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
 	public String preparingOrder(OrderVO post) {
 
-		
+		System.out.println(post);
 		orderservice.Stg2_1_setPizza_basic(post);
 		return "redirect:/user/Stg3_1_SetOrder";
 	}
