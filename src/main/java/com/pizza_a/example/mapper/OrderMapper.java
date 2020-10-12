@@ -10,4 +10,6 @@ import com.pizza_a.example.domain.OrderVO;
 public interface OrderMapper {
 	List<OrderVO> read_LastOrderItems_byusername(String username);
 
+	void Stg2_1_setPizza_basic(OrderVO post);
+
 }

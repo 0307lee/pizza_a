@@ -98,7 +98,7 @@ public class Controller {
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/post_write_process")
 	public String writePostProcess(BoardVO post) {
-		//Writing(duplicate Update)
+		//Writing(duplicate with Update)
 		boardservice.writePostProcess(post);
 		return "redirect:/";
 	}
@@ -168,7 +168,7 @@ public class Controller {
 	public String preparingOrder(OrderVO post) {
 
 //		throw input
-//		orderservice.Stg2_1_setPizza_basic(post);
+		orderservice.Stg2_1_setPizza_basic(post);
 		return "redirect:/user/Stg3_1_SetOrder";
 	}
 	

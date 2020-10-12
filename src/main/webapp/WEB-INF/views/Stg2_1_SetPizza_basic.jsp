@@ -28,32 +28,28 @@
 					
 					<div class="quantity-group" role="group" aria-label="...">
 						<button type="button" class="btn btn-default mp-btn" id="minus1">-</button>
-						<input disabled type="text" class="form-control" value="1" id="ea">
+						<input type="text" class="form-control" value="1" id="ea" name="orderitemsQuantity">
 						<button type="button" class="btn btn-default mp-btn" id="plus1">+</button>
 					</div>
 						
 					<br>
 					<div class="slidecontainer">
 							<p>1판당 가격 (배송비 미포함): <span id="price"></span></p>
-							<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange">
+							<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange" name="orderitemsPrice">
 					</div>
 				</div>
 				<br><br>
 			</sec:authorize>
-			   <SELECT name='area2'>
+<!-- 
+	<SELECT name='area2'>
        <OPTION value='일본'>일본</OPTION>
-       <OPTION value='중국'>중국</OPTION>
-       <OPTION value='베트남'>베트남</OPTION>
-       <OPTION value='태국'>태국</OPTION>
        <OPTION value='캐나다'>캐나다</OPTION>
-     </SELECT>
-     <button type="button"><label for="r01" visivility="hidden"><input id="r01" type='radio' name='area' value='서울' checked="checked">서울 지역</label></button>
+    </SELECT>
+     <button type="button"><label for="r01"><input id="r01" type='radio' name='area' value='서울' checked="checked">서울 지역</label></button>
      <label><input type='radio' name='area' value='인천'>인천 지역</label>
      <br>  취미 선택 1<br> 
 
   <input type="checkbox" name='hobby1' value='독서'> 독서 
-
-  <input type="checkbox" name='hobby2' value='등산'> 등산 
 
   <input type="checkbox" name='hobby3' value='영화'> 영화 
 
@@ -65,15 +61,8 @@
 
   <input type="checkbox" name='hobby' value='캠핑'> 캠핑 
 
-  <input type="checkbox" name='hobby' value='승마'> 승마 
-
-  <input type="checkbox" name='hobby' value='스노우보드'> 스노우 보드 
-
-  <input type="checkbox" name='hobby' value='바다낚시'> 바다낚시 
-
-  <input type="checkbox" name='hobby' value='주말농장'> 주말농장   
-
-  <br><br> 
+  <br><br>
+-->
 			<br>
 		    <a href="/logout">로그아웃</a><br><br>
 		    <h6>(구현중)임시table출력확인용</h6>
@@ -85,11 +74,11 @@
 				</tr>
 				
 				<tr>
-					<td id = "show_pizza_size"> <input type="text" name="bWriter" size="60" value="${LastOrderInfo.orderitemsSize}"></td>
+					<td id = "show_pizza_size" name="orderitemsSize"> ${LastOrderInfo.orderitemsSize}</td>
 					<td id = "show_pizza_price">${LastOrderInfo.orderitemsPrice}</td>
 					<td id = "show_pizza_EA">${LastOrderInfo.orderitemsQuantity}</td>
 				</tr>
-				
+				<input type="text"  name="orderId" value="${LastOrderInfo.orderId}">
 			</table>
 			
 			<div class="col-md-1">

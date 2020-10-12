@@ -13,6 +13,9 @@
 			LIMIT			0, 1
 	</select>
 	
+	<insert  id="Stg2_1_setPizza_basic" parameterType="OrderVO">
+	
+	</insert>
 </mapper>
 <!-- 
 	private int		orderId;

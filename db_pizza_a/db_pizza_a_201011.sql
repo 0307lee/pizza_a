@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `pizza_order` (
   KEY `FK1_u_id` (`u_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- 테이블 데이터 pizza_a.pizza_order:~4 rows (대략적) 내보내기
+-- 테이블 데이터 pizza_a.pizza_order:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `pizza_order` DISABLE KEYS */;
 REPLACE INTO `pizza_order` (`order_id`, `u_id`, `order_status`, `order_time`, `required_time`, `order_deliver`) VALUES
 	(1, 'aaa', 'baking', '2020-09-29 19:33:56', '00:30:00', 001),
