@@ -155,6 +155,9 @@ public class Controller {
 
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
+
+		//NEED TODO
+		orderservice.orderStart(username);
 		
 		logger.debug("debug");
 		logger.info("info");
@@ -167,6 +170,7 @@ public class Controller {
 	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
 	public String preparingOrder(OrderVO post) {
 
+		//TODO
 //		throw input
 		orderservice.Stg2_1_setPizza_basic(post);
 		return "redirect:/user/Stg3_1_SetOrder";

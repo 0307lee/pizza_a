@@ -13,8 +13,23 @@
 			LIMIT			0, 1
 	</select>
 	
-	<insert  id="Stg2_1_setPizza_basic" parameterType="OrderVO">
-	
+	<insert  id="orderStart" parameterType="String">
+		INSERT INTO pizza_order(
+			u_id,
+			order_status
+		)VALUE(
+			#{username},
+			'preparing'
+		)			
+	</insert>
+		<insert  id="Stg2_1_setPizza_basic" parameterType="String">
+		INSERT INTO pizza_order(
+			u_id,
+			order_status
+		)VALUE(
+			#{username},
+			'preparing'
+		)
 	</insert>
 </mapper>
 <!-- 

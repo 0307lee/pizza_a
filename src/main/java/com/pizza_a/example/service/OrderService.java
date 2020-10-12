@@ -8,5 +8,9 @@ public interface OrderService {
 
 	public List<OrderVO> read_LastOrderItems_byusername(String username);
 
+	public void orderStart(String username);
+	
 	public void Stg2_1_setPizza_basic(OrderVO post);
+
+
 }
