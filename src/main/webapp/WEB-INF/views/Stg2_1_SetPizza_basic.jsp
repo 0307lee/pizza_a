@@ -13,8 +13,10 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <h1>ORDER Cheese</h1><hr>
 	<form action="/user/process_Stg2_1_SetPizza_basic" method="post" id="frm_SetPizza">
+		
 		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 			<sec:authorize access="hasRole('ROLE_USER')">
+				<input type="hidden" name="username" value="${LastOrderInfo.username}">
 				<div>
 					<div class="size-group" role="group" aria-label="..." id=btn_size>
 						<!-- <button type="button" onclick="show_pizza_size_M()">M</button>

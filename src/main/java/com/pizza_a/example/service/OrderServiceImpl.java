@@ -20,6 +20,7 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Override
 	public void orderStart(String username) {
+		ordermapper.orderStart(username);
 	};
 	
 	@Override

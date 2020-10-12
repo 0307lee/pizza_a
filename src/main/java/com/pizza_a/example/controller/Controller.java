@@ -156,7 +156,6 @@ public class Controller {
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		//NEED TODO
 		orderservice.orderStart(username);
 		
 		logger.debug("debug");

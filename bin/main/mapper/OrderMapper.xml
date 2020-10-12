@@ -23,7 +23,7 @@
 		)			
 	</insert>
 		<insert  id="Stg2_1_setPizza_basic" parameterType="String">
-		INSERT INTO pizza_order(
+		INSERT INTO pizza_order_items(
 			u_id,
 			order_status
 		)VALUE(
