@@ -147,15 +147,15 @@ public class Controller {
 	}
 	
 	@Secured({"ROLE_USER"})
-//	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}")
-//	public String Stg2_1_SetPizza_basic(Model model) {
-//	String username="aaa";		
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}", method = RequestMethod.GET)
 	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("username") String username) {
 
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
+		//TODO Ban redirect in 10sec 
+		//	"order_time"-{current Time} <=10 sec
+		
 		orderservice.orderStart(username);
 		
 		logger.debug("debug");
@@ -169,8 +169,7 @@ public class Controller {
 	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
 	public String preparingOrder(OrderVO post) {
 
-		//TODO
-//		throw input
+		
 		orderservice.Stg2_1_setPizza_basic(post);
 		return "redirect:/user/Stg3_1_SetOrder";
 	}

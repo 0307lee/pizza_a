@@ -11,33 +11,34 @@
 	//soln2. No korean? (bcz of, UTF etc..)	
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
-<h1>ORDER Cheese</h1><hr>
+<h1>ORDER Cheese</h1>
+<h5>//showing latest order info</h5><hr>
 	<form action="/user/process_Stg2_1_SetPizza_basic" method="post" id="frm_SetPizza">
-		
 		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 			<sec:authorize access="hasRole('ROLE_USER')">
 				<input type="hidden" name="username" value="${LastOrderInfo.username}">
 				<div>
 					<div class="size-group" role="group" aria-label="..." id=btn_size>
-						<!-- <button type="button" onclick="show_pizza_size_M()">M</button>
-						<button type="button" onclick="show_pizza_size_L()">L</button>
-						<button type="button" onclick="show_pizza_size_XL()">XL</button> -->
-						
 						<input type = "button" class="show-pizza-size" value="M" />
 						<input type = "button" class="show-pizza-size" value="L" />
 						<input type = "button" class="show-pizza-size" value="XL" />
+<!-- 
+						<button type="button" class="show-pizza-size" value="M">M</button>
+						<button type="button" class="show-pizza-size" value="L">L</button>
+						<button type="button" class="show-pizza-size" value="XL">XL</button>
+ -->
 					</div><br>
 					
 					<div class="quantity-group" role="group" aria-label="...">
 						<button type="button" class="btn btn-default mp-btn" id="minus1">-</button>
-						<input type="text" class="form-control" value="1" id="ea" name="orderitemsQuantity">
+						<input type="text" class="form-control" value="1" id="ea" name="orderItemQuantity">
 						<button type="button" class="btn btn-default mp-btn" id="plus1">+</button>
 					</div>
 						
 					<br>
 					<div class="slidecontainer">
 							<p>1판당 가격 (배송비 미포함): <span id="price"></span></p>
-							<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange" name="orderitemsPrice">
+							<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange" name="orderItemPrice">
 					</div>
 				</div>
 				<br><br>
@@ -76,11 +77,11 @@
 				</tr>
 				
 				<tr>
-					<td id = "show_pizza_size" name="orderitemsSize"> ${LastOrderInfo.orderitemsSize}</td>
-					<td id = "show_pizza_price">${LastOrderInfo.orderitemsPrice}</td>
-					<td id = "show_pizza_EA">${LastOrderInfo.orderitemsQuantity}</td>
+					<td id = "show_pizza_size" name="orderItemSize" value=""> ${LastOrderInfo.orderItemSize}</td>
+					<td id = "show_pizza_price">${LastOrderInfo.orderItemPrice}</td>
+					<td id = "show_pizza_EA">${LastOrderInfo.orderItemQuantity}</td>
 				</tr>
-				<input type="text"  name="orderId" value="${LastOrderInfo.orderId}">
+				
 			</table>
 			
 			<div class="col-md-1">
@@ -121,26 +122,27 @@
 	$(document).on('click', '.mp-btn', function(){
 		$('#show_pizza_EA').text($('#ea').val());
 	});
-/* 
+	/* 
 	//피자갯수 0방지 
 	$("#ea").on("propertychange change keyup paste input",, function() {
 	    var currentVal = $(this).val();
 	    if(currentVal == oldVal) {
 	        return;
 	    }
-	 
 	    oldVal = currentVal;
 	    alert("changed!");
+	    if(currentVal==0){
+	    	$("#ea").text(1);
+	    }
 	});
-*/
-	 
+	  */
 	//price슬라이더
 	var price_slider = document.getElementById("priceRange");
 	var price = document.getElementById("price");
 	price.innerHTML = price_slider.value;
 	price_slider.oninput = function() {
 		price.innerHTML = this.value;
-		$("#show_pizza_price").text(this.val());
+		$("#show_pizza_price").text(this.value);
 	}
 
 	//////////////////////////

@@ -3,9 +3,10 @@
 <mapper namespace="com.pizza_a.example.mapper.OrderMapper">
 <!-- 권한 읽기 -->
 	<select id="read_LastOrderItems_byusername" parameterType="String" resultType="OrderVO">
-			SELECT			order_item_size			as orderitemsSize,
-							order_item_quantity_EA	as orderitemsQuantity,
-							order_item_price_wonEA	as orderitemsPrice
+			SELECT			order_item_size			as orderItemSize,
+							order_item_quantity_EA	as orderItemQuantity,
+							order_item_price_won	as orderItemPrice,
+							u_id					as username
 			FROM			pizza_order ta
 			LEFT JOIN		pizza_order_items tb ON ta.order_id = tb.order_id
 			WHERE			ta.u_id = #{username}
@@ -14,36 +15,12 @@
 	</select>
 	
 	<insert  id="orderStart" parameterType="String">
-		INSERT INTO pizza_order(
-			u_id,
-			order_status
-		)VALUE(
-			#{username},
-			'preparing'
-		)			
+			INSERT INTO		pizza_order
+							(u_id,order_status,order_time)
+			VALUE			(#{username},'preparing',now())			
 	</insert>
-		<insert  id="Stg2_1_setPizza_basic" parameterType="String">
-		INSERT INTO pizza_order_items(
-			u_id,
-			order_status
-		)VALUE(
-			#{username},
-			'preparing'
-		)
+	
+	<insert  id="Stg2_1_setPizza_basic" parameterType="String">
+
 	</insert>
 </mapper>
-<!-- 
-	private int		orderId;
-	private String	username;
-	private String	orderStatus;
-	private String	orderTime;
-	private String	requiredTime;
-	
-	//pizza_order_items
-	private int		item_id;
-	private int		productId;
-	private int		orderitemsSize;
-	private int		orderitemsQuantity;
-	private int		orderitemsDiscount;
-	private int		orderitemsListprice;
-	 -->

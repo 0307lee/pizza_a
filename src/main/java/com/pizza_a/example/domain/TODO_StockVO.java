@@ -1,6 +1,6 @@
 package com.pizza_a.example.domain;
 
-public class OrderVO {
+public class TODO_StockVO {
 //	vo need small letter
 	
 	//pizza_order_TB
@@ -16,9 +16,9 @@ public class OrderVO {
 	
 	//pizza_order_items_TB
 		private int		orderItemId;
-		private String	orderItemSize;
-		private int		orderItemQuantity;
-		private int		orderItemPrice;
+		private String	orderItemsSize;
+		private int		orderItemsQuantity;
+		private int		orderItemsPrice;
 	//pizza_order_items_TB
 	
 	public int getOrderId() {
@@ -45,13 +45,12 @@ public class OrderVO {
 	public void setRequiredTime(String requiredTime) {
 		this.requiredTime = requiredTime;
 	}
-	public String getUsername() {
+	public String getusername() {
 		return username;
 	}
-	public void setUsername(String username) {
+	public void setusername(String username) {
 		this.username = username;
 	}
-
 	public int getOrderDeliver() {
 		return orderDeliver;
 	}
@@ -77,23 +76,23 @@ public class OrderVO {
 	public void setOrderItemId(int orderItemId) {
 		this.orderItemId = orderItemId;
 	}
+	public String getOrderItemsSize() {
+		return orderItemsSize;
+	}
+	public void setOrderItemsSize(String orderItemsSize) {
+		this.orderItemsSize = orderItemsSize;
+	}
+	public int getOrderItemsQuantity() {
+		return orderItemsQuantity;
+	}
+	public void setOrderItemsQuantity(int orderItemsQuantity) {
+		this.orderItemsQuantity = orderItemsQuantity;
+	}
+	public int getOrderItemsPrice() {
+		return orderItemsPrice;
+	}
+	public void setOrderItemsPrice(int orderItemsPrice) {
+		this.orderItemsPrice = orderItemsPrice;
+	}
 
-	public String getOrderItemSize() {
-		return orderItemSize;
-	}
-	public void setOrderItemSize(String orderItemSize) {
-		this.orderItemSize = orderItemSize;
-	}
-	public int getOrderItemQuantity() {
-		return orderItemQuantity;
-	}
-	public void setOrderItemQuantity(int orderItemQuantity) {
-		this.orderItemQuantity = orderItemQuantity;
-	}
-	public int getOrderItemPrice() {
-		return orderItemPrice;
-	}
-	public void setOrderItemPrice(int orderItemPrice) {
-		this.orderItemPrice = orderItemPrice;
-	}
 }
