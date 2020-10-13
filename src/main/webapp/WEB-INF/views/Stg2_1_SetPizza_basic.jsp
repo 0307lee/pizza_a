@@ -16,9 +16,8 @@
 	<sec:authentication property="principal" var="principal"/>
 	<form action="/user/process_Stg2_1_SetPizza_basic" method="post" id="frm_SetPizza">
 		<input type="hidden" name="orderId" value="${new_order_id}">
-		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 			<sec:authorize access="hasRole('ROLE_USER')">
-				<input type="hidden" name="username" value="${LastOrderInfo.username}">
+				
 				<div>
 					<div class="size-group" role="group" aria-label="..." id=btn_size>
 <!-- 
@@ -89,7 +88,9 @@
  -->
   			<br><br>
 
-		    <h6>(구현중)임시table출력확인용</h6>
+		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
+			<input type="hidden" name="username" value="${LastOrderInfo.username}">
+		    <h6>임시table 이전 값 출력확인용</h6>
 			<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on"><!-- style="visibility:hidden;"  -->
 				<tr>
 					<th>피자 SIZE</th>
@@ -136,7 +137,7 @@
 		$('#show_pizza_EA').text($('#ea').val());
 	});
 	/* 
-	//피자갯수 0방지 
+	//TODO 피자갯수 0방지 
 	$("#ea").on("propertychange change keyup paste input",, function() {
 	    var currentVal = $(this).val();
 	    if(currentVal == oldVal) {

@@ -153,37 +153,37 @@ public class Controller {
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
+		//TODO 주문 내역 없는 사람도 창을 띄울 수 있어야지!
 		//	"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
-		
+		//TODO 피자갯수 0방지
 		orderservice.makeOrder(username);
 		
 		int new_order_id= orderservice.StartOrder(username);
 		model.addAttribute("new_order_id", new_order_id);
 		
+		return "/Stg2_1_SetPizza_basic";
+	}
+	
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
+	public String process_Stg2_1_SetPizza_basic(OrderVO post) {
+
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");
 		
-		return "/Stg2_1_SetPizza_basic";
-	}
-	
-	@Secured({ "ROLE_USER" })
-	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
-	public String process_Stg2_1_SetPizza_basic(OrderVO post) {
-
-//		System.out.println(principal.getName());//For Debug
-		
 		orderservice.Stg2_1_setPizza_basic(post);
-		return "/user/Stg3_1_SetOrder";
+
+		return "redirect:/user/Stg3_1_SetOrder";
 	}
 	
 	@Secured({"ROLE_USER"})
-	@RequestMapping(value= "/user/Stg3_1_SetOrder")
-	public String Stg3_1_SetOrder(Model model,Principal principal) {
-		
-		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-		System.out.println(LastOrderItemInfo);
-		model.addAttribute("list_OrderVO", LastOrderItemInfo);
+	@RequestMapping(value = "/user/Stg3_1_SetOrder")
+	public String Stg3_1_SetOrder(Model model,String username) {
+//		
+//		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
+//		System.out.println(LastOrderItemInfo);
+//		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 		
 		logger.debug("debug");
 		logger.info("info");
