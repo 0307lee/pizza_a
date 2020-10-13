@@ -16,8 +16,8 @@
 	
 	<insert  id="orderStart" parameterType="String">
 			INSERT INTO		pizza_order
-							(u_id,order_status,order_time)
-			VALUE			(#{username},'preparing',now())			
+							(order_id,u_id,order_status,order_time)
+			VALUE			(,#{username},'preparing',now())			
 	</insert>
 	
 	<insert  id="Stg2_1_setPizza_basic" parameterType="String">
