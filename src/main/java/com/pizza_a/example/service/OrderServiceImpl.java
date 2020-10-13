@@ -17,10 +17,13 @@ public class OrderServiceImpl implements OrderService{
 	public List<OrderVO> read_LastOrderItems_byusername(String username) {
 		return ordermapper.read_LastOrderItems_byusername(username);
 	}
-	
 	@Override
-	public void orderStart(String username) {
-		ordermapper.orderStart(username);
+	public void makeOrder(String username) {
+		ordermapper.makeOrder(username);
+	};
+	@Override
+	public int StartOrder(String username) {
+		return ordermapper.StartOrder(username);
 	};
 	
 	@Override

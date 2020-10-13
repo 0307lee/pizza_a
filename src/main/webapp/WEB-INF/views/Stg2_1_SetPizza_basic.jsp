@@ -13,7 +13,9 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <h1>ORDER Cheese</h1>
 <h5>//showing latest order info</h5><hr>
+	<sec:authentication property="principal" var="principal"/>
 	<form action="/user/process_Stg2_1_SetPizza_basic" method="post" id="frm_SetPizza">
+		<input type="hidden" name="orderId" value="${new_order_id}">
 		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 			<sec:authorize access="hasRole('ROLE_USER')">
 				<input type="hidden" name="username" value="${LastOrderInfo.username}">
@@ -47,11 +49,21 @@
 						
 					<br>
 					<div class="slidecontainer">
-							<p>1판당 가격 (배송비 미포함): <span id="price"></span></p>
-							<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange" name="orderItemPrice">
+						<p>1판당 가격 (배송비 미포함): <span id="price"></span></p>
+						<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange" name="orderItemPrice">
 					</div>
 				</div>
 				<br><br>
+				
+			<div class="col-md-1">
+				<a class="btn btn-default"  role="button" id="btn_Order_Cheese">치즈피자로 주문</a>
+			</div>
+			<br><br>
+			
+			<div class="col-md-1">
+				<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
+			</div>
+			
 			</sec:authorize>
 <!-- 
 	<SELECT name='area2'>
@@ -75,10 +87,8 @@
 
   <input type="checkbox" name='hobby' value='캠핑'> 캠핑 
  -->
-  <br><br>
+  			<br><br>
 
-			<br>
-		    <a href="/logout">로그아웃</a><br><br>
 		    <h6>(구현중)임시table출력확인용</h6>
 			<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on"><!-- style="visibility:hidden;"  -->
 				<tr>
@@ -95,18 +105,10 @@
 				
 			</table>
 			
-			<div class="col-md-1">
-				<a class="btn btn-default"  role="button" id="btn_Order_Cheese">치즈피자로 주문</a>
-			</div>
-			<br><br>
-			<div class="col-md-1">
-				<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
-			</div>
-			
 		</c:forEach>
 		
 	</form>		
-	
+	<a href="/logout">로그아웃</a><br><br>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 

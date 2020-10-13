@@ -6,21 +6,32 @@
 			SELECT			order_item_size			as orderItemSize,
 							order_item_quantity_EA	as orderItemQuantity,
 							order_item_price_won	as orderItemPrice,
-							u_id					as username
+							u_id					as username,
+							order_address			as orderAddress,
+							order_zipcode			as orderZipcode
 			FROM			pizza_order ta
 			LEFT JOIN		pizza_order_items tb ON ta.order_id = tb.order_id
 			WHERE			ta.u_id = #{username}
-			order by		order_item_id DESC
+			ORDER BY		order_item_id DESC
+			LIMIT			0, 1
+	</select>
+	<insert  id="makeOrder" parameterType="String" >
+			INSERT INTO		pizza_order
+							(u_id,order_status,order_time)
+			VALUE			(#{username},'preparing',now())			
+	</insert>
+	
+	<select  id="StartOrder" parameterType="String" resultType="int">
+			SELECT 			order_id AS orderId
+			FROM 			pizza_order
+			WHERE 			u_id=#{username}
+			ORDER BY		order_id DESC
 			LIMIT			0, 1
 	</select>
 	
-	<insert  id="orderStart" parameterType="String">
-			INSERT INTO		pizza_order
-							(order_id,u_id,order_status,order_time)
-			VALUE			(,#{username},'preparing',now())			
-	</insert>
-	
-	<insert  id="Stg2_1_setPizza_basic" parameterType="String">
-
+	<insert  id="Stg2_1_setPizza_basic" parameterType="orderVO">
+			INSERT INTO		pizza_order_items
+							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won)
+			VALUE			(#{orderId},#{orderItemSize},#{orderItemQuantity},#{orderItemPrice});
 	</insert>
 </mapper>

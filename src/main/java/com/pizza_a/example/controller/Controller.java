@@ -136,7 +136,7 @@ public class Controller {
 	@ResponseBody
 	public int chk_id_ajax(@RequestBody UserVO userVo_username) {
 		int CHK_username_existing= userservice.chk_id_ajax(userVo_username);
-		System.out.println(CHK_username_existing);
+		//System.out.println(CHK_username_existing);
 
 //		int chk_VO= userservice.chk_id_ajax(userVo_username);
 		
@@ -153,10 +153,12 @@ public class Controller {
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		//TODO Ban redirect in 10sec 
-		//	"order_time"-{current Time} <=10 sec
+		//	"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
 		
-		orderservice.orderStart(username);
+		orderservice.makeOrder(username);
+		
+		int new_order_id= orderservice.StartOrder(username);
+		model.addAttribute("new_order_id", new_order_id);
 		
 		logger.debug("debug");
 		logger.info("info");
@@ -167,17 +169,21 @@ public class Controller {
 	
 	@Secured({ "ROLE_USER" })
 	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
-	public String preparingOrder(OrderVO post) {
+	public String process_Stg2_1_SetPizza_basic(OrderVO post) {
 
-		System.out.println(post);
+//		System.out.println(principal.getName());//For Debug
+		
 		orderservice.Stg2_1_setPizza_basic(post);
-		return "redirect:/user/Stg3_1_SetOrder";
+		return "/user/Stg3_1_SetOrder";
 	}
 	
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg3_1_SetOrder")
-	public String SetPizza(Model model, String username) {
+	public String Stg3_1_SetOrder(Model model,Principal principal) {
 		
+		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
+		System.out.println(LastOrderItemInfo);
+		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 		
 		logger.debug("debug");
 		logger.info("info");
