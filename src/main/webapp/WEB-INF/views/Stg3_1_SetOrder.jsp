@@ -9,6 +9,8 @@
 	//	cf. maven's way << put <dependancy> but, I use gradle
 	//	different Auto build system (maven, gradle)
 	//soln2. No korean? (bcz of, UTF etc..)	
+	
+	//.col-xs-12 .col-sm-6 .col-md-8
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <sec:authorize access="hasRole('ROLE_USER')">
@@ -18,10 +20,14 @@
 				<button type="button">
 					<input type='radio' name='orderDeliver' value='1'>배달주문
 				</button>
+			</div>
+				
+			<div role="group" aria-label="..." id="delivery">
 				<button type="button">
 					<input type='radio' name='orderDeliver' value='0'>매장방문
 				</button>
-			</div>					
+			</div>			
+					
 			<button type="button" class="btn btn-primary btn-lg btn-block"
 			   href="/user/Stg3_1_1_SetAddress/${user.username}" role="button" id="btn_stg3_1_1">배송지 (임시표기: ${user.username})</button>
 
