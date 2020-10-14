@@ -141,7 +141,7 @@ public class Controller {
 		int CHK_username_existing= userservice.chk_id_ajax(userVo_username);
 		//System.out.println(CHK_username_existing);
 
-//		int chk_VO= userservice.chk_id_ajax(userVo_username);
+		//int chk_VO= userservice.chk_id_ajax(userVo_username);
 		
 //		logger.debug("debug");
 //		logger.info("info");
@@ -157,11 +157,11 @@ public class Controller {
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
 		//	"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
-		//TODO 피자갯수 0방지
-//		orderservice.makeOrder(username);
-//		
-//		int new_order_id= orderservice.StartOrder(username);
-//		model.addAttribute("new_order_id", new_order_id);
+		//TODO  Ban no.Pizza<1
+		//		orderservice.makeOrder(username);
+		
+		int new_order_id= orderservice.StartOrder(username);
+		model.addAttribute("new_order_id", new_order_id);
 		
 		return "/Stg2_1_SetPizza_basic";
 	}
@@ -174,7 +174,7 @@ public class Controller {
 		logger.info("info");
 		logger.error("error");
 		
-//		orderservice.Stg2_1_setPizza_basic(post);
+		orderservice.Stg2_1_setPizza_basic(post);
 
 		return "redirect:/user/Stg3_1_SetOrder";
 	}
@@ -187,8 +187,6 @@ public class Controller {
 		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-
-		// 
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");
@@ -196,17 +194,5 @@ public class Controller {
 		return "/Stg3_1_SetOrder";
 	}
 	
-//	@Secured({"ROLE_USER"})
-//	@RequestMapping(value= "/user/Stg3_1_1_SetAddress/{u_address_fromView}", method = RequestMethod.GET)
-//	public String SetAddress(Model model, @PathVariable("u_address_fromView") String username) {
-////	String username=0;
-//	UserVO list =userservice.readUserinfo(username);
-//	model.addAttribute("list_UserVO", list);
-//	
-//		logger.debug("debug");
-//		logger.info("info");
-//		logger.error("error");
-//		
-//		return "/Stg3_1_1_SetAddress";
-//	}
+
 }

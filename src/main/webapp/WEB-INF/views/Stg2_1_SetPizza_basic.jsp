@@ -38,7 +38,7 @@
 						<button type="button">
 							<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='XL'>XL</label>
 						</button>
-					<br></div>
+					</div><br>
 					
 					<div class="quantity-group" role="group" aria-label="...">
 						<button type="button" class="btn btn-default mp-btn" id="minus1">-</button>
@@ -52,11 +52,11 @@
 						<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange" name="orderItemPrice">
 					</div>
 			
-				<br><br></div>				
+				</div><br><br>				
 				
 			<div class="col-md-1">
 				<a class="btn btn-default"  role="button" id="btn_Order_Cheese">치즈피자로 주문</a>
-			<br><br></div>
+			</div><br><br>
 			
 			<div class="col-md-1">
 				<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>

@@ -31,7 +31,7 @@
 	
 	<insert  id="Stg2_1_setPizza_basic" parameterType="orderVO">
 			INSERT INTO		pizza_order_items
-							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won,)
+							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won)
 			VALUE			(#{orderId},#{orderItemSize},#{orderItemQuantity},#{orderItemPrice});
 	</insert>
 	

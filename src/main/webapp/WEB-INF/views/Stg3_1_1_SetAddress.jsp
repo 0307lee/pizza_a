@@ -14,8 +14,7 @@
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<div>
 			<div class="size-group" role="group" aria-label="...">
-				<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_1_SetAddress" role="button" id="btn_stg3">배송지</a>
-									
+				<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_1_SetAddress" role="button" id="btn_stg3">배송지</a>	
 			</div>
 		</div>
 		<br>

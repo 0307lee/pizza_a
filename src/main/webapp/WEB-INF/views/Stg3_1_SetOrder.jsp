@@ -17,14 +17,14 @@
 	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 		<div>
 			<div role="group" aria-label="..." id="delivery">
-				<button type="button">
-					<input type='radio' name='orderDeliver' value='1'>배달주문
+				<button class="col-xs-12 col-md-8" type="button">
+					<label><input type='radio' name='orderDeliver' value='1'>배달주문</label>
 				</button>
 			</div>
 				
 			<div role="group" aria-label="..." id="delivery">
-				<button type="button">
-					<input type='radio' name='orderDeliver' value='0'>매장방문
+				<button class="col-xs-12 col-md-8" type="button">
+					<label><input type='radio' name='orderDeliver' value='0'>매장방문</label>
 				</button>
 			</div>			
 					
@@ -38,7 +38,7 @@
 			<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">최종금액</button>
 			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_commend">주문하기</button>
 				
-		<br></div>
+		</div><br>
 	
 	</c:forEach>
 	
