@@ -9,14 +9,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.pizza_a.example.domain.OrderVO;
 import com.pizza_a.example.domain.UserVO;
 import com.pizza_a.example.mapper.UserMapper;
+import com.pizza_a.example.mapper.OrderMapper;
 
 @Service
 public class UserServiceImpl implements UserService{
 
 	@Autowired
 	UserMapper userMapper;
+	OrderMapper orderMapper;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -56,10 +59,18 @@ public class UserServiceImpl implements UserService{
 	};
 	
 
-	public List<UserVO> selectUserList(){
-		return userMapper.selectUserList();
-}
+	@Override
 	public List<UserVO> list_Address(int u_address){
 		return userMapper.list_address_ajax(u_address);
 	};
+	
+	@Override
+	public List<UserVO> selectUserList(){
+		return userMapper.selectUserList();
+}	
+	@Override
+	public List<OrderVO> read_LastOrderInfo_byusername(String name){
+		return orderMapper.read_LastOrderInfo_byusername();
+	};
+
 }

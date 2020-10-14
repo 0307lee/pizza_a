@@ -31,7 +31,18 @@
 	
 	<insert  id="Stg2_1_setPizza_basic" parameterType="orderVO">
 			INSERT INTO		pizza_order_items
-							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won)
+							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won,)
 			VALUE			(#{orderId},#{orderItemSize},#{orderItemQuantity},#{orderItemPrice});
 	</insert>
+	
+	<select id="read_LastOrderInfo_byusername" parameterType="String" resultType="OrderVO">
+			SELECT			u_address1 AS orderAddress,
+							u_zipcode1 AS orderZipcode,
+							store_id_1 AS storeId	
+			FROM			pizza_user 
+			WHERE			u_id =#{username}
+	
+	</select>
+	
+	
 </mapper>

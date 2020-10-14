@@ -30,15 +30,15 @@
 						<button type="button" class="show-pizza-size" value="XL">XL</button>
  -->
 						<button type="button">
-							<input class="show-pizza-size" type='radio' name='orderItemSize' value='M'>M
+							<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='M'>M</label>
 						</button>
 						<button type="button">
-							<input class="show-pizza-size" type='radio' name='orderItemSize' value='L'>L
+							<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='L'>L</label>
 						</button>
 						<button type="button">
-							<input class="show-pizza-size" type='radio' name='orderItemSize' value='XL'>XL
+							<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='XL'>XL</label>
 						</button>
-					</div><br>
+					<br></div>
 					
 					<div class="quantity-group" role="group" aria-label="...">
 						<button type="button" class="btn btn-default mp-btn" id="minus1">-</button>
@@ -51,13 +51,12 @@
 						<p>1판당 가격 (배송비 미포함): <span id="price"></span></p>
 						<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange" name="orderItemPrice">
 					</div>
-				</div>
-				<br><br>
+			
+				<br><br></div>				
 				
 			<div class="col-md-1">
 				<a class="btn btn-default"  role="button" id="btn_Order_Cheese">치즈피자로 주문</a>
-			</div>
-			<br><br>
+			<br><br></div>
 			
 			<div class="col-md-1">
 				<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
@@ -87,10 +86,10 @@
   <input type="checkbox" name='hobby' value='캠핑'> 캠핑 
  -->
   			<br><br>
-
+		<h3>임시table 이전 값 출력확인용  (//jstl if)</h3>
+		<h6>    전송용은 아님</h6>
 		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 			<input type="hidden" name="username" value="${LastOrderInfo.username}">
-		    <h6>임시table 이전 값 출력확인용</h6>
 			<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on"><!-- style="visibility:hidden;"  -->
 				<tr>
 					<th>피자 SIZE</th>
@@ -108,8 +107,17 @@
 			
 		</c:forEach>
 		
-	</form>		
+		<c:choose>
+			<c:when test="${empty list_OrderVO}">
+				<p>이전 내용없어</p>
+			</c:when>
+			
+		</c:choose>
+		
+	</form>
+			
 	<a href="/logout">로그아웃</a><br><br>
+	
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 

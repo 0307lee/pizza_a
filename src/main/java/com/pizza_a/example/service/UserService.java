@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import com.pizza_a.example.domain.OrderVO;
 import com.pizza_a.example.domain.UserVO;
 
 public interface UserService extends UserDetailsService {
@@ -28,6 +29,9 @@ public interface UserService extends UserDetailsService {
 
 
 	public List<UserVO> selectUserList();
+
+
+	public List<OrderVO> read_LastOrderInfo_byusername(String name);
 
 
 }

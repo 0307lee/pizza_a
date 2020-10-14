@@ -11,39 +11,36 @@
 	//soln2. No korean? (bcz of, UTF etc..)	
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
-	<sec:authorize access="hasRole('ROLE_USER')">
+<sec:authorize access="hasRole('ROLE_USER')">
+	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 		<div>
-				<div class="size-group" role="group" aria-label="...">
-					<button type="button" class="btn btn-primary btn-lg btn-block"
-					   href="/user/Stg3_1_1_SetAddress/${user.username}" role="button" id="btn_stg3_1_1">배송지 (임시표기: ${user.username})</button>
+			<div role="group" aria-label="..." id="delivery">
+				<button type="button">
+					<input type='radio' name='orderDeliver' value='1'>배달주문
+				</button>
+				<button type="button">
+					<input type='radio' name='orderDeliver' value='0'>매장방문
+				</button>
+			</div>					
+			<button type="button" class="btn btn-primary btn-lg btn-block"
+			   href="/user/Stg3_1_1_SetAddress/${user.username}" role="button" id="btn_stg3_1_1">배송지 (임시표기: ${user.username})</button>
 
-					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_request">요청사항</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_payment">결재수단</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_receipt">현금영수증</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_required_time">예상시간</button>
-					<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">최종금액</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block" value="order_commend">주문하기</button>
-					
-				</div>
-		</div>
-		<br>
-	</sec:authorize>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_request">요청사항</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_payment">결재수단</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_receipt">현금영수증</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_required_time">예상시간</button>
+			<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">최종금액</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_commend">주문하기</button>
+				
+		<br></div>
+	
+	</c:forEach>
+	
+</sec:authorize>
 
-	<form action="/user/SetPizza" method="post" id="frm_SetPizza">
-		<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
-		<table>
-			<tr>
-				<th>Company</th>
-				<th>Contact</th>
-				<th>Country</th>
-			</tr>
-			<tr>
-				<td>Company</td>
-				<td>Contact</td>
-				<td>Country</td>
-			</tr>
-		</table>
-	</form>
+<form action="/user/SetPizza" method="post" id="frm_SetPizza">
+	<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
+</form>
 
 
 

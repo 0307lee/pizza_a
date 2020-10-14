@@ -9,7 +9,7 @@
 		AND		u_id=#{username}	
 	</select>
 	
-	<!-- 회원불러오기 -->
+	<!-- 회원불러오기 (DO NOT CHANGE)-->
 	<select id="readUser" parameterType="String" resultType="UserVO">
 		SELECT	u_id						as username,
 				u_password					as password,
@@ -18,13 +18,7 @@
 				u_isAccountNonExpired		as isAccountNonExpired,
 				u_isAccountNonLocked		as isAccountNonLocked,
 				u_isCredentialNonExpired	as isCredentialNonExpired,
-				u_isEnabled					as isEnabled,
-				u_Address1					as uAddress1,
-				u_Zipcode1					as uZipcode1,
-				u_Address2					as uAddress2,
-				u_Zipcode2					as uZipcode2,
-				u_Address3					as uAddress3,
-				u_Zipcode3					as uZipcode3
+				u_isEnabled					as isEnabled
 		FROM	pizza_user
 		WHERE	1=1
 		AND		u_id = #{username}
@@ -39,15 +33,21 @@
 				u_isAccountNonExpired,
 				u_isAccountNonLocked,
 				u_isCredentialNonExpired,
-				u_isEnabled
+				u_isEnabled,
+				u_phone,
+				u_level,
+				u_disabled
 		) VALUES(
-			#{username},
-			#{password},
-			#{uName},
-			#{isAccountNonExpired},
-			#{isAccountNonLocked},
-			#{isCredentialNonExpired},
-			#{isEnabled}
+				#{username},
+				#{password},
+				#{uName},
+				#{isAccountNonExpired},
+				#{isAccountNonLocked},
+				#{isCredentialNonExpired},
+				#{isEnabled},
+				#{uPhone},
+				1,
+				0
 		)
 	</insert>
 	

@@ -7,19 +7,20 @@
 	<div>
 		<form action="/Stg1_REGISTER_ID"method="post">
 			<input type ="hidden" name = "${_csrf.parameterName}" value="${_csrf.token}"><br>
-			
 			<input type ="text" name="username" placeholder="id 입력"  id ="id_in"><br><br>
 				<span id="existing_id_chk"	style="display:none;">	아이디가 겹칩니다.	</span><br><br>
 				<span id="id_only_eng" 		style="display:none;">	())특수문자는 안되요.</span><br><br>
 				<span id="id_able" 			style="display:none;">	아이디가 가능합니다.	</span><br><br>
 			<input type ="password" name="password" placeholder="password 입력" class="pw" id="pw_in" ><br><br>
 			<input type ="password" name="password2" placeholder="password CHECK" class="pw" id="pw_in2" ><br><br>
-			<span id="same_pw" style="display:none;">비밀번호가 일치합니다.</span><br>
-			<span id="dif_pw" style="display:none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span><br>
-			
+				<span id="same_pw" style="display:none;">비밀번호가 일치합니다.</span><br>
+				<span id="dif_pw" style="display:none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span><br>
+			<input type ="text" name="uPhone" placeholder="phone 번호 입력"  id ="phone_in"><br><br>
 			<button type="submit">가입하기</button>
 		</form>
+		
 	</div>
+	
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 

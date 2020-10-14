@@ -15,6 +15,7 @@ public interface OrderMapper {
 	int StartOrder(String username);
 
 	void Stg2_1_setPizza_basic(OrderVO post);
-;
+
+	List<OrderVO> read_LastOrderInfo_byusername();
 
 }

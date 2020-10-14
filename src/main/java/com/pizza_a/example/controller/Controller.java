@@ -47,6 +47,7 @@ public class Controller {
 	
 	@RequestMapping(value= "/Stg1_LOGIN")
 	public String beforeLogin(Model model) {
+		//TODO Need To Handle "login?err", when put wrong id or pw
 		return "/Stg1_LOGIN";
 	}	
 	
@@ -68,6 +69,7 @@ public class Controller {
 		user.setCredentialNonExpired(true);
 		user.setAuthorities(AuthorityUtils.createAuthorityList("ROLE_USER"));
 		
+		//TODO need to Ban [Using ~!@#$%^& for ID register] by <script>
 		//Creating User
 		userservice.createUser(user);
 		//Creating Auth
@@ -88,7 +90,7 @@ public class Controller {
 		return "/denied";
 	}
 
-
+/*	about Boardservice
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/post_write")
 	public String Call_writePost_JSP(Model model) {
@@ -131,6 +133,7 @@ public class Controller {
 
 		return "redirect:/";
 	}
+*/
 	
 	@RequestMapping(value= "/Stag1_CHK_ID_AJAX")
 	@ResponseBody
@@ -153,13 +156,12 @@ public class Controller {
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		//TODO 주문 내역 없는 사람도 창을 띄울 수 있어야지!
 		//	"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
 		//TODO 피자갯수 0방지
-		orderservice.makeOrder(username);
-		
-		int new_order_id= orderservice.StartOrder(username);
-		model.addAttribute("new_order_id", new_order_id);
+//		orderservice.makeOrder(username);
+//		
+//		int new_order_id= orderservice.StartOrder(username);
+//		model.addAttribute("new_order_id", new_order_id);
 		
 		return "/Stg2_1_SetPizza_basic";
 	}
@@ -172,19 +174,21 @@ public class Controller {
 		logger.info("info");
 		logger.error("error");
 		
-		orderservice.Stg2_1_setPizza_basic(post);
+//		orderservice.Stg2_1_setPizza_basic(post);
 
 		return "redirect:/user/Stg3_1_SetOrder";
 	}
 	
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Stg3_1_SetOrder")
-	public String Stg3_1_SetOrder(Model model,String username, Principal principal) {
-//		
+	public String Stg3_1_SetOrder(Model model, Principal principal) {
+
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
 		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
-		
+
+
+		// 
 		logger.debug("debug");
 		logger.info("info");
 		logger.error("error");
@@ -196,7 +200,7 @@ public class Controller {
 //	@RequestMapping(value= "/user/Stg3_1_1_SetAddress/{u_address_fromView}", method = RequestMethod.GET)
 //	public String SetAddress(Model model, @PathVariable("u_address_fromView") String username) {
 ////	String username=0;
-//	UserVO list =userservice.readUser(username);
+//	UserVO list =userservice.readUserinfo(username);
 //	model.addAttribute("list_UserVO", list);
 //	
 //		logger.debug("debug");
