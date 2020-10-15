@@ -13,24 +13,25 @@
 	//.col-xs-12 .col-sm-6 .col-md-8
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
+<sec:authentication property="principal" var="principal"/>
 <sec:authorize access="hasRole('ROLE_USER')">
 	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 		<div>
-			<div role="group" aria-label="..." id="delivery">
-				<button class="col-xs-12 col-md-8" type="button">
-					<label><input type='radio' name='orderDeliver' value='1'>배달주문</label>
+			<div class="choose-group" role="group" aria-label="..." id="delivery">
+				<button class="col-xs-12 col-md-8"  type="button">
+					<label><input class="choose-group" type='radio' id="orderDeliver1" name='orderDeliver' value='1'>배달</label>
 				</button>
-			</div>
+				<button class="col-xs-12 col-md-8"  type="button">
+					<label><input class="choose-group" type='radio' id="orderDeliver0" name='orderDeliver' value='0'>방문</label>
+				</button>
 				
-			<div role="group" aria-label="..." id="delivery">
-				<button class="col-xs-12 col-md-8" type="button">
-					<label><input type='radio' name='orderDeliver' value='0'>매장방문</label>
-				</button>
-			</div>			
-					
-			<button type="button" class="btn btn-primary btn-lg btn-block"
-			   href="/user/Stg3_1_1_SetAddress/${user.username}" role="button" id="btn_stg3_1_1">배송지 (임시표기: ${user.username})</button>
-
+			</div><br><br><br><br><hr>
+			<a href="/user/Stg3_1_1_SetAddress/${principal.username}" class="btn btn-primary btn-lg btn-block"
+			 style="display:inline-block;"  role="button" id="btn_stg3_1_1_visitStore">매장 방문:${LastOrderInfo.orderItemPrice}</a>
+			<a href="/user/Stg3_1_1_SetAddress/${principal.username}" class="btn btn-primary btn-lg btn-block"
+			 style="display:none;"  role="button" id="btn_stg3_1_1_orderDeliver">배송지 ${principal.username}</a>
+							
+							
 			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_request">요청사항</button>
 			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_payment">결재수단</button>
 			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_receipt">현금영수증</button>
@@ -57,16 +58,27 @@
 
 <script>
 	$(document).on
-	('click', '#btn_stg3', function () {
-		alert("ORDER");
-		$('#frm_SetPizza').submit();
+	('click', '#orderDeliver1', function () {
+		$('#btn_stg3_1_1_orderDeliver').css('display', 'inline-block');
+		$('#btn_stg3_1_1_visitStore').css('display', 'none');
 		}
 	);
 	
 	$(document).on
-	('click', '#btn_stg2_topping', function () {
-		alert("PUT TOPPING");
-		$('#frm_SetPizza').submit();
+	('click', '#orderDeliver0', function () {
+		$('#btn_stg3_1_1_orderDeliver').css('display', 'none');
+		$('#btn_stg3_1_1_visitStore').css('display', 'inline-block');
 		}
 	);
+
+	$(document).ready(function($) {
+	    var checkload = true;
+	    $("#submit-btn").click(function () {
+	        checkload = false;
+	    });
+	    $(window).on("beforeunload", function () {
+	        if (checkload == true) return "레알 나감????????????";
+	    });
+	    
+	});
 </script>
