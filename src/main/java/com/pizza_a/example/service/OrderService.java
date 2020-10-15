@@ -14,6 +14,8 @@ public interface OrderService {
 	
 	public void Stg2_1_setPizza_basic(OrderVO post);
 
+	public void erasePreparingOrder(String username);
+
 
 
 }

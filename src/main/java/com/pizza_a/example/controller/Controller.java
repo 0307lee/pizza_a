@@ -36,6 +36,7 @@ public class Controller {
 		if( principal !=null) {
 		String username=principal.getName(); 
 		model.addAttribute("username", username);
+
 		}
 		return "/Stg1_1_MAIN";
 	}
@@ -153,6 +154,12 @@ public class Controller {
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}", method = RequestMethod.GET)
 	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("username") String username) {
 
+		String superviser_id="aaa";
+		if(username .equals(superviser_id)) {
+			
+		orderservice.erasePreparingOrder(username);
+		}
+		
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 

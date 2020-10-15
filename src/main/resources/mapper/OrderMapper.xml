@@ -43,6 +43,14 @@
 			WHERE			u_id =#{username}
 	
 	</select>
+	<delete id="erasePreparingOrder"  parameterType="String" > 
+			DELETE 
+			from 			pizza_order 
+			where 			u_id =#{username}
+			AND 			order_id>10
+			AND 			required_time=NULL;
+	</delete>
+
 	
 	
 </mapper>

@@ -30,4 +30,10 @@ public class OrderServiceImpl implements OrderService{
 	public void Stg2_1_setPizza_basic(OrderVO post) {
 		ordermapper.Stg2_1_setPizza_basic(post);
 	};
+	@Override	
+	public void erasePreparingOrder(String username) {
+		ordermapper.erasePreparingOrder(username);
+	};
+
+
 }

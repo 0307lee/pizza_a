@@ -18,4 +18,6 @@ public interface OrderMapper {
 
 	List<OrderVO> read_LastOrderInfo_byusername();
 
+	void erasePreparingOrder(String username);
+
 }
