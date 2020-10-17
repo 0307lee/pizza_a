@@ -156,8 +156,7 @@ public class Controller {
 
 		String superviser_id="aaa";
 		if(username .equals(superviser_id)) {
-			
-		orderservice.erasePreparingOrder(username);
+			orderservice.erasePreparingOrder(username);
 		}
 		
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);

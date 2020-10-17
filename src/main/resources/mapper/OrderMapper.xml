@@ -8,7 +8,11 @@
 							order_item_price_won	as orderItemPrice,
 							u_id					as username,
 							order_address			as orderAddress,
-							order_zipcode			as orderZipcode
+							order_zipcode			as orderZipcode,
+							ta.order_id				as orderId,
+							store_id				as storeId,
+							order_deliver			as orderDeliver
+							
 			FROM			pizza_order ta
 			LEFT JOIN		pizza_order_items tb ON ta.order_id = tb.order_id
 			WHERE			ta.u_id = #{username}
@@ -34,20 +38,11 @@
 							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won)
 			VALUE			(#{orderId},#{orderItemSize},#{orderItemQuantity},#{orderItemPrice});
 	</insert>
-	
-	<select id="read_LastOrderInfo_byusername" parameterType="String" resultType="OrderVO">
-			SELECT			u_address1 AS orderAddress,
-							u_zipcode1 AS orderZipcode,
-							store_id_1 AS storeId	
-			FROM			pizza_user 
-			WHERE			u_id =#{username}
-	
-	</select>
+
 	<delete id="erasePreparingOrder"  parameterType="String" > 
 			DELETE 
 			from 			pizza_order 
-			where 			u_id =#{username}
-			AND 			order_id>10
+			where 			order_id>10
 			AND 			required_time=NULL;
 	</delete>
 
