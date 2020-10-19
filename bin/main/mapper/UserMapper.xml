@@ -66,15 +66,29 @@
 	</insert>
 	
 	<select id="chk_id_ajax" parameterType="UserVO" resultType="int">
-		SELECT	COUNT(1)
-		FROM	pizza_user
-		WHERE	u_id=		#{username}
+		SELECT			COUNT(1)
+		FROM			pizza_user
+		WHERE			u_id=		#{username}
 		
 	</select>
 	<select id="list_address_ajax" parameterType="UserVO" resultType="UserVO">
-		SELECT	*
-		FROM	pizza_user
-		WHERE	u_id=		#{username}
+		SELECT			*
+		FROM			pizza_user
+		WHERE			u_id=		#{username}
+		
+	</select>
+	<select id="read_Address_byusername" parameterType="UserVO" resultType="UserVO">
+		SELECT			u_address1 AS uAddress1,
+						u_zipcode1 AS uZipcode1,
+						store_id_1 AS uStoreId1,
+						u_address2 AS uAddress2,
+						u_zipcode2 AS uZipcode2,
+						store_id_2 AS uStoreId2,
+						u_address3 AS uAddress3,
+						u_zipcode3 AS uZipcode3,
+						store_id_3 AS uStoreId3
+		FROM			pizza_user 
+		WHERE			u_id = 		#{username}
 		
 	</select>
 </mapper>

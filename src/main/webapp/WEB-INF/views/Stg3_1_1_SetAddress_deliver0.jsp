@@ -24,9 +24,9 @@
 		<input type="hidden" name="bId"	value="${SetPizza.StgNo}">
 		<table>
 			<tr>
-				<th>Company</th>
-				<th>Contact</th>
-				<th>Country</th>
+				<th>Company1</th>
+				<th>Contact2</th>
+				<th>Country3</th>
 			</tr>
 			<tr>
 				<td>Company</td>

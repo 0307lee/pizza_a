@@ -30,14 +30,16 @@ public class UserVO implements UserDetails {
 	
 	
 	//user Ordering Info
-	private String u_address1;
-	private int u_zipcode1;
+	private String uAddress1;
+
+
+	private int uZipcode1;
 	private int storeId1;
-	private String u_address2;
-	private int u_zipcode2;
+	private String uAddress2;
+	private int uZipcode2;
 	private int storeId2;
-	private String u_address3;
-	private int u_zipcode3;
+	private String uAddress3;
+	private int uZipcode3;
 	private int storeId3;
 	
 	//for user_M
@@ -139,17 +141,18 @@ public class UserVO implements UserDetails {
 	public void setuDisabled(int uDisabled) {
 		this.uDisabled = uDisabled;
 	}
-	public String getU_address1() {
-		return u_address1;
+	//
+	public String getuAddress1() {
+		return uAddress1;
 	}
-	public void setU_address1(String u_address1) {
-		this.u_address1 = u_address1;
+	public void setuAddress1(String uAddress1) {
+		this.uAddress1 = uAddress1;
 	}
-	public int getU_zipcode1() {
-		return u_zipcode1;
+	public int getuZipcode1() {
+		return uZipcode1;
 	}
-	public void setU_zipcode1(int u_zipcode1) {
-		this.u_zipcode1 = u_zipcode1;
+	public void setuZipcode1(int uZipcode1) {
+		this.uZipcode1 = uZipcode1;
 	}
 	public int getStoreId1() {
 		return storeId1;
@@ -157,17 +160,17 @@ public class UserVO implements UserDetails {
 	public void setStoreId1(int storeId1) {
 		this.storeId1 = storeId1;
 	}
-	public String getU_address2() {
-		return u_address2;
+	public String getuAddress2() {
+		return uAddress2;
 	}
-	public void setU_address2(String u_address2) {
-		this.u_address2 = u_address2;
+	public void setuAddress2(String uAddress2) {
+		this.uAddress2 = uAddress2;
 	}
-	public int getU_zipcode2() {
-		return u_zipcode2;
+	public int getuZipcode2() {
+		return uZipcode2;
 	}
-	public void setU_zipcode2(int u_zipcode2) {
-		this.u_zipcode2 = u_zipcode2;
+	public void setuZipcode2(int uZipcode2) {
+		this.uZipcode2 = uZipcode2;
 	}
 	public int getStoreId2() {
 		return storeId2;
@@ -175,17 +178,17 @@ public class UserVO implements UserDetails {
 	public void setStoreId2(int storeId2) {
 		this.storeId2 = storeId2;
 	}
-	public String getU_address3() {
-		return u_address3;
+	public String getuAddress3() {
+		return uAddress3;
 	}
-	public void setU_address3(String u_address3) {
-		this.u_address3 = u_address3;
+	public void setuAddress3(String uAddress3) {
+		this.uAddress3 = uAddress3;
 	}
-	public int getU_zipcode3() {
-		return u_zipcode3;
+	public int getuZipcode3() {
+		return uZipcode3;
 	}
-	public void setU_zipcode3(int u_zipcode3) {
-		this.u_zipcode3 = u_zipcode3;
+	public void setuZipcode3(int uZipcode3) {
+		this.uZipcode3 = uZipcode3;
 	}
 	public int getStoreId3() {
 		return storeId3;
@@ -193,6 +196,7 @@ public class UserVO implements UserDetails {
 	public void setStoreId3(int storeId3) {
 		this.storeId3 = storeId3;
 	}
+	//
 	public int getMStoreId() {
 		return MStoreId;
 	}

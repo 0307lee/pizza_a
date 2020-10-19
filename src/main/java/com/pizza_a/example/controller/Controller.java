@@ -154,20 +154,26 @@ public class Controller {
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}", method = RequestMethod.GET)
 	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("username") String username) {
 
+		//if 'aaa' show up, erasePreparingOrder
 		String superviser_id="aaa";
 		if(username .equals(superviser_id)) {
 			orderservice.erasePreparingOrder(username);
 		}
+		//	"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
 		
+		//make Order
+		orderservice.makeOrder(username);
+		
+		//and Give NewOrderID
+		int new_order_id= orderservice.StartOrder(username);
+		model.addAttribute("new_order_id", new_order_id);
+		
+		//Get LastOrder  LastOrderID = (order_ID)-1
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		//	"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
-		//TODO  Ban no.Pizza<1
-		//		orderservice.makeOrder(username);
 		
-		int new_order_id= orderservice.StartOrder(username);
-		model.addAttribute("new_order_id", new_order_id);
+		//TODO  Ban no.Pizza<1 in .JSP
 		
 		return "/Stg2_1_SetPizza_basic";
 	}
@@ -190,7 +196,7 @@ public class Controller {
 	public String Stg3_1_SetOrder(Model model, Principal principal) {
 
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-		System.out.println(LastOrderItemInfo);
+//		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
 		logger.debug("debug");
@@ -200,5 +206,35 @@ public class Controller {
 		return "/Stg3_1_SetOrder";
 	}
 	
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value = "/user/Stg3_1_1_SetAddress_deliver0/{username}")
+	public String Stg3_1_1_SetAddress_deliver0(Model model, Principal principal) {
 
+		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
+//		System.out.println(LastOrderItemInfo);
+		model.addAttribute("list_OrderVO", LastOrderItemInfo);
+
+		logger.debug("debug");
+		logger.info("info");
+		logger.error("error");
+		
+		return "/Stg3_1_1_SetAddress_deliver0";
+	}
+	
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value = "/user/Stg3_1_1_SetAddress_deliver1/{username}")
+	public String Stg3_1_1_SetAddress_deliver1(Model model, Principal principal) {
+
+		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
+		model.addAttribute("list_OrderVO", LastOrderItemInfo);
+
+		List<UserVO> AddressList=userservice.read_Address_byusername(principal.getName());
+		model.addAttribute("list_AddressList", AddressList);
+
+		logger.debug("debug");
+		logger.info("info");
+		logger.error("error");
+
+		return "/Stg3_1_1_SetAddress_deliver1";
+	}
 }

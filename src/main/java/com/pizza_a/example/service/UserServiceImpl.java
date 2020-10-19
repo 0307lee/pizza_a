@@ -69,8 +69,11 @@ public class UserServiceImpl implements UserService{
 		return userMapper.selectUserList();
 }	
 	@Override
-	public List<OrderVO> read_LastOrderInfo_byusername(String name){
+	public List<OrderVO> read_LastOrderInfo_byusername(String username){
 		return orderMapper.read_LastOrderInfo_byusername();
 	};
-
+	
+	public List<UserVO> read_Address_byusername(String username){
+		return userMapper.read_Address_byusername(username);
+	};
 }

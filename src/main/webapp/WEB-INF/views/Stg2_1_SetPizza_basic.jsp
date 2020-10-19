@@ -12,15 +12,17 @@
  -->
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <h1>ORDER Cheese</h1>
-<h5>//showing latest order info</h5><hr>
-	<sec:authentication property="principal" var="principal"/>
-	<form action="/user/process_Stg2_1_SetPizza_basic" method="post" id="frm_SetPizza">
-		<input type="hidden" name="orderId" value="${new_order_id}">
-			<sec:authorize access="hasRole('ROLE_USER')">
-				
-				<div>
-					<div class="size-group" role="group" aria-label="..." id=btn_size>
-<!-- 
+<h5>//showing latest order info</h5>
+<hr>
+<sec:authentication property="principal" var="principal" />
+<form action="/user/process_Stg2_1_SetPizza_basic" method="post"
+	id="frm_SetPizza">
+	<input type="hidden" name="orderId" value="${new_order_id}">
+	<sec:authorize access="hasRole('ROLE_USER')">
+
+		<div>
+			<div class="size-group" role="group" aria-label="..." id=btn_size>
+				<!-- 
 						<input type = "button" class="show-pizza-size" value="M" />
 						<input type = "button" class="show-pizza-size" value="L" />
 						<input type = "button" class="show-pizza-size" value="XL" />
@@ -29,41 +31,54 @@
 						<button type="button" class="show-pizza-size" value="L">L</button>
 						<button type="button" class="show-pizza-size" value="XL">XL</button>
  -->
-						<button type="button">
-							<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='M'>M</label>
-						</button>
-						<button type="button">
-							<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='L'>L</label>
-						</button>
-						<button type="button">
-							<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='XL'>XL</label>
-						</button>
-					</div><br>
-					
-					<div class="quantity-group" role="group" aria-label="...">
-						<button type="button" class="btn btn-default mp-btn" id="minus1">-</button>
-						<input type="text" class="form-control" value="1" id="ea" name="orderItemQuantity">
-						<button type="button" class="btn btn-default mp-btn" id="plus1">+</button>
-					</div>
-						
-					<br>
-					<div class="slidecontainer">
-						<p>1판당 가격 (배송비 미포함): <span id="price"></span></p>
-						<input type="range" min="8000" max="100000" value="20000" step="1000" class="slider" id="priceRange" name="orderItemPrice">
-					</div>
-			
-				</div><br><br>				
-				
-			<div class="col-md-1">
-				<a class="btn btn-default"  role="button" id="btn_Order_Cheese">치즈피자로 주문</a>
-			</div><br><br>
-			
-			<div class="col-md-1">
-				<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
+				<button type="button">
+					<label><input class="show-pizza-size" type='radio' 
+						name='orderItemSize' value='M'></label>M
+				</button>
+				<button type="button">
+					<label><input class="show-pizza-size" type='radio'
+						name='orderItemSize' value='L'>L</label>
+				</button>
+				<button type="button">
+					<label><input class="show-pizza-size" type='radio'
+						name='orderItemSize' value='XL'>XL</label>
+				</button>
 			</div>
-			
-			</sec:authorize>
-<!-- 
+			<br>
+
+			<div class="quantity-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default mp-btn" id="minus1">-</button>
+				<input type="text" class="form-control" value="1" id="ea"
+					name="orderItemQuantity">
+				<button type="button" class="btn btn-default mp-btn" id="plus1">+</button>
+			</div>
+
+			<br>
+			<div class="slidecontainer">
+				<p>
+					1판당 가격 (배송비 미포함): <span id="price"></span>
+				</p>
+				<input type="range" min="8000" max="100000" value="20000"
+					step="1000" class="slider" id="priceRange" name="orderItemPrice">
+			</div>
+
+		</div>
+		<br>
+		<br>
+
+		<div class="col-md-1">
+			<a class="btn btn-default" role="button" id="btn_Order_Cheese">치즈피자로
+				주문</a>
+		</div>
+		<br>
+		<br>
+
+		<div class="col-md-1">
+			<button id="btn_stg2_topping" type="button" class="btn btn-default">(미구현)토핑추가</button>
+		</div>
+
+	</sec:authorize>
+	<!-- 
 	<SELECT name='area2'>
        <OPTION value='일본'>일본</OPTION>
        <OPTION value='캐나다'>캐나다</OPTION>
@@ -85,63 +100,63 @@
 
   <input type="checkbox" name='hobby' value='캠핑'> 캠핑 
  -->
-  			<br><br>
-		<h3>임시table 이전 값 출력확인용  (//jstl if)</h3>
-		<h6>    전송용은 아님</h6>
-		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
-			<input type="hidden" name="username" value="${LastOrderInfo.username}">
-			<table border="5" bordercolor="blue" cellspacing="4" cellpadding="7" display="on"><!-- style="visibility:hidden;"  -->
-				<tr>
-					<th>피자 SIZE</th>
-					<th>피자 가격</th>
-					<th>피자 갯수</th>
-				</tr>
-				
-				<tr>
-					<td id = "show_pizza_size"> ${LastOrderInfo.orderItemSize}</td>
-					<td id = "show_pizza_price">${LastOrderInfo.orderItemPrice}</td>
-					<td id = "show_pizza_EA">${LastOrderInfo.orderItemQuantity}</td>
-				</tr>
-				
-			</table>
-			
-		</c:forEach>
-		
-		<c:choose>
-			<c:when test="${empty list_OrderVO}">
-				<p>이전 내용없어</p>
-			</c:when>
-			
-		</c:choose>
-		
-	</form>
-			
-	<a href="/logout">로그아웃</a><br><br>
-	
+	<br> <br>
+	<h3>임시table 이전 값 출력확인용 (//jstl if)</h3>
+	<h6>전송용은 아님</h6>
+	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
+		<input type="hidden" name="username" value="${LastOrderInfo.username}">
+		<table class="table table-bordered">
+			<!-- style="visibility:hidden;"  -->
+			<tr>
+				<th>피자 SIZE</th>
+				<th>피자 가격</th>
+				<th>피자 갯수</th>
+			</tr>
+
+			<tr>
+				<td id="show_pizza_size">${LastOrderInfo.orderItemSize}</td>
+				<td id="show_pizza_price">${LastOrderInfo.orderItemPrice}</td>
+				<td id="show_pizza_EA">${LastOrderInfo.orderItemQuantity}</td>
+			</tr>
+
+		</table>
+
+	</c:forEach>
+
+	<c:choose>
+		<c:when test="${empty list_OrderVO}">
+			<p>이전 내용없어</p>
+		</c:when>
+
+	</c:choose>
+
+</form>
+
+<a href="/logout">로그아웃</a>
+<br>
+<br>
+
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 
 <script>
-
-	//피자크기전송
-	$(document).on('click', '.show-pizza-size', function () {
+	//피자크기를 input으로 전송
+	$(document).on('click', '.show-pizza-size', function() {
 		$('#show_pizza_size').text($(this).val());
 	});
 
 	//피자갯수-1
-	$(document).on
-	('click', '#minus1', function () {
-		$('#ea').val(parseInt($('#ea').val())-1);
-	});
-	
-	//피자갯수+1
-	$(document).on
-	('click', '#plus1', function () {
-		$('#ea').val(parseInt($('#ea').val())+1);
+	$(document).on('click', '#minus1', function() {
+		$('#ea').val(parseInt($('#ea').val()) - 1);
 	});
 
-	//피자갯수 전송
-	$(document).on('click', '.mp-btn', function(){
+	//피자갯수+1
+	$(document).on('click', '#plus1', function() {
+		$('#ea').val(parseInt($('#ea').val()) + 1);
+	});
+
+	//피자갯수를 input으로 전송
+	$(document).on('click', '.mp-btn', function() {
 		$('#show_pizza_EA').text($('#ea').val());
 	});
 	/* 
@@ -157,7 +172,7 @@
 	    	$("#ea").text(1);
 	    }
 	});
-	  */
+	 */
 	//price슬라이더
 	var price_slider = document.getElementById("priceRange");
 	var price = document.getElementById("price");
@@ -169,19 +184,15 @@
 
 	//////////////////////////
 	//호출1
-	$(document).on
-	('click', '#btn_Order_Cheese', function () {
-		var size=$('#show_pizza_size').text();
-		alert("ORDER size: " + size);
+	$(document).on('click', '#btn_Order_Cheese', function() {
+		var size = $('#show_pizza_size').text();
+		alert("ORDER size: " + size + "의 피자를 주문합니다.");
 		$('#frm_SetPizza').submit();
 	});
 
 	//호출2
-	$(document).on
-	('click', '#btn_stg2_topping', function () {
+	$(document).on('click', '#btn_stg2_topping', function() {
 		alert("PUT TOPPING");
 		$('#frm_SetPizza').submit();
 	});
-
-
 </script>
