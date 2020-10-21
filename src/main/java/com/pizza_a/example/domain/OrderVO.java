@@ -22,6 +22,7 @@ public class OrderVO {
 		private int		orderItemPrice;
 	//pizza_store_TB
 		private String	storeName;
+		private String	storeManager;		
 		private String	storePhone;
 	
 	public int getOrderId() {
@@ -125,6 +126,13 @@ public class OrderVO {
 	}
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
+	}
+
+	public String getStoreManager() {
+		return storeManager;
+	}
+	public void setStoreManager(String storeManager) {
+		this.storeManager = storeManager;
 	}
 	public String getStorePhone() {
 		return storePhone;

@@ -13,12 +13,12 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <h3>배송</h3><hr>
 	<sec:authorize access="hasRole('ROLE_USER')">
-		<form action="Process_Stg3_1_1_SetAddress_deliver1_LastAddress" method="post" id="frm_SetPizza_deliver1_lastAddress">
+		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress" method="post" id="frm_SetPizza_deliver1_lastAddress">
 		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 			<div>
 				<div class="size-group" role="group" aria-label="...">
-					<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_SetOrder" role="button" id="btn_stg3_keepLastOrder" >지난 배송지였던  ${LastOrderInfo.orderAddress}) 그대로 활용</a>
-					<div style="display:none;" >
+					<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_SetOrder" role="button" id="btn_stg3_keepLastOrder" >지난 배송지였던  [${LastOrderInfo.orderAddress}]를 그대로 활용</a>
+					<div >
 						<input type="text" name="orderAddress" value="${LastOrderInfo.orderAddress}">
 						<input type="text" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">	
 						<input type="text" name="storeName" value="${LastOrderInfo.storeName}">
@@ -95,6 +95,5 @@
 	$(document).on
 	('click', '#Add_Address', function () {
 		alert("미구현.");
-		//$('#frm_Stg3_1_1_AddAddress').submit();
 	});
 </script>

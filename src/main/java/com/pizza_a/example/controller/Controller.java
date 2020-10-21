@@ -240,8 +240,11 @@ public class Controller {
 	public String Process_Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post) {
 		
 		show_info_debug_err();
-		orderservice.Stg2_1_setPizza_basic(post);
-
-		return "redirect:/user/Stg3_1_SetOrder";
+//		orderservice.Stg2_1_setPizza_basic(post);
+		
+		System.out.println(post);
+		
+//		return "redirect:/user/Stg3_1_SetOrder";
+		return "redirect:/user/Stg3_1_1_SetAddress_deliver1";
 	}
 }

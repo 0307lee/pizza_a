@@ -31,16 +31,17 @@ public class UserVO implements UserDetails {
 	
 	//user Ordering Info
 	private String uAddress1;
-
-
 	private int uZipcode1;
-	private int storeId1;
+	private int uStoreId1;
+	private String uStoreName1;
 	private String uAddress2;
 	private int uZipcode2;
-	private int storeId2;
+	private int uStoreId2;
+	private String uStoreName2;
 	private String uAddress3;
 	private int uZipcode3;
-	private int storeId3;
+	private int uStoreId3;
+	private String uStoreName3;
 	
 	//for user_M
 	private int MStoreId;
@@ -154,11 +155,11 @@ public class UserVO implements UserDetails {
 	public void setuZipcode1(int uZipcode1) {
 		this.uZipcode1 = uZipcode1;
 	}
-	public int getStoreId1() {
-		return storeId1;
+	public int getuStoreId1() {
+		return uStoreId1;
 	}
-	public void setStoreId1(int storeId1) {
-		this.storeId1 = storeId1;
+	public void setuStoreId1(int uStoreId1) {
+		this.uStoreId1 = uStoreId1;
 	}
 	public String getuAddress2() {
 		return uAddress2;
@@ -172,11 +173,11 @@ public class UserVO implements UserDetails {
 	public void setuZipcode2(int uZipcode2) {
 		this.uZipcode2 = uZipcode2;
 	}
-	public int getStoreId2() {
-		return storeId2;
+	public int getuStoreId2() {
+		return uStoreId2;
 	}
-	public void setStoreId2(int storeId2) {
-		this.storeId2 = storeId2;
+	public void setuStoreId2(int uStoreId2) {
+		this.uStoreId2 = uStoreId2;
 	}
 	public String getuAddress3() {
 		return uAddress3;
@@ -190,12 +191,31 @@ public class UserVO implements UserDetails {
 	public void setuZipcode3(int uZipcode3) {
 		this.uZipcode3 = uZipcode3;
 	}
-	public int getStoreId3() {
-		return storeId3;
+	public int getuStoreId3() {
+		return uStoreId3;
 	}
-	public void setStoreId3(int storeId3) {
-		this.storeId3 = storeId3;
+	public void setuStoreId3(int uStoreId3) {
+		this.uStoreId3 = uStoreId3;
 	}
+	public String getuStoreName1() {
+		return uStoreName1;
+	}
+	public void setuStoreName1(String uStoreName1) {
+		this.uStoreName1 = uStoreName1;
+	}
+	public String getuStoreName2() {
+		return uStoreName2;
+	}
+	public void setuStoreName2(String uStoreName2) {
+		this.uStoreName2 = uStoreName2;
+	}
+	public String getuStoreName3() {
+		return uStoreName3;
+	}
+	public void setuStoreName3(String uStoreName3) {
+		this.uStoreName3 = uStoreName3;
+	}
+
 	//
 	public int getMStoreId() {
 		return MStoreId;
