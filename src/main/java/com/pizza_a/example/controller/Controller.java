@@ -31,6 +31,12 @@ public class Controller {
 	@Autowired UserService userservice;
 	@Autowired OrderService orderservice;
 
+	public void show_info_debug_err() {
+		logger.debug("debug");
+		logger.info("info");
+		logger.error("error");
+	}
+	
 	@RequestMapping("/")
 	public String home(Model model,Principal principal) {
 		if( principal !=null) {
@@ -199,10 +205,7 @@ public class Controller {
 //		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		logger.debug("debug");
-		logger.info("info");
-		logger.error("error");
-		
+		show_info_debug_err();
 		return "/Stg3_1_SetOrder";
 	}
 	
@@ -214,10 +217,7 @@ public class Controller {
 //		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		logger.debug("debug");
-		logger.info("info");
-		logger.error("error");
-		
+		show_info_debug_err();
 		return "/Stg3_1_1_SetAddress_deliver0";
 	}
 	
@@ -231,10 +231,17 @@ public class Controller {
 		List<UserVO> AddressList=userservice.read_Address_byusername(principal.getName());
 		model.addAttribute("list_AddressList", AddressList);
 
-		logger.debug("debug");
-		logger.info("info");
-		logger.error("error");
-
+		show_info_debug_err();
 		return "/Stg3_1_1_SetAddress_deliver1";
+	}
+	
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value = "/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress")
+	public String Process_Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post) {
+		
+		show_info_debug_err();
+		orderservice.Stg2_1_setPizza_basic(post);
+
+		return "redirect:/user/Stg3_1_SetOrder";
 	}
 }

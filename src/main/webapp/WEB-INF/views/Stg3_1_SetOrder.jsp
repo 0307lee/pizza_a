@@ -16,16 +16,17 @@
 <sec:authentication property="principal" var="principal"/>
 <sec:authorize access="hasRole('ROLE_USER')">
 	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
-		<div>
-			<div class="choose-group" role="group" aria-label="..." id="delivery">
-				<button class="btn btn-success btn-lg btn-block"   type="button">
-					<label><input class="choose-group" type='radio' id="orderDeliver1" name='orderDeliver' value='1'>배달</label>
-				</button>
-				<button class="btn btn-success btn-lg btn-block"   type="button">
-					<label><input class="choose-group" type='radio' id="orderDeliver0" name='orderDeliver' value='0'>방문</label>
-				</button>
-				
-			</div><br><br><br><br><hr>
+
+		<div class="choose-group" role="group" aria-label="..." id="delivery">
+			<button class="btn btn-success btn-lg btn-block"   type="button">
+				<label><input class="choose-group" type='radio' id="orderDeliver1" name='orderDeliver' value='1'>배달</label>
+			</button>
+			<button class="btn btn-success btn-lg btn-block"   type="button">
+				<label><input class="choose-group" type='radio' id="orderDeliver0" name='orderDeliver' value='0'>방문</label>
+			</button>
+			
+		</div><br><br><br><br><hr>
+		<div id="stg3_1_SetPizza_basic" style="display:none;" class="col-sm-6 col-md-5 col-lg-12">
 			<a href="/user/Stg3_1_1_SetAddress_deliver0/${principal.username}" class="btn btn-primary btn-lg btn-block"
 			 style="display:none;"  role="button" id="btn_stg3_1_1_visitStore">방문 하실 매장은 ${LastOrderInfo.storeName} 입니다.</a>
 			<a href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}" class="btn btn-primary btn-lg btn-block"
@@ -38,7 +39,7 @@
 			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_required_time">예상시간</button>
 			<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">최종금액 </button>
 			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_commend">주문하기</button>
-				
+			
 		</div><br>
 	
 	</c:forEach>
@@ -50,8 +51,8 @@
 </form>
 
 
-
-    <a href="/logout">로그아웃</a><br><br>
+<hr>
+<a href="/logout">로그아웃</a><br><br>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
@@ -70,7 +71,13 @@
 		$('#btn_stg3_1_1_visitStore').css('display', 'inline-block');
 		}
 	);
-
+	
+	$(document).on
+	('click', '.choose-group', function () {
+		$('#stg3_1_SetPizza_basic').css('display', 'inline-block');
+		}
+	);
+	
 	$(document).ready(function($) {
 	    var checkload = true;
 	    $("#submit-btn").click(function () {

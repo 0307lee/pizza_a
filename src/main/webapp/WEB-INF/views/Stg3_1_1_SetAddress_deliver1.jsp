@@ -13,20 +13,27 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <h3>배송</h3><hr>
 	<sec:authorize access="hasRole('ROLE_USER')">
-		<form action="/user/Stg3_1_SetOrder" method="post" id="frm_SetPizza_deliver1_lastAddress">
-			<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
-				<div>
-					<div class="size-group" role="group" aria-label="...">
-						<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_SetOrder" role="button" id="btn_stg3_keepLastOrder" >지난 배송지였던  ${LastOrderInfo.orderAddress}) 그대로 활용</a>
-						<input type="hidden" name="orderZipcode" value="${LastOrderInfo.orderAddress}">
-						<input type="hidden" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">	
+		<form action="Process_Stg3_1_1_SetAddress_deliver1_LastAddress" method="post" id="frm_SetPizza_deliver1_lastAddress">
+		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
+			<div>
+				<div class="size-group" role="group" aria-label="...">
+					<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_SetOrder" role="button" id="btn_stg3_keepLastOrder" >지난 배송지였던  ${LastOrderInfo.orderAddress}) 그대로 활용</a>
+					<div style="display:none;" >
+						<input type="text" name="orderAddress" value="${LastOrderInfo.orderAddress}">
+						<input type="text" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">	
+						<input type="text" name="storeName" value="${LastOrderInfo.storeName}">
 					</div>
-					
-				</div><br>
+				</div>
 				
-			</c:forEach>
+			</div><br>
+			
+		</c:forEach>
 			
 		</form>
+		
+		<h2 style="text-align:center"> OR </h2>
+		<h4 style="text-align:center"> "밑의 주소 중 하나를 클릭"</h4><br>
+		
 		<c:forEach var="Address" items="${list_AddressList}">
 		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1" method="post" id="frm_SetPizza_deliver1_AnotherAddress">
 			<div class="table-responsive">
