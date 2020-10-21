@@ -202,14 +202,14 @@ public class Controller {
 	}
 
 	@Secured({"ROLE_USER"})
-	@RequestMapping(value = "/user/Stg3_1_1_SetAddress_deliver0/{username}")
+	@RequestMapping(value = "/user/Stg3_1_2_SetAddress_deliver0/{username}")
 	public String Stg3_1_1_SetAddress_deliver0(Model model, Principal principal) {
 
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
 		//		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		return "/Stg3_1_1_SetAddress_deliver0";
+		return "/Stg3_1_2_SetAddress_deliver0";
 	}
 
 	@Secured({"ROLE_USER"})

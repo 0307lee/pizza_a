@@ -15,8 +15,7 @@
 <h3>배송</h3>
 <hr>
 <sec:authorize access="hasRole('ROLE_USER')">
-	<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress"
-		method="post" id="frm_SetPizza_deliver1_lastAddress">
+
 		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
 			<div>
 				<div class="size-group" role="group" aria-label="...">
@@ -37,7 +36,6 @@
 
 		</c:forEach>
 
-	</form>
 
 	<h2 style="text-align: center">OR</h2>
 	<h4 style="text-align: center">"밑의 주소 중 하나를 클릭"</h4>

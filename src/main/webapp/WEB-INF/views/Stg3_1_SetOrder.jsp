@@ -20,12 +20,10 @@
 
 		<div class="choose-group" role="group" aria-label="..." id="delivery">
 			<button class="btn btn-success btn-lg btn-block" type="button">
-				<label><input class="choose-group" type='radio'
-					id="orderDeliver1" name='orderDeliver' value='1'>배달</label>
+				<label><input class="choose-group" type='radio'	id="orderDeliver1" name='orderDeliver' value='1'>배달</label>
 			</button>
 			<button class="btn btn-success btn-lg btn-block" type="button">
-				<label><input class="choose-group" type='radio'
-					id="orderDeliver0" name='orderDeliver' value='0'>방문</label>
+				<label><input class="choose-group" type='radio' id="orderDeliver0" name='orderDeliver' value='0'>방문</label>
 			</button>
 
 		</div>
