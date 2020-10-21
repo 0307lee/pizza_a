@@ -36,38 +36,38 @@ public class Controller {
 		logger.info("info");
 		logger.error("error");
 	}
-	
+
 	@RequestMapping("/")
 	public String home(Model model,Principal principal) {
 		if( principal !=null) {
-		String username=principal.getName(); 
-		model.addAttribute("username", username);
+			String username=principal.getName(); 
+			model.addAttribute("username", username);
 
 		}
 		return "/Stg1_1_MAIN";
 	}
-	
+
 	@RequestMapping(value= "/Stg1_MAIN_NoID")
 	public String noID(Model model) {
 		return "/Stg1_MAIN_NoID";
 	}	
-	
+
 	@RequestMapping(value= "/Stg1_LOGIN")
 	public String beforeLogin(Model model) {
 		//TODO Need To Handle "login?err", when put wrong id or pw
 		return "/Stg1_LOGIN";
 	}	
-	
+
 	@RequestMapping("/Stg1_BEFORE_REGISTER_ID")
 	public String beforeSignUp() {
 		return "/Stg1_REGISTER_ID";
 	}
-	
+
 	@RequestMapping("/Stg1_REGISTER_ID")
 	public String signup(UserVO user) {
 		//encoding PW
 		String encodedPassword =new BCryptPasswordEncoder().encode(user.getPassword());
-		
+
 		//Setting UserData
 		user.setPassword(encodedPassword);
 		user.setAccoutNonExpired(true);
@@ -75,29 +75,29 @@ public class Controller {
 		user.setAccountNonLocked(true);
 		user.setCredentialNonExpired(true);
 		user.setAuthorities(AuthorityUtils.createAuthorityList("ROLE_USER"));
-		
+
 		//TODO need to Ban [Using ~!@#$%^& for ID register] by <script>
 		//Creating User
 		userservice.createUser(user);
 		//Creating Auth
 		userservice.createAuthorities(user);
-		
+
 		return "/Stg1_MAIN_NoID";
 	}
 
-	
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value="/user/info")
 	public String userinfo(Model model) {
 		return "/user_info";
 	}
-	
+
 	@RequestMapping(value= "/denied")
 	public String denied(Model model) {
 		return "/denied";
 	}
 
-/*	about Boardservice
+	/*	about Boardservice
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/post_write")
 	public String Call_writePost_JSP(Model model) {
@@ -111,16 +111,16 @@ public class Controller {
 		boardservice.writePostProcess(post);
 		return "redirect:/";
 	}
-	
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/post/{bId}", method = RequestMethod.GET)
 	public String readingpost(Model model, @PathVariable("bId") int bId) {
 //		int bId=0;
 		List<BoardVO> list =boardservice.selectPost(bId);
-		
+
 		model.addAttribute("list_BoardVO", list);
 
-		
+
 		return "/user_post";
 	}
 
@@ -132,7 +132,7 @@ public class Controller {
 		model.addAttribute("list_BoardVO", list);
 		return "/user_post_update";
 	}
-		
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/post_delete")
 	public String deletePostProcess(BoardVO post) {
@@ -140,8 +140,8 @@ public class Controller {
 
 		return "redirect:/";
 	}
-*/
-	
+	 */
+
 	@RequestMapping(value= "/Stag1_CHK_ID_AJAX")
 	@ResponseBody
 	public int chk_id_ajax(@RequestBody UserVO userVo_username) {
@@ -149,13 +149,10 @@ public class Controller {
 		//System.out.println(CHK_username_existing);
 
 		//int chk_VO= userservice.chk_id_ajax(userVo_username);
-		
-//		logger.debug("debug");
-//		logger.info("info");
-//		logger.error("error");
+
 		return CHK_username_existing;
 	}
-	
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}", method = RequestMethod.GET)
 	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("username") String username) {
@@ -166,61 +163,55 @@ public class Controller {
 			orderservice.erasePreparingOrder(username);
 		}
 		//	"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
-		
+
 		//make Order
 		orderservice.makeOrder(username);
-		
+
 		//and Give NewOrderID
 		int new_order_id= orderservice.StartOrder(username);
 		model.addAttribute("new_order_id", new_order_id);
-		
+
 		//Get LastOrder  LastOrderID = (order_ID)-1
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		
+
 		//TODO  Ban no.Pizza<1 in .JSP
-		
+
 		return "/Stg2_1_SetPizza_basic";
 	}
-	
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
 	public String process_Stg2_1_SetPizza_basic(OrderVO post) {
 
-		logger.debug("debug");
-		logger.info("info");
-		logger.error("error");
-		
 		orderservice.Stg2_1_setPizza_basic(post);
 
 		return "redirect:/user/Stg3_1_SetOrder";
 	}
-	
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Stg3_1_SetOrder")
 	public String Stg3_1_SetOrder(Model model, Principal principal) {
 
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-//		System.out.println(LastOrderItemInfo);
+		//		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		show_info_debug_err();
 		return "/Stg3_1_SetOrder";
 	}
-	
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Stg3_1_1_SetAddress_deliver0/{username}")
 	public String Stg3_1_1_SetAddress_deliver0(Model model, Principal principal) {
 
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-//		System.out.println(LastOrderItemInfo);
+		//		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-		show_info_debug_err();
 		return "/Stg3_1_1_SetAddress_deliver0";
 	}
-	
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Stg3_1_1_SetAddress_deliver1/{username}")
 	public String Stg3_1_1_SetAddress_deliver1(Model model, Principal principal) {
@@ -231,20 +222,19 @@ public class Controller {
 		List<UserVO> AddressList=userservice.read_Address_byusername(principal.getName());
 		model.addAttribute("list_AddressList", AddressList);
 
-		show_info_debug_err();
 		return "/Stg3_1_1_SetAddress_deliver1";
 	}
-	
+
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress")
 	public String Process_Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post) {
-		
-		show_info_debug_err();
-//		orderservice.Stg2_1_setPizza_basic(post);
-		
-		System.out.println(post);
-		
-//		return "redirect:/user/Stg3_1_SetOrder";
-		return "redirect:/user/Stg3_1_1_SetAddress_deliver1";
+
+		//show_info_debug_err();
+		//		orderservice.Stg2_1_setPizza_basic(post);
+		logger.debug("11111111111111111111111111");
+		logger.debug(""+post);
+
+		//return "redirect:/user/Stg3_1_SetOrder";
+		return "/Stg1_LOGIN";
 	}
 }

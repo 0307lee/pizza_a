@@ -9,17 +9,16 @@
 		AND		u_id=#{username}	
 	</select>
 	
-	<!-- 회원불러오기 -->
+	<!-- 회원불러오기 (DO NOT CHANGE)-->
 	<select id="readUser" parameterType="String" resultType="UserVO">
 		SELECT	u_id						as username,
 				u_password					as password,
+				u_no						as uNo,
 				u_name						as uName,
 				u_isAccountNonExpired		as isAccountNonExpired,
 				u_isAccountNonLocked		as isAccountNonLocked,
 				u_isCredentialNonExpired	as isCredentialNonExpired,
-				u_isEnabled					as isEnabled,
-				u_Address					as uAddress,
-				u_Zipcode					as uZipcode
+				u_isEnabled					as isEnabled
 		FROM	pizza_user
 		WHERE	1=1
 		AND		u_id = #{username}
@@ -34,15 +33,21 @@
 				u_isAccountNonExpired,
 				u_isAccountNonLocked,
 				u_isCredentialNonExpired,
-				u_isEnabled
+				u_isEnabled,
+				u_phone,
+				u_level,
+				u_disabled
 		) VALUES(
-			#{username},
-			#{password},
-			#{uName},
-			#{isAccountNonExpired},
-			#{isAccountNonLocked},
-			#{isCredentialNonExpired},
-			#{isEnabled}
+				#{username},
+				#{password},
+				#{uName},
+				#{isAccountNonExpired},
+				#{isAccountNonLocked},
+				#{isCredentialNonExpired},
+				#{isEnabled},
+				#{uPhone},
+				1,
+				0
 		)
 	</insert>
 	
@@ -61,15 +66,39 @@
 	</insert>
 	
 	<select id="chk_id_ajax" parameterType="UserVO" resultType="int">
-		SELECT	COUNT(1)
-		FROM	pizza_user
-		WHERE	u_id=		#{username}
+		SELECT			COUNT(1)
+		FROM			pizza_user
+		WHERE			u_id=		#{username}
 		
 	</select>
 	<select id="list_address_ajax" parameterType="UserVO" resultType="UserVO">
-		SELECT	*
-		FROM	pizza_user
-		WHERE	u_id=		#{username}
+		SELECT			*
+		FROM			pizza_user
+		WHERE			u_id=		#{username}
+		
+	</select>
+	<select id="read_Address_byusername" parameterType="UserVO" resultType="UserVO">
+		SELECT		
+						ta.u_address1 AS uAddress1,
+						ta.u_address2 AS uAddress2,
+						ta.u_address3 AS uAddress3,
+						
+						ta.u_zipcode1 AS uZipcode1,
+						ta.u_zipcode2 AS uZipcode2,
+						ta.u_zipcode3 AS uZipcode3,
+						
+						tb.store_name AS uStoreName1,
+						tc.store_name AS uStoreName2,
+						td.store_name AS uStoreName3
+						
+		FROM			pizza_user ta
+		LEFT JOIN		pizza_store tb 
+			ON 			ta.u_store_id_1 = tb.store_id
+		LEFT JOIN		pizza_store tc 
+			ON 			ta.u_store_id_2 = tc.store_id
+		LEFT JOIN 		pizza_store td 
+			ON 			ta.u_store_id_3 = td.store_id
+		WHERE			ta.u_id =	#{username}
 		
 	</select>
 </mapper>

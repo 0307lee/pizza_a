@@ -354,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `spring_session` (
 -- 테이블 데이터 pizza_a.spring_session:~1 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `spring_session` DISABLE KEYS */;
 REPLACE INTO `spring_session` (`PRIMARY_ID`, `SESSION_ID`, `CREATION_TIME`, `LAST_ACCESS_TIME`, `MAX_INACTIVE_INTERVAL`, `EXPIRY_TIME`, `PRINCIPAL_NAME`) VALUES
-	('73d0f2f2-5812-4c6c-b0bc-5e13275f131e', '92b09fd7-ac83-4ce5-89ba-6daff172e38e', 1603273821153, 1603277705732, 7200, 1603284905732, 'aaa');
+	('73d0f2f2-5812-4c6c-b0bc-5e13275f131e', '92b09fd7-ac83-4ce5-89ba-6daff172e38e', 1603273821153, 1603284756768, 7200, 1603291956768, 'aaa');
 /*!40000 ALTER TABLE `spring_session` ENABLE KEYS */;
 
 -- 테이블 pizza_a.spring_session_attributes 구조 내보내기

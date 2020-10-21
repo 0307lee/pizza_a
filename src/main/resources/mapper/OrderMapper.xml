@@ -10,6 +10,7 @@
 							order_address			as orderAddress,
 							order_zipcode			as orderZipcode,
 							ta.order_id				as orderId,
+							ta.order_store_id		as StoreId,
 							store_name				as storeName,
 							store_manager			as storeMangaer,
 							store_phone				as storePhone,
