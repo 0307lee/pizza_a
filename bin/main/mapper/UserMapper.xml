@@ -78,17 +78,27 @@
 		
 	</select>
 	<select id="read_Address_byusername" parameterType="UserVO" resultType="UserVO">
-		SELECT			u_address1 AS uAddress1,
-						u_zipcode1 AS uZipcode1,
-						u_store_name_1 AS uStoreName1,
-						u_address2 AS uAddress2,
-						u_zipcode2 AS uZipcode2,
-						u_store_name_2 AS uStoreName2,
-						u_address3 AS uAddress3,
-						u_zipcode3 AS uZipcode3,
-						u_store_name_3 AS uStoreName3
-		FROM			pizza_user 
-		WHERE			u_id = 		#{username}
+		SELECT		
+						ta.u_address1 AS uAddress1,
+						ta.u_address2 AS uAddress2,
+						ta.u_address3 AS uAddress3,
+						
+						ta.u_zipcode1 AS uZipcode1,
+						ta.u_zipcode2 AS uZipcode2,
+						ta.u_zipcode3 AS uZipcode3,
+						
+						tb.store_name AS uStoreName1,
+						tc.store_name AS uStoreName2,
+						td.store_name AS uStoreName3
+						
+		FROM			pizza_user ta
+		LEFT JOIN		pizza_store tb 
+			ON 			ta.u_store_id_1 = tb.store_id
+		LEFT JOIN		pizza_store tc 
+			ON 			ta.u_store_id_2 = tc.store_id
+		LEFT JOIN 		pizza_store td 
+			ON 			ta.u_store_id_3 = td.store_id
+		WHERE			ta.u_id =	#{username}
 		
 	</select>
 </mapper>

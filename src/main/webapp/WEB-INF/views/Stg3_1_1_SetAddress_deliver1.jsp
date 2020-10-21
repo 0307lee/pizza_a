@@ -18,14 +18,14 @@
 			<div>
 				<div class="size-group" role="group" aria-label="...">
 					<a class="btn btn-primary btn-lg btn-block"  href="/user/Stg3_1_SetOrder" role="button" id="btn_stg3_keepLastOrder" >지난 배송지였던  [${LastOrderInfo.orderAddress}]를 그대로 활용</a>
-					<div >
+					<div style="display:none;" >
 						<input type="text" name="orderAddress" value="${LastOrderInfo.orderAddress}">
 						<input type="text" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">	
 						<input type="text" name="storeName" value="${LastOrderInfo.storeName}">
 					</div>
 				</div>
 				
-			</div><br>
+			</div>
 			
 		</c:forEach>
 			
@@ -45,26 +45,26 @@
 						<th>당담 매장명</th>
 					</tr>
 					
-					<tr>
+					<tr class="Address">
 						<td><label><input class="selectAddress"
 						 				type='radio' name='DeliverAddress' value='1'></label></td>
 						<td>${Address.uAddress1}</td>
 						<td>${Address.uZipcode1}</td>
-						<td>${Address.storeId1}</td>
+						<td>${Address.uStoreName1}</td>
 					</tr>
-					<tr>
+					<tr class="Address" >
 						<td><label><input class="selectAddress"
 						 				type='radio' name='DeliverAddress' value='2'></label></td>
 						<td>${Address.uAddress2}</td>
 						<td>${Address.uZipcode2}</td>
-						<td>${Address.storeId2}</td>
+						<td>${Address.uStoreName2}</td>
 					</tr>
-					<tr>
+					<tr class="Address" >
 						<td><label><input class="selectAddress"
 						 				type='radio' name='DeliverAddress' value='3'></label></td>
 						<td>${Address.uAddress3}</td>
 						<td>${Address.uZipcode3}</td>
-						<td>${Address.storeId3}</td>
+						<td>${Address.uStoreName3}</td>
 					</tr>
 					
 				</table>
@@ -90,7 +90,38 @@
 		}
 	);
 
+	$( '.address' ).each(function( index ) {
+		let addVal = $.trim( $(this).find('td:eq(1)').text() );
+		if (addVal == "") {
+			$(this).remove();
+		}
+	});
 
+	//배송지가 없는 주소지1는 보여주지도 않을거야
+/*		var n = $("Address.uAddress1").length;
+
+		alert(n +"uAddress1")
+		if (n < 1) {
+			$('.Address1').css('display', 'none');
+		}
+		
+	//배송지가 없는 주소지2는 보여주지도 않을거야 
+		var n = $("Address.uAddress2").length;
+
+		alert(n +"uAddress2")
+		if (n < 1) {
+			$('.Address2').css('display', 'none');
+		}
+	
+	//배송지가 없는 주소지3는 보여주지도 않을거야
+		var n = $("Address.uAddress3").length;
+
+		alert(n +"uAddress3")
+		
+		if (n < 1) {
+			$('.Address3').css('display', 'none');
+		} 
+*/
 	//호출1
 	$(document).on
 	('click', '#Add_Address', function () {

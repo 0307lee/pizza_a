@@ -179,30 +179,30 @@ CREATE TABLE IF NOT EXISTS `pizza_order` (
   `required_time` time DEFAULT NULL,
   `u_id` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `order_TOTAL_PRICE_WON` int(11) DEFAULT NULL,
-  `store_name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `order_store_id` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `order_deliver` tinyint(3) unsigned zerofill DEFAULT NULL,
   `order_zipcode` int(11) DEFAULT NULL,
   `order_address` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `order_request` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `FK1_u_id` (`u_id`),
-  KEY `store_id` (`store_name`) USING BTREE
+  KEY `store_id` (`order_store_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 -- 테이블 데이터 pizza_a.pizza_order:~15 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `pizza_order` DISABLE KEYS */;
-REPLACE INTO `pizza_order` (`order_id`, `order_status`, `order_time`, `required_time`, `u_id`, `order_TOTAL_PRICE_WON`, `store_name`, `order_deliver`, `order_zipcode`, `order_address`, `order_request`) VALUES
-	(1, 'baking', '2020-09-29 19:33:56', '00:30:00', 'aaa', 23000, '대구 달성1점', 001, 12451, '대구', '국이짜다'),
-	(2, 'delivering', '2020-09-29 19:36:51', '00:20:00', 'aaaa', 42440, '대구 용산점', 000, 12451, '대구 상세생략!', '애미야'),
-	(3, 'preparing', '2020-10-06 19:43:22', '00:20:23', 'aaa', 57000, '대구 달성1점', 001, 12451, '대구 상세생략!', '간장쫌'),
-	(4, 'preparing', '2020-10-06 22:00:10', '00:00:00', 'aaa', 57500, '대구 달성1점', 000, 12451, '대구 상세생략!', '물좀'),
-	(5, 'checking', '2020-10-12 18:10:17', '00:11:00', 'aaa', 75000, '대구 용산점', 001, 12451, '대구 상세생략!', '올때매로나'),
-	(6, 'denied', '2020-10-12 20:12:51', '00:00:00', 'aaa', 320000, '대구 달성1점', 001, 12451, '서울 상세생략!', '아 일하기싫어'),
-	(7, 'done', '2020-10-12 20:13:44', '21:15:46', 'aaa', 15000, '대구 달성1점', 000, 12451, '대구 상세생략!', '진짜 짜요'),
-	(8, 'delivering', '2020-10-19 20:05:37', '04:24:56', 'a', 57000, '대구 용산점', 001, 14123, '서울 우아우', '그리'),
-	(9, 'preparing', '2020-10-19 20:14:34', '00:00:00', '123', 15000, '대구 달성1점', 001, 15123, '대구 상세생략!', '막스'),
-	(10, 'preparing', '2020-10-19 20:19:15', '00:20:23', 'aaa', 57000, '대구 달성1점', 000, 15324, '부산 대구두구', '웹툰'),
-	(11, 'baking', '2020-10-19 21:05:04', '00:05:09', 'aaaa', 13120, '대구 중구1점', 001, 15641, '대누타우닝', '아 싫다싫어 ㅋㅋ'),
+REPLACE INTO `pizza_order` (`order_id`, `order_status`, `order_time`, `required_time`, `u_id`, `order_TOTAL_PRICE_WON`, `order_store_id`, `order_deliver`, `order_zipcode`, `order_address`, `order_request`) VALUES
+	(1, 'baking', '2020-09-29 19:33:56', '00:30:00', 'aaa', 23000, '1', 001, 12451, '대구', '국이짜다'),
+	(2, 'delivering', '2020-09-29 19:36:51', '00:20:00', 'aaaa', 42440, '1', 000, 12451, '대구 상세생략!', '애미야'),
+	(3, 'preparing', '2020-10-06 19:43:22', '00:20:23', 'aaa', 57000, '2', 001, 12451, '대구 상세생략!', '간장쫌'),
+	(4, 'preparing', '2020-10-06 22:00:10', '00:00:00', 'aaa', 57500, '2', 000, 12451, '대구 상세생략!', '물좀'),
+	(5, 'checking', '2020-10-12 18:10:17', '00:11:00', 'aaa', 75000, '3', 001, 12451, '대구 상세생략!', '올때매로나'),
+	(6, 'denied', '2020-10-12 20:12:51', '00:00:00', 'aaa', 320000, '1', 001, 12451, '서울 상세생략!', '아 일하기싫어'),
+	(7, 'done', '2020-10-12 20:13:44', '21:15:46', 'aaa', 15000, '1', 000, 12451, '대구 상세생략!', '진짜 짜요'),
+	(8, 'delivering', '2020-10-19 20:05:37', '04:24:56', 'a', 57000, '3', 001, 14123, '서울 우아우', '그리'),
+	(9, 'preparing', '2020-10-19 20:14:34', '00:00:00', '123', 15000, '2', 001, 15123, '대구 상세생략!', '막스'),
+	(10, 'preparing', '2020-10-19 20:19:15', '00:20:23', 'aaa', 57000, '1', 000, 15324, '부산 대구두구', '웹툰'),
+	(11, 'baking', '2020-10-19 21:05:04', '00:05:09', 'aaaa', 13120, '3', 001, 15641, '대누타우닝', '아 싫다싫어 ㅋㅋ'),
 	(12, 'preparing', '2020-10-19 21:29:37', NULL, 'aaa', NULL, NULL, NULL, NULL, NULL, NULL),
 	(13, 'preparing', '2020-10-19 21:30:43', NULL, 'aaa', NULL, NULL, NULL, NULL, NULL, NULL),
 	(14, 'preparing', '2020-10-19 21:35:48', NULL, 'aaa', NULL, NULL, NULL, NULL, NULL, NULL),
@@ -281,13 +281,13 @@ REPLACE INTO `pizza_stocks` (`stock_id`, `stock_CODE`, `stock_quantity`, `stock_
 CREATE TABLE IF NOT EXISTS `pizza_store` (
   `store_id` int(11) DEFAULT NULL,
   `store_name` varchar(50) DEFAULT NULL,
-  `store_namager` varchar(50) DEFAULT NULL,
+  `store_manager` varchar(50) DEFAULT NULL,
   `store_phone` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 pizza_a.pizza_store:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `pizza_store` DISABLE KEYS */;
-REPLACE INTO `pizza_store` (`store_id`, `store_name`, `store_namager`, `store_phone`) VALUES
+REPLACE INTO `pizza_store` (`store_id`, `store_name`, `store_manager`, `store_phone`) VALUES
 	(3, '대구 중구1점', 'park', '01051647894'),
 	(1, '대구 달성1점', 'lee', '01051934532'),
 	(2, '대구 용산점', 'kim', '01051934532');
@@ -309,13 +309,13 @@ CREATE TABLE IF NOT EXISTS `pizza_user` (
   `u_disabled` tinyint(1) unsigned zerofill DEFAULT NULL,
   `u_address1` varchar(50) DEFAULT NULL,
   `u_zipcode1` int(11) DEFAULT NULL,
-  `store_name_1` varchar(255) DEFAULT NULL,
+  `u_store_id_1` int(11) DEFAULT NULL,
   `u_address2` varchar(50) DEFAULT NULL,
   `u_zipcode2` int(11) DEFAULT NULL,
-  `store_name_2` varchar(255) DEFAULT NULL,
+  `u_store_id_2` int(11) DEFAULT NULL,
   `u_address3` varchar(50) DEFAULT NULL,
   `u_zipcode3` int(11) DEFAULT NULL,
-  `store_name_3` varchar(255) DEFAULT NULL,
+  `u_store_id_3` int(11) DEFAULT NULL,
   `M_store_id` int(11) DEFAULT NULL,
   `u_basic_address` int(11) DEFAULT NULL,
   PRIMARY KEY (`u_id`),
@@ -324,16 +324,16 @@ CREATE TABLE IF NOT EXISTS `pizza_user` (
 
 -- 테이블 데이터 pizza_a.pizza_user:~9 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `pizza_user` DISABLE KEYS */;
-REPLACE INTO `pizza_user` (`u_id`, `u_password`, `u_no`, `u_name`, `u_phone`, `u_datetime`, `u_isAccountNonExpired`, `u_isAccountNonLocked`, `u_isCredentialNonExpired`, `u_isEnabled`, `u_level`, `u_disabled`, `u_address1`, `u_zipcode1`, `store_name_1`, `u_address2`, `u_zipcode2`, `store_name_2`, `u_address3`, `u_zipcode3`, `store_name_3`, `M_store_id`, `u_basic_address`) VALUES
-	('123', '$2a$10$6Y5ii5ODNls.C0AqsKt4pekqZtxu6g.jYvPNRYGjqAGugcq85D4.O', 1, NULL, '01051934563', '2020-09-25 10:44:38', 1, 1, 1, 1, NULL, NULL, NULL, NULL, '대구 용산점', NULL, NULL, NULL, NULL, NULL, '대구 달성1점', NULL, 1),
-	('1234', '$2a$10$4y5rz5t/FMY5FvI6/5BA9ODxFJurfZSw2x6hrYlmZTuOTqm7/72UC', 2, NULL, '01051934563', '2020-09-25 11:34:38', 1, 1, 1, 1, NULL, NULL, NULL, NULL, '대구 용산점', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
-	('5', '$2a$10$hbOjMsjnuFDlPSEXrY9DIuTeoFkfmIUlVaeDVcI3f5/y/h5EbBO7W', 9, NULL, '124', '2020-10-14 21:00:07', 1, 1, 1, 1, 1, 0, NULL, NULL, '대구 용산점', NULL, NULL, NULL, NULL, NULL, '대구 달성1점', NULL, 1),
-	('a', '$2a$10$wpZt/mvoudYbcLrMvBBNTeSCTjVUjqTE/Ks/wsguWMq7iHkT/2pS6', 3, '123', '01051934563', '2020-09-11 21:49:47', 1, 1, 1, 1, 1, 0, NULL, NULL, '대구 용산점', NULL, NULL, NULL, NULL, NULL, '대구 달성1점', NULL, 1),
-	('aaa', '$2a$10$ZSE0ra.nli3CWYMXp2mxEuPo0IYDoV2lSXAR99M9/1t6dWEmt2cZy', 4, '123', '01051934563', '2020-08-27 21:47:26', 1, 1, 1, 1, 3, 0, '성서동로350 302동 1205호', 45713, '대구 달성1점', '중구 파출소', 48293, '대구 중구1점', NULL, NULL, '대구 용산점', NULL, 1),
-	('aaa44', '$2a$10$0Tl5BppYj3exmcE2pFqw4.UKHM..5Cg8bZ0ZkRshnf0OKYXDIMNS.', 8, NULL, '01051934532', '2020-10-14 20:46:49', 1, 1, 1, 1, 1, 0, NULL, NULL, '대구 용산점', NULL, NULL, NULL, NULL, NULL, '대구 달성1점', NULL, 1),
-	('aaaa', '$2a$10$6LGZWfCpwU87zFBSwDv/N.frvFCsZ2F47xvlCDaIh0xwj40O6wR9q', 5, 'lee', '01051934563', '2020-08-27 22:03:51', 1, 1, 1, 1, 1, 0, '달성군 301', 45231, '대구 용산점', NULL, NULL, NULL, NULL, NULL, '대구 달성1점', 1, 1),
-	('asd', '$2a$10$M/gdoqAe6Aemz5261EycjO2OckeHnAE7yrToNaTBiIETuS3r1Cxge', 6, NULL, '01051934563', '2020-09-21 21:09:56', 1, 1, 1, 1, NULL, NULL, NULL, NULL, '대구 용산점', NULL, NULL, '대구 용산점', NULL, NULL, '대구 달성1점', NULL, 1),
-	('qwe', '$2a$10$hoInIyEr8VAnORJoc/quR.UnmgwVnloCpWOxPu1bEXrWzmgZqS/l2', 7, NULL, '01051934563', '2020-10-12 17:51:26', 1, 1, 1, 1, NULL, NULL, NULL, NULL, '대구 용산점', NULL, NULL, NULL, NULL, NULL, '대구 달성1점', 2, 1);
+REPLACE INTO `pizza_user` (`u_id`, `u_password`, `u_no`, `u_name`, `u_phone`, `u_datetime`, `u_isAccountNonExpired`, `u_isAccountNonLocked`, `u_isCredentialNonExpired`, `u_isEnabled`, `u_level`, `u_disabled`, `u_address1`, `u_zipcode1`, `u_store_id_1`, `u_address2`, `u_zipcode2`, `u_store_id_2`, `u_address3`, `u_zipcode3`, `u_store_id_3`, `M_store_id`, `u_basic_address`) VALUES
+	('123', '$2a$10$6Y5ii5ODNls.C0AqsKt4pekqZtxu6g.jYvPNRYGjqAGugcq85D4.O', 1, NULL, '01051934563', '2020-09-25 10:44:38', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, NULL, NULL, 1, NULL, NULL, 2, NULL, 1),
+	('1234', '$2a$10$4y5rz5t/FMY5FvI6/5BA9ODxFJurfZSw2x6hrYlmZTuOTqm7/72UC', 2, NULL, '01051934563', '2020-09-25 11:34:38', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, NULL, NULL, 2, NULL, NULL, 2, NULL, 1),
+	('5', '$2a$10$hbOjMsjnuFDlPSEXrY9DIuTeoFkfmIUlVaeDVcI3f5/y/h5EbBO7W', 9, NULL, '124', '2020-10-14 21:00:07', 1, 1, 1, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 2, NULL, 1),
+	('a', '$2a$10$wpZt/mvoudYbcLrMvBBNTeSCTjVUjqTE/Ks/wsguWMq7iHkT/2pS6', 3, '123', '01051934563', '2020-09-11 21:49:47', 1, 1, 1, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 2, NULL, 1),
+	('aaa', '$2a$10$ZSE0ra.nli3CWYMXp2mxEuPo0IYDoV2lSXAR99M9/1t6dWEmt2cZy', 4, '123', '01051934563', '2020-08-27 21:47:26', 1, 1, 1, 1, 3, 0, '성서동로350 302동 1205호', 45713, 2, '중구 파출소', 48293, 3, NULL, NULL, 1, NULL, 1),
+	('aaa44', '$2a$10$0Tl5BppYj3exmcE2pFqw4.UKHM..5Cg8bZ0ZkRshnf0OKYXDIMNS.', 8, NULL, '01051934532', '2020-10-14 20:46:49', 1, 1, 1, 1, 1, 0, NULL, NULL, 1, NULL, NULL, 2, NULL, NULL, 3, NULL, 1),
+	('aaaa', '$2a$10$6LGZWfCpwU87zFBSwDv/N.frvFCsZ2F47xvlCDaIh0xwj40O6wR9q', 5, 'lee', '01051934563', '2020-08-27 22:03:51', 1, 1, 1, 1, 1, 0, '달성군 301', 45231, 1, NULL, NULL, 2, NULL, NULL, 3, 1, 1),
+	('asd', '$2a$10$M/gdoqAe6Aemz5261EycjO2OckeHnAE7yrToNaTBiIETuS3r1Cxge', 6, NULL, '01051934563', '2020-09-21 21:09:56', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, NULL, NULL, 2, NULL, NULL, 3, NULL, 1),
+	('qwe', '$2a$10$hoInIyEr8VAnORJoc/quR.UnmgwVnloCpWOxPu1bEXrWzmgZqS/l2', 7, NULL, '01051934563', '2020-10-12 17:51:26', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 1, NULL, NULL, 2, NULL, NULL, 3, 2, 1);
 /*!40000 ALTER TABLE `pizza_user` ENABLE KEYS */;
 
 -- 테이블 pizza_a.spring_session 구조 내보내기
@@ -354,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `spring_session` (
 -- 테이블 데이터 pizza_a.spring_session:~1 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `spring_session` DISABLE KEYS */;
 REPLACE INTO `spring_session` (`PRIMARY_ID`, `SESSION_ID`, `CREATION_TIME`, `LAST_ACCESS_TIME`, `MAX_INACTIVE_INTERVAL`, `EXPIRY_TIME`, `PRINCIPAL_NAME`) VALUES
-	('73d0f2f2-5812-4c6c-b0bc-5e13275f131e', '92b09fd7-ac83-4ce5-89ba-6daff172e38e', 1603273821153, 1603276303170, 7200, 1603283503170, 'aaa');
+	('73d0f2f2-5812-4c6c-b0bc-5e13275f131e', '92b09fd7-ac83-4ce5-89ba-6daff172e38e', 1603273821153, 1603277705732, 7200, 1603284905732, 'aaa');
 /*!40000 ALTER TABLE `spring_session` ENABLE KEYS */;
 
 -- 테이블 pizza_a.spring_session_attributes 구조 내보내기
