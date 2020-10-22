@@ -4,7 +4,8 @@ Q1. Model에서 가져온 데이터는 무조건 View에 보여야하나?
 아니겠지
 Q2.  View01에서 insert한 자료가
 View02에서 select되어야한다. 그러면 
-View02에서 view01에서 insert한 자료를 열람하면 되지 고러취
+ㄴ에서 (view01에서 insert한 자료)를 열람하면 되지 고러취
+
 
 
 6
