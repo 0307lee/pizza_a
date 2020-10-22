@@ -175,7 +175,6 @@ public class Controller {
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
-
 		//TODO  Ban no.Pizza<1 in .JSP
 
 		return "/Stg2_1_SetPizza_basic";
@@ -183,7 +182,7 @@ public class Controller {
 
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/process_Stg2_1_SetPizza_basic")
-	public String process_Stg2_1_SetPizza_basic(OrderVO post) {
+	public String process_Stg2_1_SetPizza_basic(OrderVO post, Principal principal) {
 
 		orderservice.Stg2_1_setPizza_basic(post);
 
@@ -193,9 +192,8 @@ public class Controller {
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Stg3_1_SetOrder")
 	public String Stg3_1_SetOrder(Model model, Principal principal) {
-
+		List<OrderVO> PresentOrderItemInfo =orderservice.read_PresentOrderItems_byusername(principal.getName());
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-		//		System.out.println(LastOrderItemInfo);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
 		return "/Stg3_1_SetOrder";
@@ -229,12 +227,10 @@ public class Controller {
 	@RequestMapping(value = "/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress")
 	public String Process_Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post) {
 
-		//show_info_debug_err();
-		//		orderservice.Stg2_1_setPizza_basic(post);
-		logger.debug("11111111111111111111111111");
-		logger.debug(""+post);
+		
+		orderservice.Stg3_1_1_SetAddress_deliver1_LastAddress(post);
 
-		//return "redirect:/user/Stg3_1_SetOrder";
-		return "/Stg1_LOGIN";
+		return "redirect:/user/Stg3_1_SetOrder";
+		
 	}
 }

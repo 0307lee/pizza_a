@@ -140,7 +140,24 @@
 
 
 <script>
-	//피자크기를 input으로 전송
+
+	//////////////////////////
+	//호출1
+	$(document).on('click', '#btn_Order_Cheese', function() {
+		var size = $('#show_pizza_size').text();
+		alert("ORDER size: " + size + "의 피자를 주문합니다.");
+		$('#frm_SetPizza').submit();
+	});
+	
+	//////////////////////////	
+	//호출2
+	$(document).on('click', '#btn_stg2_topping', function() {
+		alert("PUT TOPPING");
+		$('#frm_SetPizza').submit();
+	});
+
+	
+		//피자크기를 input으로 전송
 	$(document).on('click', '.show-pizza-size', function() {
 		$('#show_pizza_size').text($(this).val());
 	});
@@ -182,17 +199,5 @@
 		$("#show_pizza_price").text(this.value);
 	}
 
-	//////////////////////////
-	//호출1
-	$(document).on('click', '#btn_Order_Cheese', function() {
-		var size = $('#show_pizza_size').text();
-		alert("ORDER size: " + size + "의 피자를 주문합니다.");
-		$('#frm_SetPizza').submit();
-	});
 
-	//호출2
-	$(document).on('click', '#btn_stg2_topping', function() {
-		alert("PUT TOPPING");
-		$('#frm_SetPizza').submit();
-	});
 </script>

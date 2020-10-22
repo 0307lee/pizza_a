@@ -17,5 +17,12 @@ public interface OrderService {
 	public void erasePreparingOrder(String username);
 
 
+//	public OrderVO Stg3_1_1_deliver1_LastAddress(OrderVO post);
+
+	public List<OrderVO> read_PresentOrderItems_byusername(String name);
+
+	public void Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post);
+
+
 
 }

@@ -16,25 +16,18 @@
 <hr>
 <sec:authorize access="hasRole('ROLE_USER')">
 
-		<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
-			<div>
-				<div class="size-group" role="group" aria-label="...">
-					<a class="btn btn-primary btn-lg btn-block"
-						href="/user/Stg3_1_SetOrder" role="button"
-						id="btn_stg3_keepLastOrder">지난 배송지였던
-						[${LastOrderInfo.orderAddress}]를 그대로 활용</a>
-					<div>
-						<input type="text" name="orderAddress"
-							value="${LastOrderInfo.orderAddress}">
-						<input type="text"
-							name="orderZipcode" value="${LastOrderInfo.orderZipcode}">
-						<input type="text" name="storeId" value="${LastOrderInfo.storeId}">
-					</div>
-				</div>
+	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
+		<div class="size-group" role="group" aria-label="...">
+			<a class="btn btn-primary btn-lg btn-block"
+				href="/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress" role="button"
+				id="btn_stg3_keepLastOrder">지난 배송지였던 [${LastOrderInfo.orderAddress}]를 그대로 활용</a>
+			<input type="hidden" name="storeId" value="${LastOrderInfo.storeId}">
+			<input type="hidden" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">
+			<input type="hidden" name="orderAddress" value="${LastOrderInfo.orderAddress}">
+		</div>
 
-			</div>
 
-		</c:forEach>
+	</c:forEach>
 
 
 	<h2 style="text-align: center">OR</h2>
@@ -97,11 +90,7 @@
 
 
 <script>
-	$(document).on
-	('click', '#btn_stg3_keepLastOrder', function () {
-		alert( $('#frm_SetPizza_deliver1_lastAddress').attr('action') );
-		$('#frm_SetPizza_deliver1_lastAddress').submit();
-	});
+
 
 	$( '.address' ).each(function( index ) {
 		let addVal = $.trim( $(this).find('td:eq(1)').text() );

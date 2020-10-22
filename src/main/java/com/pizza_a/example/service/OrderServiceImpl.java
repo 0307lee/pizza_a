@@ -35,5 +35,15 @@ public class OrderServiceImpl implements OrderService{
 		ordermapper.erasePreparingOrder(username);
 	};
 
+	@Override
+	public List<OrderVO> read_PresentOrderItems_byusername(String name){
+		return ordermapper.read_PresentOrderItems_byusername(name);
+	};
+
+	@Override	
+	public void Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post) {
+		ordermapper.Stg3_1_1_SetAddress_deliver1_LastAddress(post);
+	};
+
 
 }

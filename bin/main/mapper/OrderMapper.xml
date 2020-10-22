@@ -26,6 +26,31 @@
 			ORDER BY		ta.order_id DESC
 			LIMIT			1, 1
 	</select>
+	<select id="read_PresentOrderItems_byusername" parameterType="String" resultType="OrderVO">
+			SELECT			order_item_size			as orderItemSize,
+							order_item_quantity_EA	as orderItemQuantity,
+							order_item_price_won	as orderItemPrice,
+							u_id					as username,
+							order_address			as orderAddress,
+							order_zipcode			as orderZipcode,
+							ta.order_id				as orderId,
+							ta.order_store_id		as StoreId,
+							store_name				as storeName,
+							store_manager			as storeMangaer,
+							store_phone				as storePhone,
+							order_status			as orderStatus,
+							order_deliver			as orderDeliver,
+							order_request			as orderRequest
+			FROM			pizza_order ta
+			LEFT JOIN		pizza_order_items tb 
+				ON 			ta.order_id = tb.order_id
+			LEFT JOIN		pizza_store tc
+				ON 			ta.order_store_id = tc.store_id
+			WHERE			ta.u_id = #{username}
+			AND				ta.order_status = 'preparing'
+			ORDER BY		ta.order_id DESC
+			LIMIT			0, 1
+	</select>
 	<insert  id="makeOrder" parameterType="String" >
 			INSERT INTO		pizza_order
 							(u_id,order_status,order_time)
@@ -53,7 +78,7 @@
 			AND 			required_time=NULL;
 	</delete>
 	<!-- 
-	<insert  id="Stg2_1_setPizza_basic" parameterType="orderVO">
+	<insert  id="Stg3_1_1_" parameterType="orderVO">
 			INSERT INTO		pizza_order
 							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won)
 			VALUE			(#{orderId},#{orderItemSize},#{orderItemQuantity},#{orderItemPrice});
