@@ -1,3 +1,19 @@
+7
+ Model  < - >  Controller   <-> View
+Q1. Model에서 가져온 데이터는 무조건 View에 보여야하나?
+아니겠지
+Q2.  View01에서 insert한 자료가
+View02에서 select되어야한다. 그러면 
+View02에서 view01에서 insert한 자료를 열람하면 되지 고러취
+
+
+6
+이전 자료가 있는 친구는 잘 뜬다. bcz 그렇게 설계햇으니
+그런데
+ 이전 주문내용이 없는 친구는 아무것도 안뜬다. 값(c:foreach로 넘어오는 값)이 없어도 새로 뜰 수 있도록 만들 수 는 없을까?
+>>C:when
+
+
 5 
 sql 순서 상관 ?
 

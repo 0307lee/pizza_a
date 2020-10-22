@@ -65,7 +65,7 @@
 			LIMIT			0, 1
 	</select>
 	
-	<insert  id="Stg2_1_setPizza_basic" parameterType="orderVO">
+	<insert  id="Stg2_1_setPizza_basic" parameterType="OrderVO">
 			INSERT INTO		pizza_order_items
 							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won)
 			VALUE			(#{orderId},#{orderItemSize},#{orderItemQuantity},#{orderItemPrice});
@@ -77,12 +77,13 @@
 			where 			order_id>200
 			AND 			required_time=NULL;
 	</delete>
-	<!-- 
-	<insert  id="Stg3_1_1_" parameterType="orderVO">
-			INSERT INTO		pizza_order
-							(order_id,order_item_size,order_item_quantity_EA,order_item_price_won)
-			VALUE			(#{orderId},#{orderItemSize},#{orderItemQuantity},#{orderItemPrice});
-	</insert>
-	 -->
+	<update id="Stg3_1_1_SetAddress_deliver1_LastAddress" parameterType="OrderVO">
+			UPDATE 			pizza_order
+			SET	 			order_zipcode	= #{orderZipcode},
+							order_address	= #{orderAddress},
+							order_store_id	= #{storeId}
+			WHERE 			order_id		= #{orderId}
+	</update>
+
 	
 </mapper>

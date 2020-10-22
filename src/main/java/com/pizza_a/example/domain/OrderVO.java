@@ -11,7 +11,7 @@ public class OrderVO {
 		private String	requiredTime;
 		private String	username;
 		private int		orderTOTALPRICEWON;
-		private int		storeId;
+		private int		orderStoreId;
 		private int		orderZipcode;
 		private String	orderAddress;	
 		private String	orderRequest;
@@ -21,6 +21,7 @@ public class OrderVO {
 		private int		orderItemQuantity;
 		private int		orderItemPrice;
 	//pizza_store_TB
+		private int		storeId; //hmm
 		private String	storeName;
 		private String	storeManager;		
 		private String	storePhone;
@@ -68,11 +69,11 @@ public class OrderVO {
 	public void setOrderTOTALPRICEWON(int orderTOTALPRICEWON) {
 		this.orderTOTALPRICEWON = orderTOTALPRICEWON;
 	}
-	public int getStoreId() {
-		return storeId;
+	public int getOrderStoreId() {
+		return orderStoreId;
 	}
-	public void setStoreId(int storeId) {
-		this.storeId = storeId;
+	public void setOrderStoreId(int orderStoreId) {
+		this.orderStoreId = orderStoreId;
 	}
 	public int getOrderZipcode() {
 		return orderZipcode;
@@ -121,6 +122,12 @@ public class OrderVO {
 	}
 	
 	//
+	public int getStoreId() {
+		return storeId;
+	}
+	public void setStoreId(int storeId) {
+		this.storeId = storeId;
+	}
 	public String getStoreName() {
 		return storeName;
 	}

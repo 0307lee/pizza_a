@@ -192,7 +192,7 @@ public class Controller {
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Stg3_1_SetOrder")
 	public String Stg3_1_SetOrder(Model model, Principal principal) {
-		List<OrderVO> PresentOrderItemInfo =orderservice.read_PresentOrderItems_byusername(principal.getName());
+		
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
@@ -215,8 +215,11 @@ public class Controller {
 	public String Stg3_1_1_SetAddress_deliver1(Model model, Principal principal) {
 
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-		model.addAttribute("list_OrderVO", LastOrderItemInfo);
+		model.addAttribute("list_OrderVO_L", LastOrderItemInfo);
 
+		List<OrderVO> PresentOrderItemInfo =orderservice.read_PresentOrderItems_byusername(principal.getName());
+		model.addAttribute("list_OrderVO_P", PresentOrderItemInfo);
+		
 		List<UserVO> AddressList=userservice.read_Address_byusername(principal.getName());
 		model.addAttribute("list_AddressList", AddressList);
 
@@ -225,12 +228,11 @@ public class Controller {
 
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress")
-	public String Process_Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post) {
+	public String Process_Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post, Principal principal) {
 
-		
+		logger.debug(""+post);
 		orderservice.Stg3_1_1_SetAddress_deliver1_LastAddress(post);
 
 		return "redirect:/user/Stg3_1_SetOrder";
-		
 	}
 }

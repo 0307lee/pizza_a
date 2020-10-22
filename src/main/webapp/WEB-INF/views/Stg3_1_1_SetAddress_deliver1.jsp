@@ -15,19 +15,25 @@
 <h3>배송</h3>
 <hr>
 <sec:authorize access="hasRole('ROLE_USER')">
+	<div class="size-group" role="group" aria-label="...">
+		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress"
+				method="post" id="frm_Process_Stg3_1_1_SetAddress_deliver1_LastAddress">
+			<c:forEach var="LastOrderInfo" items="${list_OrderVO_L}">
+				<button type="button" class="btn btn-primary btn-lg btn-block"
+							id="btn_stg3_keepLastOrder">지난 배송지였던 [${LastOrderInfo.orderAddress}]를 그대로 활용</button>
+				<input type="hidden" name="storeId" 	 value="${LastOrderInfo.storeId}">
+				<input type="hidden" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">
+				<input type="hidden" name="orderAddress" value="${LastOrderInfo.orderAddress}">
+			</c:forEach>
+			<c:forEach var="PresentOrderItemInfo" items="${list_OrderVO_P}">
+				<input type="hidden" name="orderId" 	   value="${PresentOrderItemInfo.orderId}">
+				<input type="hidden" name="orderItemSize"  value="${PresentOrderItemInfo.orderItemSize}">
+				<input type="hidden" name="orderItemPrice" value="${PresentOrderItemInfo.orderItemPrice}">
+			</c:forEach>
+		</form>	
+	</div>
 
-	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
-		<div class="size-group" role="group" aria-label="...">
-			<a class="btn btn-primary btn-lg btn-block"
-				href="/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress" role="button"
-				id="btn_stg3_keepLastOrder">지난 배송지였던 [${LastOrderInfo.orderAddress}]를 그대로 활용</a>
-			<input type="hidden" name="storeId" value="${LastOrderInfo.storeId}">
-			<input type="hidden" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">
-			<input type="hidden" name="orderAddress" value="${LastOrderInfo.orderAddress}">
-		</div>
 
-
-	</c:forEach>
 
 
 	<h2 style="text-align: center">OR</h2>
@@ -101,7 +107,7 @@
 
 	//호출1
 	$(document).on
-	('click', '#Add_Address', function () {
-		alert("미구현.");
+	('click', '#btn_stg3_keepLastOrder', function () {
+		$('#frm_Process_Stg3_1_1_SetAddress_deliver1_LastAddress').submit();
 	});
 </script>
