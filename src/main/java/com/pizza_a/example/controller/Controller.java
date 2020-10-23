@@ -214,6 +214,7 @@ public class Controller {
 	@RequestMapping(value = "/user/Stg3_1_1_SetAddress_deliver1/{username}")
 	public String Stg3_1_1_SetAddress_deliver1(Model model, Principal principal) {
 
+		//if deliver1(@pizza_order) is not Null,id="stg3_1_SetPizza_basic"을 보여줘라  그냥) (bcz 이미 진행되고있는 주문이므로)
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
 		model.addAttribute("list_OrderVO_L", LastOrderItemInfo);
 
