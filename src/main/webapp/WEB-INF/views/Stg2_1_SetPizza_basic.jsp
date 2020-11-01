@@ -32,16 +32,13 @@
 						<button type="button" class="show-pizza-size" value="XL">XL</button>
  -->
 				<button type="button">
-					<label><input class="show-pizza-size" type='radio' 
-						name='orderItemSize' value='M'></label>M
+					<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='M'>M</label>
 				</button>
 				<button type="button">
-					<label><input class="show-pizza-size" type='radio'
-						name='orderItemSize' value='L'>L</label>
+					<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='L'>L</label>
 				</button>
 				<button type="button">
-					<label><input class="show-pizza-size" type='radio'
-						name='orderItemSize' value='XL'>XL</label>
+					<label><input class="show-pizza-size" type='radio' name='orderItemSize' value='XL'>XL</label>
 				</button>
 			</div>
 			<br>

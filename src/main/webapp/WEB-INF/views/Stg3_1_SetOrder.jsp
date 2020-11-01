@@ -36,7 +36,8 @@
 			class="col-sm-6 col-md-5 col-lg-12">
 			<a href="/user/Stg3_1_2_SetAddress_deliver0/${principal.username}"
 				class="btn btn-primary btn-lg btn-block" style="display: none;"
-				role="button" id="btn_stg3_1_1_visitStore">방문 하실 매장은 ${LastOrderInfo.storeName} 입니다.</a> <a
+				role="button" id="btn_stg3_1_1_visitStore">방문 하실 매장은 ${LastOrderInfo.storeName} 입니다.</a> 
+			<a
 				href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}"
 				class="btn btn-primary btn-lg btn-block" style="display: none;"
 				role="button" id="btn_stg3_1_1_orderDeliver">지난번 배송지는 [${LastOrderInfo.orderAddress} ] 였어요. 여기로 재배송할게요~! (변경하려면 클릭!)</a>
