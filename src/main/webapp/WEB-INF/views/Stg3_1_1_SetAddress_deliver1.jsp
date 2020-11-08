@@ -54,21 +54,21 @@
 
 					<tr class="Address">
 						<td><label><input class="selectAddress" type='radio'
-								name='DeliverAddress' value='1'></label></td>
+								name='DeliverAddress' value='DeliverAddress1'></label></td>
 						<td>${Address.uAddress1}</td>
 						<td>${Address.uZipcode1}</td>
 						<td>${Address.uStoreName1}</td>
 					</tr>
 					<tr class="Address">
 						<td><label><input class="selectAddress" type='radio'
-								name='DeliverAddress' value='2'></label></td>
+								name='DeliverAddress' value='DeliverAddress2'></label></td>
 						<td>${Address.uAddress2}</td>
 						<td>${Address.uZipcode2}</td>
 						<td>${Address.uStoreName2}</td>
 					</tr>
 					<tr class="Address">
 						<td><label><input class="selectAddress" type='radio'
-								name='DeliverAddress' value='3'></label></td>
+								name='DeliverAddress' value='DeliverAddress3'></label></td>
 						<td>${Address.uAddress3}</td>
 						<td>${Address.uZipcode3}</td>
 						<td>${Address.uStoreName3}</td>
@@ -109,5 +109,12 @@
 	$(document).on
 	('click', '#btn_stg3_keepLastOrder', function () {
 		$('#frm_Process_Stg3_1_1_SetAddress_deliver1_LastAddress').submit();
+	});
+
+	//호출2
+	$(document).on
+	('click', '.selectAddress', function () {
+		var deliveraddress =$('.selectAddress').val();
+		alert("value: "+deliveraddress);
 	});
 </script>
