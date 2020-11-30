@@ -23,6 +23,10 @@ public interface OrderService {
 
 	public void Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post);
 
+	public void Stg3_1_1_SetAddress_deliver1_AnotherAddress(OrderVO post);
+
+	
+
 
 
 }

@@ -40,7 +40,7 @@
 			<a
 				href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}"
 				class="btn btn-primary btn-lg btn-block" style="display: none;"
-				role="button" id="btn_stg3_1_1_orderDeliver">지난번 배송지는 [${LastOrderInfo.orderAddress} ] 였어요. 여기로 재배송할게요~! (변경하려면 클릭!)</a>
+				role="button" id="btn_stg3_1_1_orderDeliver">지난번 배송지였던 [${LastOrderInfo.orderAddress} ] 로 재배송할게요~! (변경하려면 클릭!)</a>
 
 
 			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_request">요청사항은 ${LastOrderInfo.orderRequest}입니다.</button>

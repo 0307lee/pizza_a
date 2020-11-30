@@ -41,8 +41,8 @@
 	<br>
 
 	<c:forEach var="Address" items="${list_AddressList}">
-		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1"
-			method="post" id="frm_SetPizza_deliver1_AnotherAddress">
+		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress"
+			method="post" id="frm_Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress">
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<tr>
@@ -53,29 +53,43 @@
 					</tr>
 
 					<tr class="Address">
-						<td><label><input class="selectAddress" type='radio'
-								name='DeliverAddress' value='DeliverAddress1'></label></td>
+						<td><input class="selectAddress" type='radio'
+								name='DeliverAddress' value='DeliverAddress1'></td>
 						<td>${Address.uAddress1}</td>
 						<td>${Address.uZipcode1}</td>
 						<td>${Address.uStoreName1}</td>
+						<td>
+							<input type="hidden" name="storeId" 	 value="${Address.uStoreId1}">
+							<input type="hidden" name="orderZipcode" value="${Address.uZipcode1}">
+							<input type="hidden" name="orderAddress" value="${Address.uAddress1}"></td>
 					</tr>
 					<tr class="Address">
-						<td><label><input class="selectAddress" type='radio'
-								name='DeliverAddress' value='DeliverAddress2'></label></td>
+						<td><input class="selectAddress" type='radio'
+								name='DeliverAddress' value='DeliverAddress2'></td>
 						<td>${Address.uAddress2}</td>
 						<td>${Address.uZipcode2}</td>
 						<td>${Address.uStoreName2}</td>
-					</tr>
+						<td><input type="hidden" name="storeId" 	 value="${Address.uStoreId2}">
+							<input type="hidden" name="orderZipcode" value="${Address.uZipcode2}">
+							<input type="hidden" name="orderAddress" value="${Address.uAddress2}"></td>					</tr>
 					<tr class="Address">
-						<td><label><input class="selectAddress" type='radio'
-								name='DeliverAddress' value='DeliverAddress3'></label></td>
+						<td><input class="selectAddress" type='radio'
+								name='DeliverAddress' value='DeliverAddress3'></td>
 						<td>${Address.uAddress3}</td>
 						<td>${Address.uZipcode3}</td>
 						<td>${Address.uStoreName3}</td>
-					</tr>
+						<td><input type="hidden" name="storeId" 	 value="${Address.uStoreId3}">
+							<input type="hidden" name="orderZipcode" value="${Address.uZipcode3}">
+							<input type="hidden" name="orderAddress" value="${Address.uAddress3}"></td>					</tr>
 
 				</table>
 			</div>
+			<c:forEach var="PresentOrderItemInfo" items="${list_OrderVO_P}">
+				<input type="hidden" name="orderId" 	   value="${PresentOrderItemInfo.orderId}">
+				<input type="hidden" name="orderItemSize"  value="${PresentOrderItemInfo.orderItemSize}">
+				<input type="hidden" name="orderItemPrice" value="${PresentOrderItemInfo.orderItemPrice}">
+			</c:forEach>
+			
 		</form>
 	</c:forEach>
 
@@ -114,7 +128,7 @@
 	//호출2
 	$(document).on
 	('click', '.selectAddress', function () {
-		var deliveraddress =$('.selectAddress').val();
-		alert("value: "+deliveraddress);
+		alert($(this).val());
+		$('#frm_Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress').submit();
 	});
 </script>

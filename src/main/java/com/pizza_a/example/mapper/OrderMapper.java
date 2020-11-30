@@ -20,8 +20,10 @@ public interface OrderMapper {
 
 	void erasePreparingOrder(String username);
 
+	List<OrderVO> read_PresentOrderItems_byusername(String name);
+
 	void Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post);
 
-	List<OrderVO> read_PresentOrderItems_byusername(String name);
+	void Stg3_1_1_SetAddress_deliver1_AnotherAddress(OrderVO post);
 
 }

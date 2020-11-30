@@ -85,5 +85,11 @@
 			WHERE 			order_id		= #{orderId}
 	</update>
 
-	
+	<update id="Stg3_1_1_SetAddress_deliver1_AnotherAddress" parameterType="OrderVO">
+			UPDATE 			pizza_order
+			SET	 			order_zipcode	= #{orderZipcode},
+							order_address	= #{orderAddress},
+							order_store_id	= #{storeId}
+			WHERE 			order_id		= #{orderId}
+	</update>
 </mapper>

@@ -231,8 +231,18 @@ public class Controller {
 	@RequestMapping(value = "/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress")
 	public String Process_Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post, Principal principal) {
 
-		logger.debug(""+post+"sdgsdg");
+		logger.debug(""+post+"it works too");
 		orderservice.Stg3_1_1_SetAddress_deliver1_LastAddress(post);
+
+		return "redirect:/user/Stg3_1_SetOrder";
+	}
+	
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value = "/user/Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress")
+	public String Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress(OrderVO post, Principal principal) {
+
+		logger.debug(""+post+"it works");
+		orderservice.Stg3_1_1_SetAddress_deliver1_AnotherAddress(post);
 
 		return "redirect:/user/Stg3_1_SetOrder";
 	}

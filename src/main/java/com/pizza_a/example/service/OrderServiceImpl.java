@@ -44,6 +44,9 @@ public class OrderServiceImpl implements OrderService{
 	public void Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post) {
 		ordermapper.Stg3_1_1_SetAddress_deliver1_LastAddress(post);
 	};
-
-
+	@Override	
+	public void Stg3_1_1_SetAddress_deliver1_AnotherAddress(OrderVO post) {
+		ordermapper.Stg3_1_1_SetAddress_deliver1_AnotherAddress(post);
+	};
+	
 }
