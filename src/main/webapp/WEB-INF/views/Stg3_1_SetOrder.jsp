@@ -16,6 +16,8 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <sec:authentication property="principal" var="principal" />
 <sec:authorize access="hasRole('ROLE_USER')">
+
+
 	<div class="choose-group" role="group" aria-label="..." id="delivery">
 		<button class="btn btn-success btn-lg btn-block" type="button">
 			<label><input class="choose-group" type='radio'	id="orderDeliver1" name='orderDeliver' value='1'>배달</label>
@@ -27,18 +29,14 @@
 
 	</div><br><br><br><br><hr>
 	
-	<p>(구현필요) items="${list_OrderVO}" 에서 넘어오는 값이 없고, id="orderDeliver1"을 누르면 바로 Stg3_1_1.jsp로 넘어가도록</p>
-	
-	<p>(구현필요) items="${list_OrderVO}" 에서 넘어오는 값이 없고, id="orderDeliver0"을 누르면 여기에서 storeName을 골라선택할 수 있도록</p>
 	
 	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
-		<div id="stg3_1_SetPizza_basic" style="display: none;"
-			class="col-sm-6 col-md-5 col-lg-12">
+		<div id="stg3_1_SetPizza_basic" style="display: none;"	class="col-sm-6 col-md-5 col-lg-12">
 			<a href="/user/Stg3_1_2_SetAddress_deliver0/${principal.username}"
 				class="btn btn-primary btn-lg btn-block" style="display: none;"
-				role="button" id="btn_stg3_1_1_visitStore">방문 하실 매장은 ${LastOrderInfo.storeName} 입니다.</a> 
-			<a
-				href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}"
+				role="button" id="btn_stg3_1_1_visitStore">방문 하실 매장은 ${LastOrderInfo.storeName} 입니다.</a>
+				 
+			<a href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}"
 				class="btn btn-primary btn-lg btn-block" style="display: none;"
 				role="button" id="btn_stg3_1_1_orderDeliver">지난번 배송지였던 [${LastOrderInfo.orderAddress} ] 로 재배송할게요~! (변경하려면 클릭!)</a>
 
@@ -55,21 +53,41 @@
 
 	</c:forEach>
 
+<a href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}"
+				class="btn" style="display: none;"
+				role="button" id="btn_stg3_1_1_orderDeliver_direct"></a>
+
+<a href="/user/Stg3_1_2_SetAddress_deliver0/${principal.username}"
+				class="btn" style="display: none;"
+				role="button" id="btn_stg3_1_1_visitStore_direct"></a>
+				
 </sec:authorize>
 
 
 <hr>
 <a href="/logout">로그아웃</a>
 <br>
+<p>(구현_Jquery활용) items="${list_OrderVO}" 에서 넘어오는 값이 없고, id="orderDeliver1"을 누르면 바로 Stg3_1_1.jsp로 넘어가도록</p>
+	
+<p>(구현필요) items="${list_OrderVO}" 에서 넘어오는 값이 없고, id="orderDeliver0"을 누르면 여기에서 storeName을 골라선택할 수 있도록</p>
+	
 <br>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 
 
 <script>
+	let flag_orderchk = ${flag_orderchk};
+
 	$(document).on('click', '#orderDeliver1', function() {
-		$('#btn_stg3_1_1_orderDeliver').css('display', 'inline-block');
-		$('#btn_stg3_1_1_visitStore').css('display', 'none');
+
+		if (flag_orderchk ==true){
+			$('#btn_stg3_1_1_orderDeliver').css('display', 'inline-block');
+			$('#btn_stg3_1_1_visitStore').css('display', 'none');
+		}else{
+			var href =  $('#btn_stg3_1_1_orderDeliver_direct').attr('href');
+			window.location.href = href;
+		}
 	});
 
 	$(document).on('click', '#orderDeliver0', function() {
@@ -82,6 +100,7 @@
 	});
 
 	$(document).ready(function($) {
+		alert(flag_orderchk);
 		var checkload = true;
 		$("#submit-btn").click(function() {
 			checkload = false;
@@ -90,6 +109,5 @@
 			if (checkload == true)
 				return "레알 나감????????????";
 		});
-
 	});
 </script>

@@ -14,6 +14,7 @@
 <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 <h3>배송</h3>
 <hr>
+
 <sec:authorize access="hasRole('ROLE_USER')">
 	<div class="size-group" role="group" aria-label="...">
 		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress"
@@ -24,21 +25,22 @@
 				<input type="hidden" name="storeId" 	 value="${LastOrderInfo.storeId}">
 				<input type="hidden" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">
 				<input type="hidden" name="orderAddress" value="${LastOrderInfo.orderAddress}">
+								
+				<h2 style="text-align: center">OR</h2>
+				<h4 style="text-align: center">"밑의 주소 중 하나를 클릭"</h4>
+				<br>
+				
 			</c:forEach>
+			
 			<c:forEach var="PresentOrderItemInfo" items="${list_OrderVO_P}">
 				<input type="hidden" name="orderId" 	   value="${PresentOrderItemInfo.orderId}">
 				<input type="hidden" name="orderItemSize"  value="${PresentOrderItemInfo.orderItemSize}">
 				<input type="hidden" name="orderItemPrice" value="${PresentOrderItemInfo.orderItemPrice}">
+
 			</c:forEach>
 		</form>	
 	</div>
 
-
-
-
-	<h2 style="text-align: center">OR</h2>
-	<h4 style="text-align: center">"밑의 주소 중 하나를 클릭"</h4>
-	<br>
 
 	<c:forEach var="Address" items="${list_AddressList}">
 		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress"
@@ -63,25 +65,6 @@
 							<input type="hidden" name="orderZipcode" value="${Address.uZipcode1}">
 							<input type="hidden" name="orderAddress" value="${Address.uAddress1}"></td>
 					</tr>
-					<tr class="Address">
-						<td><input class="selectAddress" type='radio'
-								name='DeliverAddress' value='DeliverAddress2'></td>
-						<td>${Address.uAddress2}</td>
-						<td>${Address.uZipcode2}</td>
-						<td>${Address.uStoreName2}</td>
-						<td><input type="hidden" name="storeId" 	 value="${Address.uStoreId2}">
-							<input type="hidden" name="orderZipcode" value="${Address.uZipcode2}">
-							<input type="hidden" name="orderAddress" value="${Address.uAddress2}"></td>					</tr>
-					<tr class="Address">
-						<td><input class="selectAddress" type='radio'
-								name='DeliverAddress' value='DeliverAddress3'></td>
-						<td>${Address.uAddress3}</td>
-						<td>${Address.uZipcode3}</td>
-						<td>${Address.uStoreName3}</td>
-						<td><input type="hidden" name="storeId" 	 value="${Address.uStoreId3}">
-							<input type="hidden" name="orderZipcode" value="${Address.uZipcode3}">
-							<input type="hidden" name="orderAddress" value="${Address.uAddress3}"></td>					</tr>
-
 				</table>
 			</div>
 			<c:forEach var="PresentOrderItemInfo" items="${list_OrderVO_P}">

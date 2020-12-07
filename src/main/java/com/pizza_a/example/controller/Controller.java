@@ -194,7 +194,9 @@ public class Controller {
 	public String Stg3_1_SetOrder(Model model, Principal principal) {
 		
 		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
+		boolean flag_orderchk = LastOrderItemInfo.size() > 0 ? true : false;
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
+		model.addAttribute("flag_orderchk", flag_orderchk);
 
 		return "/Stg3_1_SetOrder";
 	}
