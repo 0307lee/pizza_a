@@ -17,19 +17,13 @@
 
 <sec:authorize access="hasRole('ROLE_USER')">
 	<div class="size-group" role="group" aria-label="...">
-		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress"
-				method="post" id="frm_Process_Stg3_1_1_SetAddress_deliver1_LastAddress">
-			<c:forEach var="LastOrderInfo" items="${list_OrderVO_L}">
-				<button type="button" class="btn btn-primary btn-lg btn-block"
-							id="btn_stg3_keepLastOrder">지난 배송지였던 [${LastOrderInfo.orderAddress}]를 그대로 활용</button>
-				<input type="hidden" name="storeId" 	 value="${LastOrderInfo.storeId}">
-				<input type="hidden" name="orderZipcode" value="${LastOrderInfo.orderZipcode}">
-				<input type="hidden" name="orderAddress" value="${LastOrderInfo.orderAddress}">
-								
-				<h2 style="text-align: center">OR</h2>
-				<h4 style="text-align: center">"밑의 주소 중 하나를 클릭"</h4>
-				<br>
-				
+	
+		<form action="/user/Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress" method="post" id="frm_Process_Stg3_1_1_SetAddress_deliver1_BasicAddress">
+			<c:forEach var="BasicOrderInfo" items="${list_OrderVO_B}">
+				<button type="button" class="btn btn-primary btn-lg btn-block" id="btn_stg3_keepLastOrder">기본 배송지 [${BasicOrderInfo.orderAddress}]를 그대로 활용</button>
+				<input type="hidden" name="storeId" 	 value="${BasicOrderInfo.storeId}">
+				<input type="hidden" name="orderZipcode" value="${BasicOrderInfo.orderZipcode}">
+				<input type="hidden" name="orderAddress" value="${BasicOrderInfo.orderAddress}">
 			</c:forEach>
 			
 			<c:forEach var="PresentOrderItemInfo" items="${list_OrderVO_P}">
@@ -38,13 +32,16 @@
 				<input type="hidden" name="orderItemPrice" value="${PresentOrderItemInfo.orderItemPrice}">
 
 			</c:forEach>
+							
+			<h2 style="text-align: center">OR</h2>
+			<h4 style="text-align: center">"밑의 주소 중 하나를 클릭"</h4>
+			<br>
 		</form>	
 	</div>
 
 
 	<c:forEach var="Address" items="${list_AddressList}">
-		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress"
-			method="post" id="frm_Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress">
+		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress" method="post" id="frm_Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress">
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<tr>
@@ -93,8 +90,6 @@
 
 
 <script>
-
-
 	$( '.address' ).each(function( index ) {
 		let addVal = $.trim( $(this).find('td:eq(1)').text() );
 		if (addVal == "") {
@@ -105,7 +100,7 @@
 	//호출1
 	$(document).on
 	('click', '#btn_stg3_keepLastOrder', function () {
-		$('#frm_Process_Stg3_1_1_SetAddress_deliver1_LastAddress').submit();
+		$('#frm_Process_Stg3_1_1_SetAddress_deliver1_BasicAddress').submit();
 	});
 
 	//호출2

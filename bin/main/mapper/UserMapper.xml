@@ -82,7 +82,7 @@
 						tb.u_address_id	AS 	uAddressId1,
 						tb.u_address 	AS 	uAddress1,
 						tb.u_zipcode 	AS 	uZipcode1,
-						tb.u_store_id_ 	AS 	uStoreID
+						tb.u_store_id 	AS 	uStoreID
 		FROM 			pizza_user 			ta
 		LEFT JOIN 		pizza_user_address 	tb
 		ON 				ta.u_id=tb.u_id

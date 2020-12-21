@@ -20,14 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pizza_a.example.domain.BoardVO;
 import com.pizza_a.example.domain.OrderVO;
 import com.pizza_a.example.domain.UserVO;
-import com.pizza_a.example.service.BoardService;
 import com.pizza_a.example.service.OrderService;
 import com.pizza_a.example.service.UserService;
 
 @org.springframework.stereotype.Controller
 public class Controller {
 	private final Logger logger =LoggerFactory.getLogger(this.getClass());
-	@Autowired BoardService boardservice;
 	@Autowired UserService userservice;
 	@Autowired OrderService orderservice;
 
@@ -193,32 +191,22 @@ public class Controller {
 	@RequestMapping(value = "/user/Stg3_1_SetOrder")
 	public String Stg3_1_SetOrder(Model model, Principal principal) {
 		
-		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-		boolean flag_orderchk = LastOrderItemInfo.size() > 0 ? true : false;
-		model.addAttribute("list_OrderVO", LastOrderItemInfo);
+		List<OrderVO> BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
+		boolean flag_orderchk = BasicOrderItemInfo.size() > 0 ? true : false;
+		model.addAttribute("list_OrderVO", BasicOrderItemInfo);
 		model.addAttribute("flag_orderchk", flag_orderchk);
 
 		return "/Stg3_1_SetOrder";
 	}
 
-	@Secured({"ROLE_USER"})
-	@RequestMapping(value = "/user/Stg3_1_2_SetAddress_deliver0/{username}")
-	public String Stg3_1_1_SetAddress_deliver0(Model model, Principal principal) {
-
-		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-		//		System.out.println(LastOrderItemInfo);
-		model.addAttribute("list_OrderVO", LastOrderItemInfo);
-
-		return "/Stg3_1_2_SetAddress_deliver0";
-	}
-
+	
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/user/Stg3_1_1_SetAddress_deliver1/{username}")
 	public String Stg3_1_1_SetAddress_deliver1(Model model, Principal principal) {
 
 		//if deliver1(@pizza_order) is not Null,id="stg3_1_SetPizza_basic"을 보여줘라  그냥) (bcz 이미 진행되고있는 주문이므로)
-		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(principal.getName());
-		model.addAttribute("list_OrderVO_L", LastOrderItemInfo);
+		List<OrderVO> BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
+		model.addAttribute("list_OrderVO_B", BasicOrderItemInfo);
 
 		List<OrderVO> PresentOrderItemInfo =orderservice.read_PresentOrderItems_byusername(principal.getName());
 		model.addAttribute("list_OrderVO_P", PresentOrderItemInfo);
@@ -228,24 +216,39 @@ public class Controller {
 
 		return "/Stg3_1_1_SetAddress_deliver1";
 	}
-
+	
 	@Secured({"ROLE_USER"})
-	@RequestMapping(value = "/user/Process_Stg3_1_1_SetAddress_deliver1_LastAddress")
-	public String Process_Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post, Principal principal) {
+	@RequestMapping(value = "/user/Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress")
+	public String Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress(OrderVO post, Principal principal) {
 
 		logger.debug(""+post+"it works too");
-		orderservice.Stg3_1_1_SetAddress_deliver1_LastAddress(post);
+		orderservice.Stg3_1_1_SetBasicAddress_deliver1_LastAddress(post);
 
 		return "redirect:/user/Stg3_1_SetOrder";
 	}
 	
+
 	@Secured({"ROLE_USER"})
-	@RequestMapping(value = "/user/Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress")
-	public String Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress(OrderVO post, Principal principal) {
+	@RequestMapping(value = "/user/Process_Stg3_1_1_SetBasicAddress_deliver1_AnotherAddress")
+	public String Process_Stg3_1_1_SetBasicAddress_deliver1_AnotherAddress(OrderVO post, Principal principal) {
 
 		logger.debug(""+post+"it works");
-		orderservice.Stg3_1_1_SetAddress_deliver1_AnotherAddress(post);
+		orderservice.Stg3_1_1_SetBasicAddress_deliver1_AnotherAddress(post);
 
 		return "redirect:/user/Stg3_1_SetOrder";
 	}
+	
+	
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value = "/user/Stg3_1_2_SetAddress_deliver0/{username}")
+	public String Stg3_1_1_SetAddress_deliver0(Model model, Principal principal) {
+
+		List<OrderVO> BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
+		//		System.out.println(BasicOrderItemInfo);
+		model.addAttribute("list_OrderVO", BasicOrderItemInfo);
+
+		return "/Stg3_1_2_SetAddress_deliver0";
+	}
+
+
 }

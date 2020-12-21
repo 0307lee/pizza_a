@@ -3,29 +3,35 @@
 <mapper namespace="com.pizza_a.example.mapper.OrderMapper">
 <!-- 권한 읽기 -->
 	<select id="read_LastOrderItems_byusername" parameterType="String" resultType="OrderVO">
-			SELECT			order_item_size			as orderItemSize,
+			SELECT			order_item_size				as orderItemSize,
 							order_item_quantity_EA	as orderItemQuantity,
 							order_item_price_won	as orderItemPrice,
-							u_id					as username,
-							order_address			as orderAddress,
-							order_zipcode			as orderZipcode,
+							ta.u_id					as username,
 							ta.order_id				as orderId,
-							ta.order_store_id		as StoreId,
-							store_name				as storeName,
-							store_manager			as storeMangaer,
-							store_phone				as storePhone,
-							order_deliver			as orderDeliver,
 							order_request			as orderRequest
 			FROM			pizza_order ta
 			LEFT JOIN		pizza_order_items tb 
 				ON 			ta.order_id = tb.order_id
 			LEFT JOIN		pizza_store tc
-				ON 			ta.order_store_id = tc.store_id
+				ON 			ta.order_store_id = tc.store_id		
 			WHERE			ta.u_id = #{username}
-			AND NOT			ta.order_status = 'preparing'
 			ORDER BY		ta.order_id DESC
 			LIMIT			1, 1
 	</select>
+	
+	<select id="read_BasicOrderItems_byusername" parameterType="String" resultType="OrderVO">
+			SELECT			ta.u_id					as username,
+							u_address				as orderAddress,
+							u_zipcode				as orderZipcode,
+							u_store_id				as StoreId
+							
+			FROM			pizza_user ta
+			LEFT JOIN		pizza_user_address tb
+				ON 			ta.u_basic_address_id = tb.u_address_id							
+
+			WHERE			ta.u_id = #{username}	
+	</select>
+	
 	<select id="read_PresentOrderItems_byusername" parameterType="String" resultType="OrderVO">
 			SELECT			order_item_size			as orderItemSize,
 							order_item_quantity_EA	as orderItemQuantity,
@@ -77,7 +83,8 @@
 			where 			order_id>200
 			AND 			required_time=NULL;
 	</delete>
-	<update id="Stg3_1_1_SetAddress_deliver1_LastAddress" parameterType="OrderVO">
+	
+	<update id="Stg3_1_1_SetBasicAddress_deliver1_LastAddress" parameterType="OrderVO">
 			UPDATE 			pizza_order
 			SET	 			order_zipcode	= #{orderZipcode},
 							order_address	= #{orderAddress},
@@ -85,7 +92,7 @@
 			WHERE 			order_id		= #{orderId}
 	</update>
 
-	<update id="Stg3_1_1_SetAddress_deliver1_AnotherAddress" parameterType="OrderVO">
+	<update id="Stg3_1_1_SetBasicAddress_deliver1_AnotherAddress" parameterType="OrderVO">
 			UPDATE 			pizza_order
 			SET	 			order_zipcode	= #{orderZipcode},
 							order_address	= #{orderAddress},

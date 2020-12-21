@@ -22,8 +22,10 @@ public interface OrderMapper {
 
 	List<OrderVO> read_PresentOrderItems_byusername(String name);
 
-	void Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post);
+	void Stg3_1_1_SetBasicAddress_deliver1_LastAddress(OrderVO post);
 
-	void Stg3_1_1_SetAddress_deliver1_AnotherAddress(OrderVO post);
+	void Stg3_1_1_SetBasicAddress_deliver1_AnotherAddress(OrderVO post);
+
+	List<OrderVO> read_BasicOrderItems_byusername(String username);
 
 }

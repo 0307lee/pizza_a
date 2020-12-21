@@ -17,6 +17,12 @@ public class OrderServiceImpl implements OrderService{
 	public List<OrderVO> read_LastOrderItems_byusername(String username) {
 		return ordermapper.read_LastOrderItems_byusername(username);
 	}
+	
+	@Override
+	public List<OrderVO> read_BasicOrderItems_byusername(String username) {
+		return ordermapper.read_BasicOrderItems_byusername(username);
+	}
+	
 	@Override
 	public void makeOrder(String username) {
 		ordermapper.makeOrder(username);
@@ -41,12 +47,12 @@ public class OrderServiceImpl implements OrderService{
 	};
 
 	@Override	
-	public void Stg3_1_1_SetAddress_deliver1_LastAddress(OrderVO post) {
-		ordermapper.Stg3_1_1_SetAddress_deliver1_LastAddress(post);
+	public void Stg3_1_1_SetBasicAddress_deliver1_LastAddress(OrderVO post) {
+		ordermapper.Stg3_1_1_SetBasicAddress_deliver1_LastAddress(post);
 	};
 	@Override	
-	public void Stg3_1_1_SetAddress_deliver1_AnotherAddress(OrderVO post) {
-		ordermapper.Stg3_1_1_SetAddress_deliver1_AnotherAddress(post);
+	public void Stg3_1_1_SetBasicAddress_deliver1_AnotherAddress(OrderVO post) {
+		ordermapper.Stg3_1_1_SetBasicAddress_deliver1_AnotherAddress(post);
 	};
 	
 }
