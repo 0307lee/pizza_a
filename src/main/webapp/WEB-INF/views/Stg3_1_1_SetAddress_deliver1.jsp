@@ -18,16 +18,16 @@
 <sec:authorize access="hasRole('ROLE_USER')">
 	<div class="size-group" role="group" aria-label="...">
 	
-		<form action="/user/Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress" method="post" id="frm_Process_Stg3_1_1_SetAddress_deliver1_BasicAddress">
+		<form action="/user/Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress" method="post" id="frm_Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress">
 			<c:forEach var="BasicOrderInfo" items="${list_OrderVO_B}">
 				<button type="button" class="btn btn-primary btn-lg btn-block" id="btn_stg3_keepLastOrder">기본 배송지 [${BasicOrderInfo.orderAddress}]를 그대로 활용</button>
-				<input type="hidden" name="storeId" 	 value="${BasicOrderInfo.storeId}">
-				<input type="hidden" name="orderZipcode" value="${BasicOrderInfo.orderZipcode}">
-				<input type="hidden" name="orderAddress" value="${BasicOrderInfo.orderAddress}">
+				<input type="text" name="storeId" 	 value="${BasicOrderInfo.storeId}">
+				<input type="text" name="orderZipcode" value="${BasicOrderInfo.orderZipcode}">
+				<input type="text" name="orderAddress" value="${BasicOrderInfo.orderAddress}">
 			</c:forEach>
 			
 			<c:forEach var="PresentOrderItemInfo" items="${list_OrderVO_P}">
-				<input type="hidden" name="orderId" 	   value="${PresentOrderItemInfo.orderId}">
+				<input type="text" name="orderId" 	   value="${PresentOrderItemInfo.orderId}">
 				<input type="hidden" name="orderItemSize"  value="${PresentOrderItemInfo.orderItemSize}">
 				<input type="hidden" name="orderItemPrice" value="${PresentOrderItemInfo.orderItemPrice}">
 
@@ -100,7 +100,7 @@
 	//호출1
 	$(document).on
 	('click', '#btn_stg3_keepLastOrder', function () {
-		$('#frm_Process_Stg3_1_1_SetAddress_deliver1_BasicAddress').submit();
+		$('#frm_Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress').submit();
 	});
 
 	//호출2
