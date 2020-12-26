@@ -67,10 +67,11 @@
 <hr>
 <a href="/logout">로그아웃</a>
 <br>
+<!-- 
 <p>(구현_Jquery활용) items="${list_OrderVO}" 에서 넘어오는 값이 없고, id="orderDeliver1"을 누르면 바로 Stg3_1_1.jsp로 넘어가도록</p>
 	
 <p>(구현필요) items="${list_OrderVO}" 에서 넘어오는 값이 없고, id="orderDeliver0"을 누르면 여기에서 storeName을 골라선택할 수 있도록</p>
-	
+-->
 <br>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
