@@ -30,7 +30,7 @@
 	</div><br><br><br><br><hr>
 	
 	
-	<form action="/user/Stg4_1_AfterOrder" method="post" id="frm_SetOrder">
+	<form action="#">
 	<c:forEach var="BasicOrderInfo" items="${list_OrderVO}">
 		<div id="stg3_1_SetPizza_basic" style="display: none;"	class="col-sm-6 col-md-5 col-lg-12">
 			<a href="/user/Stg3_1_2_SetAddress_deliver0/${principal.username}"
@@ -72,7 +72,6 @@
 				<input type ="text" name="username" style="width:50px"><input type ="text" name="username" style="width:80px"><input type ="text" name="username" style="width:80px"> 입니다. 
 			</li>
 			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_required_time">(구현필요) 예상시간(자동계산되서 산출: 피자만드는시간+(대기자수*피자만드는시간)+배달시간(거리로)+a)</button>
-			<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">(구현필요) 포인트사용 </button>
 			<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">(구현필요) 최종금액: </button>
 			<input type="submit" value="Submit"> 주문하기
 		</div>

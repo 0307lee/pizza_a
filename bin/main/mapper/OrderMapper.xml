@@ -23,13 +23,19 @@
 			SELECT			ta.u_id					as username,
 							u_address				as orderAddress,
 							u_zipcode				as orderZipcode,
-							u_store_id				as StoreId
+							u_store_id				as StoreId,
+							tc.order_request		as orderRequest
 							
 			FROM			pizza_user ta
 			LEFT JOIN		pizza_user_address tb
 				ON 			ta.u_basic_address_id = tb.u_address_id							
-
-			WHERE			ta.u_id = #{username}	
+			LEFT JOIN		pizza_order tc
+				ON 			ta.u_id = tc.u_id							
+			WHERE			ta.u_id = #{username}
+			AND NOT 		tc.order_status ='preparing'
+			ORDER BY		tc.order_id DESC
+			LIMIT			1, 1
+			
 	</select>
 	
 	<select id="read_PresentOrderItems_byusername" parameterType="String" resultType="OrderVO">
