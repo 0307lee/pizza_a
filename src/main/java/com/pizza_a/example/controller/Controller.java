@@ -155,24 +155,28 @@ public class Controller {
 	@RequestMapping(value= "/user/Stg2_1_SetPizza_basic/{username}", method = RequestMethod.GET)
 	public String Stg2_1_SetPizza_basic(Model model, @PathVariable("username") String username) {
 
-		//if 'aaa' show up, erasePreparingOrder
+		
 		String superviser_id="aaa";
 		if(username .equals(superviser_id)) {
-			orderservice.erasePreparingOrder(username);
+//			orderservice.erasePreparingOrder(username); 
+//			"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
 		}
-		//	"order_time"-{current Time} <=10 sec//TODO Ban redirect in 10sec 
-
-		//make Order
-		orderservice.makeOrder(username);
-
+		
+		OrderVO orderVO = new OrderVO();
+		orderVO.setUsername(username);
+		orderservice.makeOrder(orderVO);
+		logger.debug("sdfgdsfg: "+orderVO.getOrderId());
+		
+		
 		//and Give NewOrderID
 		int new_order_id= orderservice.StartOrder(username);
 		model.addAttribute("new_order_id", new_order_id);
 
 		//Get LastOrder  LastOrderID = (order_ID)-1
-		List<OrderVO> LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
+		OrderVO LastOrderItemInfo =orderservice.read_LastOrderItems_byusername(username);
 		model.addAttribute("list_OrderVO", LastOrderItemInfo);
 
+		OrderVO OrderId_in_PresentOrderItems=orderservice.read_PresentOrderItems_byusername(username);
 		//TODO  Ban no.Pizza<1 in .JSP
 
 		return "/Stg2_1_SetPizza_basic";
@@ -191,8 +195,8 @@ public class Controller {
 	@RequestMapping(value = "/user/Stg3_1_SetOrder")
 	public String Stg3_1_SetOrder(Model model, Principal principal) {
 		
-		List<OrderVO> BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
-		boolean flag_orderchk = BasicOrderItemInfo.size() > 0 ? true : false;
+		OrderVO BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
+		boolean flag_orderchk = BasicOrderItemInfo.toString().length() > 0 ? true : false;
 		model.addAttribute("list_OrderVO", BasicOrderItemInfo);
 		model.addAttribute("flag_orderchk", flag_orderchk);
 
@@ -205,10 +209,10 @@ public class Controller {
 	public String Stg3_1_1_SetAddress_deliver1(Model model, Principal principal) {
 
 		//if deliver1(@pizza_order) is not Null,id="stg3_1_SetPizza_basic"을 보여줘라  그냥) (bcz 이미 진행되고있는 주문이므로)
-		List<OrderVO> BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
+		OrderVO BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
 		model.addAttribute("list_OrderVO_B", BasicOrderItemInfo);
 
-		List<OrderVO> PresentOrderItemInfo =orderservice.read_PresentOrderItems_byusername(principal.getName());
+		OrderVO PresentOrderItemInfo =orderservice.read_PresentOrderItems_byusername(principal.getName());
 		model.addAttribute("list_OrderVO_P", PresentOrderItemInfo);
 		
 		List<UserVO> AddressList=userservice.read_Address_byusername(principal.getName());
@@ -243,12 +247,31 @@ public class Controller {
 	@RequestMapping(value = "/user/Stg3_1_2_SetAddress_deliver0/{username}")
 	public String Stg3_1_1_SetAddress_deliver0(Model model, Principal principal) {
 
-		List<OrderVO> BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
+		OrderVO BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
 		//		System.out.println(BasicOrderItemInfo);
 		model.addAttribute("list_OrderVO", BasicOrderItemInfo);
 
 		return "/Stg3_1_2_SetAddress_deliver0";
 	}
 
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value = "/user/Process_Stg3_1_SetOrder")
+	public String Process_Stg3_1_SetOrder(OrderVO post, Principal principal) {
+
+		logger.debug(""+post+"order Start Flag");
+//		orderservice.Stg3_1_SetOrder(post);
+
+		return "redirect:/user/Stg4_1_AfterOrder";
+	}
+
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value = "/user/Stg4_1_AfterOrder")
+	public String Stg4_1_AfterOrder(OrderVO post, Principal principal) {
+
+		logger.debug(""+post+"order Start Flag");
+//		orderservice.Stg3_1_SetOrder(post);
+
+		return "/Stg4_1_AfterOrder";
+	}
 
 }

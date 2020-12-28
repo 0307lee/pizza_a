@@ -19,19 +19,15 @@
 	<div class="size-group" role="group" aria-label="...">
 	
 		<form action="/user/Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress" method="post" id="frm_Process_Stg3_1_1_SetBasicAddress_deliver1_LastAddress">
-			<c:forEach var="BasicOrderInfo" items="${list_OrderVO_B}">
-				<button type="button" class="btn btn-primary btn-lg btn-block" id="btn_stg3_keepLastOrder">기본 배송지 [${BasicOrderInfo.orderAddress}]를 그대로 활용</button>
-				<input type="text" name="storeId" 	 value="${BasicOrderInfo.storeId}">
-				<input type="text" name="orderZipcode" value="${BasicOrderInfo.orderZipcode}">
-				<input type="text" name="orderAddress" value="${BasicOrderInfo.orderAddress}">
-			</c:forEach>
-			
-			<c:forEach var="PresentOrderItemInfo" items="${list_OrderVO_P}">
-				<input type="text" name="orderId" 	   value="${PresentOrderItemInfo.orderId}">
-				<input type="hidden" name="orderItemSize"  value="${PresentOrderItemInfo.orderItemSize}">
-				<input type="hidden" name="orderItemPrice" value="${PresentOrderItemInfo.orderItemPrice}">
+			<button type="button" class="btn btn-primary btn-lg btn-block" id="btn_stg3_keepLastOrder">기본 배송지 [${list_OrderVO_B.orderAddress}]를 그대로 활용</button>
+			<input type="hidden" name="storeId" 	 value="${list_OrderVO_B.storeId}">
+			<input type="hidden" name="orderZipcode" value="${list_OrderVO_B.orderZipcode}">
+			<input type="hidden" name="orderAddress" value="${list_OrderVO_B.orderAddress}">
+		
+			<input type="hidden" name="orderId" 	   value="${list_OrderVO_P.orderId}">
+			<input type="hidden" name="orderItemSize"  value="${list_OrderVO_P.orderItemSize}">
+			<input type="hidden" name="orderItemPrice" value="${list_OrderVO_P.orderItemPrice}">
 
-			</c:forEach>
 							
 			<h2 style="text-align: center">OR</h2>
 			<h4 style="text-align: center">"밑의 주소 중 하나를 클릭"</h4>
@@ -39,8 +35,7 @@
 		</form>	
 	</div>
 
-
-	<c:forEach var="Address" items="${list_AddressList}">
+	<c:forEach var="AddressList" items="${list_AddressList}">
 		<form action="/user/Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress" method="post" id="frm_Process_Stg3_1_1_SetAddress_deliver1_AnotherAddress">
 			<div class="table-responsive">
 				<table class="table table-bordered">
@@ -54,21 +49,19 @@
 					<tr class="Address">
 						<td><input class="selectAddress" type='radio'
 								name='DeliverAddress' value='DeliverAddress1'></td>
-						<td>${Address.uAddress1}</td>
-						<td>${Address.uZipcode1}</td>
-						<td>${Address.uStoreName1}</td>
-						<td>
-							<input type="hidden" name="storeId" 	 value="${Address.uStoreId1}">
-							<input type="hidden" name="orderZipcode" value="${Address.uZipcode1}">
-							<input type="hidden" name="orderAddress" value="${Address.uAddress1}"></td>
+						<td>${AddressList.uAddress1}</td>
+						<td>${AddressList.uZipcode1}</td>
+						<td>${AddressList.uStoreName1}</td>
+						
 					</tr>
 				</table>
 			</div>
-			<c:forEach var="PresentOrderItemInfo" items="${list_OrderVO_P}">
-				<input type="hidden" name="orderId" 	   value="${PresentOrderItemInfo.orderId}">
-				<input type="hidden" name="orderItemSize"  value="${PresentOrderItemInfo.orderItemSize}">
-				<input type="hidden" name="orderItemPrice" value="${PresentOrderItemInfo.orderItemPrice}">
-			</c:forEach>
+			<input type="hidden" name="storeId" 	 value="${AddressList.uStoreId1}">
+			<input type="hidden" name="orderZipcode" value="${AddressList.uZipcode1}">
+			<input type="hidden" name="orderAddress" value="${AddressList.uAddress1}">
+			<input type="hidden" name="orderId" 	   value="${list_OrderVO_P.orderId}">
+			<input type="hidden" name="orderItemSize"  value="${list_OrderVO_P.orderItemSize}">
+			<input type="hidden" name="orderItemPrice" value="${list_OrderVO_P.orderItemPrice}">
 			
 		</form>
 	</c:forEach>

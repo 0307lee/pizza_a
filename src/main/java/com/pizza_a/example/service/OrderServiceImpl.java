@@ -14,17 +14,17 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired OrderMapper ordermapper;
 
 	@Override
-	public List<OrderVO> read_LastOrderItems_byusername(String username) {
+	public OrderVO read_LastOrderItems_byusername(String username) {
 		return ordermapper.read_LastOrderItems_byusername(username);
 	}
 	
 	@Override
-	public List<OrderVO> read_BasicOrderItems_byusername(String username) {
+	public OrderVO read_BasicOrderItems_byusername(String username) {
 		return ordermapper.read_BasicOrderItems_byusername(username);
 	}
 	
 	@Override
-	public void makeOrder(String username) {
+	public void makeOrder(OrderVO username) {
 		ordermapper.makeOrder(username);
 	};
 	@Override
@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService{
 	};
 
 	@Override
-	public List<OrderVO> read_PresentOrderItems_byusername(String name){
+	public OrderVO read_PresentOrderItems_byusername(String name){
 		return ordermapper.read_PresentOrderItems_byusername(name);
 	};
 

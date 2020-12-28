@@ -100,10 +100,8 @@
 	<br> <br>
 	<h3>임시table 이전 값 출력확인용 (//jstl if)</h3>
 	<h6>전송용은 아님</h6>
-	<c:forEach var="LastOrderInfo" items="${list_OrderVO}">
-		<input type="hidden" name="username" value="${LastOrderInfo.username}">
-		<table class="table table-bordered">
-			<!-- style="visibility:hidden;"  -->
+		<input type="hidden" name="username" value="${list_OrderVO.username}">
+		<table class="table table-bordered" style="visibility:hidden" >
 			<tr>
 				<th>피자 SIZE</th>
 				<th>피자 가격</th>
@@ -111,18 +109,17 @@
 			</tr>
 
 			<tr>
-				<td id="show_pizza_size">${LastOrderInfo.orderItemSize}</td>
-				<td id="show_pizza_price">${LastOrderInfo.orderItemPrice}</td>
-				<td id="show_pizza_EA">${LastOrderInfo.orderItemQuantity}</td>
+				<td id="show_pizza_size">${list_OrderVO.orderItemSize}</td>
+				<td id="show_pizza_price">${list_OrderVO.orderItemPrice}</td>
+				<td id="show_pizza_EA">${list_OrderVO.orderItemQuantity}</td>
 			</tr>
 
 		</table>
 
-	</c:forEach>
 
 	<c:choose>
 		<c:when test="${empty list_OrderVO}">
-			<p>이전 내용없어</p>
+			<p>당신은 첫방문자! 고마워!</p>
 		</c:when>
 
 	</c:choose>

@@ -8,24 +8,25 @@ import com.pizza_a.example.domain.OrderVO;
 
 @Mapper
 public interface OrderMapper {
-	List<OrderVO> read_LastOrderItems_byusername(String username);
+	OrderVO read_LastOrderItems_byusername(String username);
 
-	void makeOrder(String username);
+	void makeOrder(OrderVO username);
 	
 	int StartOrder(String username);
 
 	void Stg2_1_setPizza_basic(OrderVO post);
 
-	List<OrderVO> read_LastOrderInfo_byusername();
+	OrderVO read_LastOrderInfo_byusername();
 
 	void erasePreparingOrder(String username);
 
-	List<OrderVO> read_PresentOrderItems_byusername(String name);
+	OrderVO read_PresentOrderItems_byusername(String name);
 
 	void Stg3_1_1_SetBasicAddress_deliver1_LastAddress(OrderVO post);
 
 	void Stg3_1_1_SetBasicAddress_deliver1_AnotherAddress(OrderVO post);
 
-	List<OrderVO> read_BasicOrderItems_byusername(String username);
+	OrderVO read_BasicOrderItems_byusername(String username);
 
+	public OrderVO read_Address_byusername(String username);
 }

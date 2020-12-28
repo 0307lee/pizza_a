@@ -30,36 +30,37 @@
 	</div><br><br><br><br><hr>
 	
 	
-	<form action="/user/Stg4_1_AfterOrder" method="post" id="frm_SetOrder">
-	<c:forEach var="BasicOrderInfo" items="${list_OrderVO}">
-		<div id="stg3_1_SetPizza_basic" style="display: none;"	class="col-sm-6 col-md-5 col-lg-12">
-			<a href="/user/Stg3_1_2_SetAddress_deliver0/${principal.username}"
-				class="btn btn-primary btn-lg btn-block" style="display: none;"
-				role="button" id="btn_stg3_1_1_visitStore">방문 하실 매장은 ${BasicOrderInfo.storeName} 입니다.</a>
-				 
-			<a href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}"
-				class="btn btn-primary btn-lg btn-block" style="display: none;"
-				role="button" id="btn_stg3_1_1_orderDeliver">기본 배송지인 [${BasicOrderInfo.orderAddress} ] 로 배송할게요~! (변경하려면 클릭!)</a>
+	<div id="stg3_1_SetPizza_basic" style="display: none;"	class="col-sm-6 col-md-5 col-lg-12">
+		<a href="/user/Stg3_1_2_SetAddress_deliver0/${principal.username}"
+			class="btn btn-primary btn-lg btn-block" style="display: none;"
+			role="button" id="btn_stg3_1_1_visitStore">방문 하실 매장은 ${list_OrderVO.storeName} 입니다.</a>
+			 
+		<a href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}"
+			class="btn btn-primary btn-lg btn-block" style="display: none;"
+			role="button" id="btn_stg3_1_1_orderDeliver">기본 배송지인 [${list_OrderVO.orderAddress} ] 로 배송할게요~! (변경하려면 클릭!)</a><br><br>
 
 <!--
 	배송설정은 다른페이지넘어가서 설정하는 구조
 	배송외 설정은 당페이지에서 설정하는 구조
  -->
+		<form action="/user/Process_Stg3_1_SetOrder" method="post" id="frm_SetOrder">
 			<li type="button" class="btn btn-primary btn-lg btn-block" id="request_btn_nofunction">요청사항은 
-					<select name="order_request" id="order_request">
-						<option value="orderRequest1"> ${BasicOrderInfo.orderRequest}</option>
-						<option value="orderRequest2">빠삭</option>
-						<option value="orderRequest3">눅눅</option>
-						<option value="orderRequest4">빨리</option>
+					<select name="orderRequest" id="order_request">
+						<option value="orderRequest1"> ${list_OrderVO.orderRequest}</option>
+						<option value="orderRequest2">빠삭!</option>
+						<option value="orderRequest3">양많이!</option>
+						<option value="orderRequest4">빨리!</option>
 						<option value="orderRequest5">비대면</option>
+						<option value="orderRequest6" id="request_etc">기타 </option>
 					</select>
+					<input type ="text" id="request_etc_contents" style="display: none;width:100px">
 					입니다
 			</li>
 
 			<li type="button" class="btn btn-primary btn-lg btn-block" id="payment_btn_nofunction">결재수단은 
 					<select name="order_payment" id="order_payment">
 						<option value="orderPayment1">만나서결재</option>
-						<option value="orderPayment2">신용(체크)카드</option>
+						<option value="orderPayment2" disalbed >(구현중)신용(체크)카드</option>
 						<option value="orderPayment3">계좌이체</option>
 						<option value="orderPayment3">무통장입금</option>
 						<option value="orderPayment4">카카오페이</option>
@@ -68,32 +69,26 @@
 					입니다
 			</li>
 
-			<li type="button" class="btn btn-primary btn-lg btn-block" id="payment_btn_nofunction">현금영수증은 
-				<input type ="text" name="username" style="width:50px"><input type ="text" name="username" style="width:80px"><input type ="text" name="username" style="width:80px"> 입니다. 
+			<li type="button" class="btn btn-primary btn-lg btn-block" id="payment_btn_nofunction">현금영수증 : 
+				<input type ="text" name="username" style="width:50px"><input type ="text" name="username" style="width:80px"><input type ="text" name="username" style="width:80px">  
 			</li>
-			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_required_time">(구현필요) 예상시간(자동계산되서 산출: 피자만드는시간+(대기자수*피자만드는시간)+배달시간(거리로)+a)</button>
-			<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">(구현필요) 포인트사용 </button>
-			<button type="button" class="btn btn-default btn-lg btn-block" value="order_list_price">(구현필요) 최종금액: </button>
-			<input type="submit" value="Submit"> 주문하기
-		</div>
-		<br>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_required_time">(구현중) 예상시간(자동계산되서 산출: 피자만드는시간+(대기자수*피자만드는시간)+배달시간(거리로)+a)</button>
+			<button type="button" class="btn btn-default btn-lg btn-block" value="order_point" >(구현예정) 포인트사용 </button>
+			<button type="button" class="btn btn-default btn-lg btn-block" value="order_coupon">(구현예정) 쿠폰사용 </button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_list_price">(구현필요) 최종금액: </button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" value="order_Start">
+				<input type="submit" value="주문하기"></button>
+		</form>
+	</div>
+	<br>
 
-	</c:forEach>
-	</form>
-
-
-<a href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}"
-				class="btn" style="display: none;"
-				role="button" id="btn_stg3_1_1_orderDeliver_direct"></a>
-
-<a href="/user/Stg3_1_2_SetAddress_deliver0/${principal.username}"
-				class="btn" style="display: none;"
-				role="button" id="btn_stg3_1_2_visitStore_direct"></a>
+	<a href="/user/Stg3_1_1_SetAddress_deliver1/${principal.username}" class="btn" style="display: none;" role="button" id="btn_stg3_1_1_orderDeliver_direct"></a>
+	
+	<a href="/user/Stg3_1_2_SetAddress_deliver0/${principal.username}" class="btn" style="display: none;" role="button" id="btn_stg3_1_2_visitStore_direct"></a>
 				
 </sec:authorize>
-
-
 <hr>
+
 <a href="/logout">로그아웃</a>
 <br>
 <!-- 
@@ -134,20 +129,14 @@
 			}
 	});
 
-
-	/* 
+	$(document).on('click', '#order_request', function() {
+		val etc_chk= alert($('#order_request').val());
+		//if (etc_chk)=()
+		$('#request_etc_contents').css('display', 'inline-block');
+	});
+	
 	$(document).ready(function($) {
 		//alert(flag_orderchk);
-		var checkload = true;
-		$("#submit-btn").click(function() {
-			checkload = false;
 		});
-		$(window).on("beforeunload", function() {
-			if (checkload == true)
-				return "레알 나감????????????";
-		});
-	}); 
-	*/
-
 	
 </script>

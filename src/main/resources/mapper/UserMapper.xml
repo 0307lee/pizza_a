@@ -36,7 +36,7 @@
 				u_isEnabled,
 				u_phone,
 				u_level,
-				u_disabled
+				u_disabled_
 		) VALUES(
 				#{username},
 				#{password},
@@ -87,6 +87,5 @@
 		LEFT JOIN 		pizza_user_address 	tb
 		ON 				ta.u_id=tb.u_id
 		WHERE			ta.u_id=	#{username}
-		
 	</select>
 </mapper>

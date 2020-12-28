@@ -31,7 +31,7 @@ public interface UserService extends UserDetailsService {
 	public List<UserVO> selectUserList();
 
 
-	public List<OrderVO> read_LastOrderInfo_byusername(String username);
+	public OrderVO read_LastOrderInfo_byusername(String username);
 
 
 	public List<UserVO> read_Address_byusername(String username);

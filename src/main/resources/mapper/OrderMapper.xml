@@ -3,7 +3,7 @@
 <mapper namespace="com.pizza_a.example.mapper.OrderMapper">
 <!-- 권한 읽기 -->
 	<select id="read_LastOrderItems_byusername" parameterType="String" resultType="OrderVO">
-			SELECT			order_item_size				as orderItemSize,
+				SELECT			order_item_size				as orderItemSize,
 							order_item_quantity_EA	as orderItemQuantity,
 							order_item_price_won	as orderItemPrice,
 							ta.u_id					as username,
@@ -15,6 +15,7 @@
 			LEFT JOIN		pizza_store tc
 				ON 			ta.order_store_id = tc.store_id		
 			WHERE			ta.u_id = #{username}
+			AND NOT 		ta.order_status ='preparing'
 			ORDER BY		ta.order_id DESC
 			LIMIT			1, 1
 	</select>
@@ -34,7 +35,7 @@
 			WHERE			ta.u_id = #{username}
 			AND NOT 		tc.order_status ='preparing'
 			ORDER BY		tc.order_id DESC
-			LIMIT			1, 1
+			LIMIT			0, 1
 			
 	</select>
 	
@@ -63,10 +64,15 @@
 			ORDER BY		ta.order_id DESC
 			LIMIT			0, 1
 	</select>
-	<insert  id="makeOrder" parameterType="String" >
+	<insert  id="makeOrder" parameterType="OrderVO" >
 			INSERT INTO		pizza_order
 							(u_id,order_status,order_time)
-			VALUE			(#{username},'preparing',now())			
+			VALUE			(#{username},'preparing',now())	
+			
+		<selectKey keyProperty="orderId" resultType="Integer">
+	        SELECT LAST_INSERT_ID()
+	    </selectKey>	
+	    	
 	</insert>
 	
 	<select  id="StartOrder" parameterType="String" resultType="int">
