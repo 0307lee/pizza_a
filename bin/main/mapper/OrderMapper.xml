@@ -2,6 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pizza_a.example.mapper.OrderMapper">
 <!-- 권한 읽기 -->
+
+	<!-- 요걸로 JOIN도 할 수 있고, VO 속성 차이 없이 부를 수 있게 된다. 참내
+		https://suhun918.tistory.com/15
+	-->
+	<resultMap type="AdminInfoVO" id="AdminInfoVO">
+		<result column="ADMIN_NAME" property="adminName" />
+		<result column="ADMIN_PHONE" property="adminPhone" />
+		<result column="ADMIN_EMAIL" property="adminEmail" />
+	</resultMap>
+	
+	<resultMap type="AdminVO" id="AdminVO">
+		<result column="ADMIN_ID" property="adminId" />
+		<result column="HSPTL_ID" property="hsptlId" />
+		<result column="FIRST_REG_DT" property="createTime" />
+		<result column="ADMIN_LEVEL" property="adminLv" />
+		<collection property="adminInfoVO" resultMap="AdminInfoVO" />
+	</resultMap>
+	
 	<select id="read_LastOrderItems_byusername" parameterType="String" resultType="OrderVO">
 				SELECT			order_item_size				as orderItemSize,
 							order_item_quantity_EA	as orderItemQuantity,
@@ -25,13 +43,21 @@
 							u_address				as orderAddress,
 							u_zipcode				as orderZipcode,
 							u_store_id				as StoreId,
-							tc.order_request		as orderRequest
+							tc.order_request		as orderRequest,
+							u_receipt_phone_number	AS uReceiptPhoneNumber,
+							u_pay_method_number 	AS uPayMethodNumber,
+							u_add_point 			AS uAddPoint
 							
 			FROM			pizza_user ta
 			LEFT JOIN		pizza_user_address tb
 				ON 			ta.u_basic_address_id = tb.u_address_id							
 			LEFT JOIN		pizza_order tc
-				ON 			ta.u_id = tc.u_id							
+				ON 			ta.u_id = tc.u_id	
+			LEFT JOIN		pizza_user_payment_info td
+				ON 			ta.u_id = td.u_id		
+			LEFT JOIN		pizza_user_additional te
+				ON 			ta.u_id = te.u_id	
+																	
 			WHERE			ta.u_id = #{username}
 			AND NOT 		tc.order_status ='preparing'
 			ORDER BY		tc.order_id DESC

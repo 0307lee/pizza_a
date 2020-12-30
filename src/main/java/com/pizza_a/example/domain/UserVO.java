@@ -24,7 +24,8 @@ public class UserVO implements UserDetails {
 
 	//user Addition Info
 	private int uLevel;
-	
+	private int uAddPoint;
+
 
 	private int uDisabled;// diffrent with isEnabled, isEnabled for Security  
 	
@@ -42,6 +43,11 @@ public class UserVO implements UserDetails {
 	private int uAddressId;
 	private int uBasicAddressId;
 	
+	//user payment
+	private String uReceiptPhoneNumber;
+	private int uPayMethodNumber;
+	
+	/////////////
 	
 	public String getuName() {
 		return uName;
@@ -133,6 +139,14 @@ public class UserVO implements UserDetails {
 	public void setuLevel(int uLevel) {
 		this.uLevel = uLevel;
 	}
+	public int getuAddPoint() {
+		return uAddPoint;
+	}
+	public void setuAddPoint(int uAddPoint) {
+		this.uAddPoint = uAddPoint;
+	}
+
+	//
 	public int getuDisabled() {
 		return uDisabled;
 	}
@@ -189,6 +203,20 @@ public class UserVO implements UserDetails {
 		this.uBasicAddressId = uBasicAddressId;
 	}
 
+	//
+
+	public String getuReceiptPhoneNumber() {
+		return uReceiptPhoneNumber;
+	}
+	public void setuReceiptPhoneNumber(String uReceiptPhoneNumber) {
+		this.uReceiptPhoneNumber = uReceiptPhoneNumber;
+	}
+	public int getuPayMethodNumber() {
+		return uPayMethodNumber;
+	}
+	public void setuPayMethodNumber(int uPayMethodNumber) {
+		this.uPayMethodNumber = uPayMethodNumber;
+	}
 	
 	
 	@Override

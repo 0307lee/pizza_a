@@ -139,7 +139,9 @@
 	//호출1
 	$(document).on('click', '#btn_Order_Cheese', function() {
 		var size = $('#show_pizza_size').text();
-		alert("ORDER size: " + size + "의 피자를 주문합니다.");
+		var EA = $('#show_pizza_EA').text();
+		
+		alert("" + size + "의 피자 "+ EA + "개를 주문합니다.");
 		$('#frm_SetPizza').submit();
 	});
 	
