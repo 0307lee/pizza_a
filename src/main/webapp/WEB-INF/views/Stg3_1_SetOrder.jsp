@@ -68,10 +68,10 @@
 				<option value="orderPayment6">네이버페이</option>
 			</select>입니다
 		</button>	
-		${list_OrderVO.uAddPoint}
+		<!-- ${list_OrderVO.uAddPoint}
 		${list_OrderVO.uReceiptPhoneNumber}
 		${list_OrderVO.uPayMethodNumber}
-		
+		 -->
 		
 		<button type="button" class="btn btn-primary btn-lg btn-block" id="payment_btn_nofunction">현금영수증 : 
 			<input type ="text" name="username" style="width:50px"><input type ="text" name="username" style="width:80px"><input type ="text" name="username" style="width:80px">  
