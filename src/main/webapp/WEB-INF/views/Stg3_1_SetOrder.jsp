@@ -71,6 +71,10 @@
 		<!-- ${list_OrderVO.uAddPoint}
 		${list_OrderVO.uReceiptPhoneNumber}
 		${list_OrderVO.uPayMethodNumber}
+		
+		요건 새로 콰리만들어야
+		order present 금액
+		order present 예상시간
 		 -->
 		
 		<button type="button" class="btn btn-primary btn-lg btn-block" id="payment_btn_nofunction">현금영수증 : 
