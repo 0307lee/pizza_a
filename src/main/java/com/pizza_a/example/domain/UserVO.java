@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserVO implements UserDetails {
 //	vo need small letter
+	
+	private OrderVO orderVO; // join vo
 	//user Basic Info
 	private static final long serialVersionUID=1L;
 	private String username;
@@ -28,14 +30,7 @@ public class UserVO implements UserDetails {
 
 
 	private int uDisabled;// diffrent with isEnabled, isEnabled for Security  
-	
-	
-	//user Ordering Info
-	private String uAddress1;
-	private int uZipcode1;
-	private int uStoreId1;
-	private String uStoreName1;
-	
+		
 	//for user_M
 	private int MStoreId;
 
@@ -48,6 +43,15 @@ public class UserVO implements UserDetails {
 	private int uPayMethodNumber;
 	
 	/////////////
+	
+	public OrderVO getOrderVO() {
+		return orderVO;
+	}
+	public void setOrderVO(OrderVO orderVO) {
+		this.orderVO = orderVO;
+	}
+	///
+	
 	
 	public String getuName() {
 		return uName;
@@ -154,31 +158,6 @@ public class UserVO implements UserDetails {
 		this.uDisabled = uDisabled;
 	}
 	//
-	public String getuAddress1() {
-		return uAddress1;
-	}
-	public void setuAddress1(String uAddress1) {
-		this.uAddress1 = uAddress1;
-	}
-	public int getuZipcode1() {
-		return uZipcode1;
-	}
-	public void setuZipcode1(int uZipcode1) {
-		this.uZipcode1 = uZipcode1;
-	}
-	public int getuStoreId1() {
-		return uStoreId1;
-	}
-	public void setuStoreId1(int uStoreId1) {
-		this.uStoreId1 = uStoreId1;
-	}
-
-	public String getuStoreName1() {
-		return uStoreName1;
-	}
-	public void setuStoreName1(String uStoreName1) {
-		this.uStoreName1 = uStoreName1;
-	}
 
 
 	//
@@ -226,5 +205,6 @@ public class UserVO implements UserDetails {
 				+ ", isAccountNonLocked=" + isAccountNonLocked + ", isCredentialNonExpired=" + isCredentialNonExpired
 				+ ", isEnabled=" + isEnabled + "]";
 	}
+	
 
 }

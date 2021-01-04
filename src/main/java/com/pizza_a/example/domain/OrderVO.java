@@ -3,6 +3,8 @@ package com.pizza_a.example.domain;
 public class OrderVO {
 //	vo need small letter
 	
+	private UserVO userVO; // join vo
+	
 	//pizza_order_TB
 		private int		orderId;
 		private int		orderDeliver;
@@ -26,6 +28,12 @@ public class OrderVO {
 		private String	storeManager;		
 		private String	storePhone;
 	
+	public UserVO getUserVO() {
+		return userVO;
+	}
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
 	public int getOrderId() {
 		return orderId;
 	}
@@ -147,4 +155,5 @@ public class OrderVO {
 	public void setStorePhone(String storePhone) {
 		this.storePhone = storePhone;
 	}
+
 }

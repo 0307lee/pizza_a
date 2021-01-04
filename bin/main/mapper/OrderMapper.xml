@@ -5,7 +5,7 @@
 
 	<!-- 요걸로 JOIN도 할 수 있고, VO 속성 차이 없이 부를 수 있게 된다. 참내
 		https://suhun918.tistory.com/15
-	-->
+	
 	<resultMap type="AdminInfoVO" id="AdminInfoVO">
 		<result column="ADMIN_NAME" property="adminName" />
 		<result column="ADMIN_PHONE" property="adminPhone" />
@@ -20,8 +20,34 @@
 		<collection property="adminInfoVO" resultMap="AdminInfoVO" />
 	</resultMap>
 	
+
+
+							
+	-->
+
+
+	<resultMap type="UserVO" id="UserVO">
+		<result column="u_id" property="username" />
+		<result column="u_add_point" property="uAddPoint" />
+		
+	</resultMap>
+	
+	<resultMap type="OrderVO" id="OrderVO">
+		<result column="u_id" property="username" />
+		<result column="u_address" property="orderAddress" />
+		<result column="u_zipcode" property="orderZipcode" />
+		<result column="order_request" property="orderRequest" />
+		
+		
+		<!-- 
+		<result column="u_receipt_phone_number" property="uReceiptPhoneNumber" />
+		<result column="u_pay_method_number" property="uPayMethodNumber" />
+		 -->
+		<collection property="userVO" resultMap="UserVO" />
+	</resultMap>
+	
 	<select id="read_LastOrderItems_byusername" parameterType="String" resultType="OrderVO">
-				SELECT			order_item_size				as orderItemSize,
+			SELECT			order_item_size				as orderItemSize,
 							order_item_quantity_EA	as orderItemQuantity,
 							order_item_price_won	as orderItemPrice,
 							ta.u_id					as username,
@@ -38,16 +64,15 @@
 			LIMIT			1, 1
 	</select>
 	
-	<select id="read_BasicOrderItems_byusername" parameterType="String" resultType="OrderVO">
-			SELECT			ta.u_id					as username,
-							u_address				as orderAddress,
-							u_zipcode				as orderZipcode,
-							u_store_id				as StoreId,
-							tc.order_request		as orderRequest,
-							u_receipt_phone_number	AS uReceiptPhoneNumber,
-							u_pay_method_number 	AS uPayMethodNumber,
-							u_add_point 			AS uAddPoint
-							
+	<select id="read_BasicOrderItems_byusername" parameterType="String" resultMap="OrderVO">
+			SELECT			ta.u_id,
+							u_address,
+							u_zipcode,
+							u_store_id,
+							order_request,
+							u_receipt_phone_number,
+							u_pay_method_number,
+							u_add_point
 			FROM			pizza_user ta
 			LEFT JOIN		pizza_user_address tb
 				ON 			ta.u_basic_address_id = tb.u_address_id							
@@ -64,6 +89,33 @@
 			LIMIT			0, 1
 			
 	</select>
+	<!-- 
+	<select id="read_BasicOrderItems_byusername" parameterType="String" resultType="OrderVO">
+			SELECT			ta.u_id					as username,
+							u_address				as orderAddress,
+							u_zipcode				as orderZipcode,
+							u_store_id				as StoreId,
+							tc.order_request		as orderRequest,
+							u_receipt_phone_number	AS uReceiptPhoneNumber,
+							u_pay_method_number 	AS uPayMethodNumber,
+							u_add_point
+			FROM			pizza_user ta
+			LEFT JOIN		pizza_user_address tb
+				ON 			ta.u_basic_address_id = tb.u_address_id							
+			LEFT JOIN		pizza_order tc
+				ON 			ta.u_id = tc.u_id	
+			LEFT JOIN		pizza_user_payment_info td
+				ON 			ta.u_id = td.u_id		
+			LEFT JOIN		pizza_user_additional te
+				ON 			ta.u_id = te.u_id	
+																	
+			WHERE			ta.u_id = #{username}
+			AND NOT 		tc.order_status ='preparing'
+			ORDER BY		tc.order_id DESC
+			LIMIT			0, 1
+			
+	</select>
+	 -->
 	
 	<select id="read_PresentOrderItems_byusername" parameterType="String" resultType="OrderVO">
 			SELECT			order_item_size			as orderItemSize,
