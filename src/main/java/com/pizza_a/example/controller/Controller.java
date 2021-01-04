@@ -196,10 +196,13 @@ public class Controller {
 	public String Stg3_1_SetOrder(Model model, Principal principal) {
 		
 		OrderVO BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
-		boolean flag_orderchk = BasicOrderItemInfo.toString().length() > 0 ? true : false;
 		model.addAttribute("list_OrderVO", BasicOrderItemInfo);
-		model.addAttribute("flag_orderchk", flag_orderchk);
 
+		boolean flag_orderchk = BasicOrderItemInfo.toString().length() > 0 ? true : false;
+		model.addAttribute("flag_orderchk", flag_orderchk);
+		
+		//OrderVO OrderItemPrice =orderservice.read_Preparing_OrderItems_Price(principal.getName());
+		
 		return "/Stg3_1_SetOrder";
 	}
 
