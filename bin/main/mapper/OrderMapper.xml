@@ -3,33 +3,12 @@
 <mapper namespace="com.pizza_a.example.mapper.OrderMapper">
 <!-- 권한 읽기 -->
 
-	<!-- 요걸로 JOIN도 할 수 있고, VO 속성 차이 없이 부를 수 있게 된다. 참내
-		https://suhun918.tistory.com/15
-	
-	<resultMap type="AdminInfoVO" id="AdminInfoVO">
-		<result column="ADMIN_NAME" property="adminName" />
-		<result column="ADMIN_PHONE" property="adminPhone" />
-		<result column="ADMIN_EMAIL" property="adminEmail" />
-	</resultMap>
-	
-	<resultMap type="AdminVO" id="AdminVO">
-		<result column="ADMIN_ID" property="adminId" />
-		<result column="HSPTL_ID" property="hsptlId" />
-		<result column="FIRST_REG_DT" property="createTime" />
-		<result column="ADMIN_LEVEL" property="adminLv" />
-		<collection property="adminInfoVO" resultMap="AdminInfoVO" />
-	</resultMap>
-	
-
-
-							
-	-->
-
-
 	<resultMap type="UserVO" id="UserVO">
 		<result column="u_id" property="username" />
 		<result column="u_add_point" property="uAddPoint" />
-		
+		<result column="u_receipt_phone_number" property="uReceiptPhoneNumber" />
+		<result column="u_pay_method_number" property="uPayMethodNumber" />
+
 	</resultMap>
 	
 	<resultMap type="OrderVO" id="OrderVO">
@@ -39,10 +18,6 @@
 		<result column="order_request" property="orderRequest" />
 		
 		
-		<!-- 
-		<result column="u_receipt_phone_number" property="uReceiptPhoneNumber" />
-		<result column="u_pay_method_number" property="uPayMethodNumber" />
-		 -->
 		<collection property="userVO" resultMap="UserVO" />
 	</resultMap>
 	

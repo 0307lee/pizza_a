@@ -70,16 +70,9 @@
 			
 		</button>	
 		${list_OrderVO.userVO.uAddPoint}
-		<%--
-		
-		 ${list_OrderVO.uAddPoint}
-		${list_OrderVO.uReceiptPhoneNumber}
-		${list_OrderVO.uPayMethodNumber}
-		
-		요건 새로 콰리만들어야
-		order present 금액
-		order present 예상시간
-		 --%>
+		${list_OrderVO.userVO.uReceiptPhoneNumber}
+		${list_OrderVO.userVO.uPayMethodNumber}
+
 		
 		<button type="button" class="btn btn-primary btn-lg btn-block" id="payment_btn_nofunction">현금영수증 : 
 			<input type ="text" name="username" style="width:50px"><input type ="text" name="username" style="width:80px"><input type ="text" name="username" style="width:80px">  
