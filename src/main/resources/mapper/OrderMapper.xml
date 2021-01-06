@@ -16,8 +16,9 @@
 		<result column="u_address" property="orderAddress" />
 		<result column="u_zipcode" property="orderZipcode" />
 		<result column="order_request" property="orderRequest" />
-		
-		
+		<result column="store_name" property="storeName" />
+		<result column="store_id" property="storeId" />
+		<result column="order_deliver" property="orderDeliver" />
 		<collection property="userVO" resultMap="UserVO" />
 	</resultMap>
 	
@@ -40,11 +41,12 @@
 	</select>
 	
 	<select id="read_BasicOrderItems_byusername" parameterType="String" resultMap="OrderVO">
-			SELECT			ta.u_id,
+			SELECT					ta.u_id,
 							u_address,
 							u_zipcode,
-							u_store_id,
+							store_name,
 							order_request,
+							order_deliver,
 							u_receipt_phone_number,
 							u_pay_method_number,
 							u_add_point
@@ -56,7 +58,9 @@
 			LEFT JOIN		pizza_user_payment_info td
 				ON 			ta.u_id = td.u_id		
 			LEFT JOIN		pizza_user_additional te
-				ON 			ta.u_id = te.u_id	
+				ON 			ta.u_id = te.u_id
+			LEFT JOIN		pizza_store tf
+				ON 			tb.u_store_id = tf.store_id		
 																	
 			WHERE			ta.u_id = #{username}
 			AND NOT 		tc.order_status ='preparing'

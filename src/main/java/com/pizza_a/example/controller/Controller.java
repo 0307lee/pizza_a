@@ -40,7 +40,9 @@ public class Controller {
 		if( principal !=null) {
 			String username=principal.getName(); 
 			model.addAttribute("username", username);
-
+			
+			OrderVO BasicOrderItemInfo =orderservice.read_BasicOrderItems_byusername(principal.getName());
+			model.addAttribute("list_OrderVO_B", BasicOrderItemInfo);
 		}
 		return "/Stg1_1_MAIN";
 	}
